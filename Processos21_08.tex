@@ -1,0 +1,1242 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,arrows}
+\usetikzlibrary{automata,positioning}
+\usepackage{pgfplots}
+\usepackage{filecontents}
+\author{}
+\usepackage{bm}
+\usepackage{mathrsfs}
+\usepackage{blkarray}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\graphicspath{ {/Users/gustavo/Desktop/Processos
+} }
+\begin{document}
+\title{Processos}	
+\date{}
+\maketitle
+
+
+Cadeias de Markov a tempo discreto com espa\c{c}o de estados enumer\'avel discreto\\
+Seja \{$X_n,\ge0$\}, processo estoc\'astico definido sob ($\Omega,\mathscr{F},P$) \\
+ $X_n:\Omega\longrightarrow S$\\
+ $\omega \longrightarrow X_n(w)=i$\\
+ $S={0,1,2,....}$ espa\c{c}o de estados\\
+ Neste caso,\\
+ $X_n(w)=i$: o processo est\'a no estado i, no tempo n (passo n).\\
+ Defini\c{c}\~ao Cadeia de Markov\\
+ Um processo {$X_n,n\ge0$} com espa\c{c}o de destados S={0,1,2,...}, \'e uma cadeia de Markov, se\\
+ $$\forall i_0,i_1,....,i_{n-1},i,j$$
+ $P(\underbrace{X_{n+1}=j}_\text{passado}|X_0=i_0,X_1=0_1,...,X_{n-1}=i_{n-1})=P(X_{n-1}=J|X_n=i)$\\
+ Obs:\\
+ Quando $P(X_{n+1}=j|X_n=i)=P(X_1=j|X_0=i) $, as probabilidades de transicao independem do tempo n, diz-se que a cadeia de Markov \'e \textbf{\underline{Homog\^enea}}.\\
+ \
+\textbf{\underline{ Nota\c{c}\~ao:}}\\
+ $P=(P_{ij})$: Matriz de transi\c{c}\~ao de um passo da Cadeia de Markov.\\
+$P_{ij} =P(X_1=j|X_0=i) =P(X_{n+1}=j|X_n=i)$\\
+A matriz P, \'e estoc\'astica, pois $P_{ij}\ge0$ e $\mathop\sum_{j=0}^{\infty} P_{ij}=1$\\
+$ (X_0,X_1,X_2,....) $ t.q $ P_{ij}=(X_1=j|X_0=i) \iff P(X_0=i_0,...,X_n=i_n)$\\
+
+Exemplo 1\\
+Supona que em qualquer tempo $n\ge0$ passamos a associar uma v.a. aos estados chuva e seco, da seguinte forma:\\
+\begin{equation*}
+X_n=
+\begin{cases}
+0, & \text{se chove no tempo n}\ \\
+1, & \text{se n\~ao chove no tempo n}
+\end{cases}
+\end{equation*}
+Se hoje chove, amanha chovera com probabilidade 0.4 e se hoje n\~ao chove, amanha chovera com probabilidade 0.3.
+\'E ${X_n,n\ge0}$ uma Cadeia de Markov? Determine P.\\
+\underline{Solução}:\\
+Temos $X_n:\Omega \longrightarrow \{0,1\}=S,$\\
+${X_n,n\ge0} $ \'e um processo estoc\'astico com S=\{0,1\}\\
+$P(X_1=0|X_0=0)=0.4=P_{00}$\\
+$P(X_1=0|X_0=1)=0.3=P_{10}$\\
+$P(X_1=1|X_0=0)=1-P(X_1=0|X_0=0)=P_{01}=0.6 $\\
+$P(X_1=1|X_0=1)=1-P(X_1=1|X_0=1)=P_{11}=0.7$\\
+ \[
+P=
+\left[ {\begin{array}{cc}
+	0.4 & 0.6 \\
+	0.3 & 0.7 \\
+	\end{array} } \right]
+\]
+
+\newpage
+\underline{Exemplo 2:}\\
+Seja ${X_n,n\ge0}$ um processo em que $X_i's$ idd e S=\{0,1,....\}, sendo $P(X_n=j)=P_j\ge0$ t.q.\\
+$\mathop\sum_{j=0}^{\infty} P_i=1$. Mostre que \{$Xn,n\ge0$\} \'e Cadeia de Makov e determine P.\\
+\underline{Sol:}\\
+Temos que:\\
+$P(X_{n+1}=j|X_0=i_0,...,X_{n-1}=i_{n-1},X_n=i)\overbrace{=}^{indep.}P(X_{n+1}=j)(*)$\\
+$P(X_{n+1}=j|X_n=j)=P(X_{n+1}=j$(**)\\
+Ent\~ao, de (*) e (**) a propriedade de Markov \'e satusfeita.\\
+Al\'em disso,\\
+i, fixo : $P_{ij}=P(X_{n+1}=j)\overbrace{=}^{id. dist.}=P$
+\newpage
+\underline{Exemplo 3:} (do Jogador)\\
+Suponha que:\\
+\begin{equation*}
+\text{Jogador em cada jogada}=
+\begin{cases}
+\text{Ganha \$1}, & \text{Com prob p} \\
+\text{Perde \$1}, & \text{Com prob 1-p}
+\end{cases}
+\end{equation*}
+
+\underline{Sol:}\\
+Defina,
+\begin{equation*}
+X_i=
+\begin{cases}
+1, & \text{Ganha \$1 na i-\'esima jogada}\ \\
+-1, & \text{Perde \$1 na i-\'esima jogada}
+\end{cases}
+\end{equation*}
+$X_i's$ sao independentes com $P(x_i=1)=p$  \\$P(X_i=-1) = q$
+Al\'em disso, seja\\
+$S_n=\mathop\sum\limits_{i=0}^{n} X_i$ : Fortuna do jogar ap\'os a n-\'esima jogada.\
+Ent\~ao \{$S_n,n\ge0$\} \'e um processo estoc\'astico com S=\{0,1,...,N\}\\
+Como,\\
+$P(S_{n+1}|S_n=i)=P(\mathop\sum\limits_{i=0}^{n} X_i+X_{n+1}=j|S_{n}=i)$\\
+$$=P(X_{n+1}=j-i|S_n=i)\overbrace{=}^{indep.}P(X_{n+1}=j-i)(*)$$
+$$P(S_{n+1}=j|S_0=i_0,...,S_{n-1}=i_{n-1},S_n=i)=P(X_{n+1}=j-i)(**)$$\\
+\newpage
+De (*) e (**),\\
+\begin{equation*}
+P_{ij}=P(X_{n+1}=j-i)=
+\begin{cases}
+p, & j-i=1\\
+q, & j-i=-1\\
+0, & c.c
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+\Rightarrow P_{ij}=
+\begin{cases}
+p, & j=i+1\\
+q, & j=i-1\\
+0, & c.c
+\end{cases}
+\end{equation*}
+e $P_{00}=1,P{NN}=1$
+\newpage
+\underline{Cadeia de Markov}\\
+\\
+Seja $\{X_n,n\ge0 \}$ uma C.M. com matriz de transição $P=(P_{ij}) i,j\in S$, S é o espaço de estados da cadeia,isto é:\\
+\\
+$P_{ij}:$ probabilidade da cadeia pssar de i para j em um passo.\\
+P: Matriz de transição de um passo da cadeia.\\
+\\
+\underline{Objetivo}:\\
+\\
+Determinar a distribuição da cadeia, $\left(P(X_n=0),P(X_n=1),...\right),?$ com n um tempo qualquer
+\\
+$
+P = 
+\begin{blockarray}{cccc}
+	&  0   & 1   \\
+	\begin{block}{r|rr|r}
+		0 & 0.4 & 0.6 & ,\text{0 = chuva} \\
+		1 & 0.3 & 0.7  & ,\text{1 = seco} \\	  
+	\end{block}
+\end{blockarray}
+$
+\newpage
+\underline{Equações de Chapman-Kolmogorov}\\
+\\
+Defina:
+\\
+$P_{ij}^n=P(X_n=j|X_0=i),n\ge 1$\\
+$P_{ij}?^n$ é a probabilidade de transição de n passos da cadeia.\\
+$P^{(n)}=(P_{ij}^n)\ i,j \in S:$ Matriz de transição de n passos.\\
+Note que $P^{(1)}=P$\\
+Para calcular $P_{ij}^n$, primeiro lembre o seguinte:\\
+Se $X_1,X_2,Y$ v.a.`s definidas no espaço de probabilidade $(\Omega,\mathscr{F},P)$, então:\\
+$\mathscr{F}_1=\sigma(X_1),\mathscr{F}_2=\sigma(X_1,X_2)$ \\
+$E(Y|\mathscr{F}_1)\overbrace{=}^{Prop.6} E[E(Y|\mathscr{F}_2)|\mathscr{F}_1]$\\
+$\Rightarrow E(Y|X_1)(\omega)=E(Y|X_1=x_1)=\\
+E[\underbrace{E(Y|X_1=x_1,X_2)}_{\Phi(X_2)}|X_1=x_1]=$\\
+$\Sigma E(Y|X_1=x_1,X_2=x_2)\cdot P(X_2=x_2|X_1=x_1)$\\
+\\
+Se $Y=I_A$\\
+\\
+$E(I_A,X_1=x_1)=\mathop\sum_{x_2}E(I_A|X_1=x_1,X_2=x_2)P(X_2=x_2|X_1=x_1)$ ou\\
+$P(A|X_1=x_1)=\mathop\sum_{x_2}P(A|X_1=x_1,X_2=x_2)P(X_2=x_2|X_1=x_1)$\\
+\\
+\newpage
+Agora,\\
+\\
+$P_{ij}^{n+m}=P(X_{n+m}=j|x_0=i)\ , \ n,m \ge 1 \ =\\
+ \mathop\sum\limits_{k\in S}^{\infty}P(X_{n+m}=j|x_0=i,x_n=k)\cdot P(x_n=k|x_0=i)$\\
+ $=\mathop\sum\limits^{\infty}P_{kj}^{m}\cdot P_{ik}^{n} \iff P_{ij}^{n+m}=\underbrace{\mathop\sum\limits_{k\in S} P_{ik}^{n}\cdot P_{kj}^{m}}_\text{Equação de Chapman-Kolmogorov}$ \\
+ Sendo $P_{ij}^{n+m}$ a entrada da i,j-ésima matriz $P^{(n)}\cdot P^{(m)}=P^{(n+m)}$, ou seja:\\
+ 		$P^{(2)}=P^{(1)}\cdot P^{(1)}=P\cdot P=P^2$\\
+ 				$P^{(3)}=P^{(2)}\cdot P^{(1)}=P^2\cdot P=P^3$\\
+ 				$P^{(n)}=P\underbrace{\cdot .... \cdot}_{n-vezes}P=P^n$\\
+ 				Assim, $P_{ij}^n$ é a i,j-ésima entrada de $P^n$
+ 				\newpage
+ 				\underline{Exemplo:}\\
+ 				Considere uma Cadeia de markov com S={0,1,2} e a matriz de transi\c{c}\~ao\\
+ 			
+ 				
+ 				P = 
+ 				\begin{blockarray}{cccc}
+ 				&  0   & 1 & 2   \\
+ 				\begin{block}{r|rrr}
+ 				
+ 				0 & 0.5 & 0.5 & 0 \\
+ 				1 & 1 & 0  & 0 \\
+ 				2 & 0 & 1  &  0	 \\ 	
+ 			    \end{block}
+ 			
+ 				\end{blockarray}
+ 			\\
+ 			Calcule $P^2$
+ 		\\
+ 		\underline{Sol:}\\
+ 		
+ 		\(
+ 		P^2=
+ 		\left({\begin{array}{ccc}
+ 			0.5& 0.5&0 \\
+ 			1 & 0&0 \\
+ 			0&1&0
+ 			\end{array} } \right)
+ 		\)
+ 			\(
+ 		\left( {\begin{array}{ccc}
+ 			0.5& 0.5&0 \\
+ 			1 & 0&0 \\
+ 			0&1&0
+ 			\end{array} } \right)
+ 		\)=
+ 		\(
+ 	\left( {\begin{array}{ccc}
+ 		0.75& 0.25&0 \\
+ 		0.5& 0.5&0 \\
+ 		1&10&0
+ 		\end{array} } \right)
+ 	\)
+ 		\\
+ 		Em 2 dias a pessoa n\~ao tem chance de ficar feliz pois $P_{i2}^2=0\ \forall \ i=0,1,2\ =P(X_2=2|
+ 	X_0=i) $ \\
+ 		\\
+ 		Para deternubar a distribuicao de ${X_n,n\ge0}$, utilizar $\alpha=(P(X_0=1),P(X_0=1),...)=(\alpha_1,\alpha_2,...)$ a distribui\c{c}\~ao inicial da cadeia\\
+ 		\\
+ 		Pois
+ 		$$P(X_n=j)=\mathop\sum\limits_{i\in S}P(X_n=j|X_0=i)\underbrace{P(X_0=1)}_{\alpha_i}$$
+ 		$$	P(X_n=j)=\mathop\sum\limits_{i\in S}\alpha_iP_{ij}^n$$
+ 		Corresponde \`a\\
+ 		$
+ 		\alpha\cdot P^n=(\alpha_0,\alpha_1,...,\alpha_n,..)\cdot$
+ 		\(
+ 			 {\begin{bmatrix}
+ 				P_{00}^n& P_{01}^n&\dots&P_{0j}^n&\dots \\
+ 					P_{10}^n& P_{11}^n&\dots&P_{1j}^n&\dots \\
+ 				 \vdots&  & \vdots& \\
+ 				 	P_{i0}^n& P_{i1}^n&\dots&P_{ij}^n&\dots
+ 		\end{bmatrix} } 
+ 		\)
+ 				\\
+ 				Suponha que $\alpha=(0.5,0.3,0.2)=\\
+ 				(P(X_0=0),P(X_0=1),(P(X_0=2)) $ = informa\c{c}\~ao inicial.\\
+ 				\\
+ 				E como:\\
+ 				\\
+ 				
+ 					\(P^2=
+ 				\left( {\begin{array}{ccc}
+ 					0.75& 0.25&0 \\
+ 					0.5& 0.5&0 \\
+ 					1&10&0
+ 					\end{array} } \right)
+ 				\)
+ 				\\Ent\~ao:\\
+ 				$\alpha\cdot P^2=(0.725,0.275,0)=\\(P(X_2=0),P(X_2=1),P(X_2=2))$
+ 				\\
+ 				
+ 				
+\newpage
+$$\underbrace{\alpha}_{dist. inicial}\cdot P^{(n)}=\Pi^n=(P(X_n=0),P(X_n=1),....,)$$
+Sem considerar $\alpha$, podemos calcular\\
+
+$
+P^{(n)}\underbrace{\longrightarrow}_{n\rightarrow\infty}\Pi= \begin{bmatrix} 
+\lim\limits_{n\rightarrow\infty}P_{ij}^n&  \dots \\
+\lim\limits_{n\rightarrow\infty}P_{ij}^n &  & \\
+\vdots &        & 
+\end{bmatrix}
+$
+=
+$
+\begin{bmatrix} 
+\Pi_0&\Pi_1 &  \dots \\
+\Pi_0&\Pi_1 &  \dots& & \\
+	\vdots &        & 
+\end{bmatrix}
+$
+
+
+
+\newpage
+Seja $\{X_n,n\ge0\}$ uma Cadeia de Markov com $P^{(n)}$ matriz de transi\c{c}\~ao de n passos da cadeia,
+$$P^{(n)}=(P_{ij}^n)_{i,j\in S},\ \text{S \'e o espa\c{c}o de estados}$$
+\underline{Conceitos}\\
+\\
+1. $i,j \in S, \ i\leftrightarrow j$ (i e j se comunicam)\\
+ Se $ i\rightarrow j$ ( i acessa j, $\exists\ n: P_{ij}^n>0 $) e $j\rightarrow i$. \\
+ \\
+ 2. Seja $C\subset S,$
+ $$ \forall\ i\in C, j\notin C, i\rightarrow j \Rightarrow C\ \text{\'e uma classe n\~ao fechada} $$
+  $$ \forall\ i\in C, j\notin C, \underbrace{\nexists P_{ij}^n>0 }_{P_{ij}^n=0} 
+  \ t.q. \ i\rightarrow j \Rightarrow C\ \text{\'e uma classe  fechada} $$
+  \\
+3. i,j $\in C\subset S$ e $i\leftrightarrow j \Rightarrow i,j$ s\~ao da mesma classe.\\
+\\
+4. $S=C$ com $C$ fechada $\Rightarrow S$ \'e irredut\'ivel.\\
+\\
+5. $C=/{i/}$ classe fechada, $i\in S \ \ \Rightarrow\ $ i \'e absorvente.\\
+\\
+6. $i\in C\subset S$, $d(i)=mdc{n\: \ P_{ii}^n>0}\ge 1\Rightarrow d(i)$ \'e o per/'iodo de i/\\
+$d(i)=1\Rightarrow C$ \'e aperi\'odica\\
+$(di)\ge2 \Rightarrow C$ \'e per\'iodico com per\'iodo d(i)
+\newpage
+\underline{Exemplos:}\\
+1) Seja\\
+	P = 
+\begin{blockarray}{ccccc}
+	&  0   & 1 & 2 &3 & \\
+	\begin{block}{r|rrrr}
+		
+		0 & 0 & 1& 0&0\\
+		1 & 0 & 0  & 1&0 \\
+		2 & 0 & 0  &  0&1	 \\ 
+		3&1&0&0&0\\	
+	\end{block}
+	
+\end{blockarray}\\
+
+A matriz de transi\c{c}\~ao de uma Cadeia de Markov com S=\{0,1,2,3\}
+ $S=C$ classe fechada \'unica (irredut\'ivel)\\
+ $d(0)=mdc{4,8,...}$\\
+ $d(0)=4\ge 2$\\
+ $\Rightarrow S=C$ \underline{irredut\'ivel e peri\'odica com per\'iodo 4}.\\
+
+\newpage
+2) Seja
+P = 
+\begin{blockarray}{ccccc}
+	&  0   & 1 & 2 &3&  \\
+	\begin{block}{r|rrrr}
+		
+		0 & 0 & 1& 0&0\\
+		1 & 0.5 & 0  & 0.5&0 \\
+		2 & 0 & 0  &  0&1	 \\ 
+		3&0&0&1&0\\	
+	\end{block}
+	
+\end{blockarray}\\
+
+
+A matriz de transi\c{c}\~ao de uma Cadeia de Markov com S=\{0,1,2,3\}\\
+Temos:\\
+C1=\{0,1\}: n\~ao fechada, peri\'odica com per\'iodo 2\\
+C1=\{2,3\}: fechada, peri\'odica com per\'iodo 2\\
+\newpage
+3) Para uma Cadeia de Markov com S=\{0,1,2,...,N\}, considere:\\
+P=
+$
+\begin{bmatrix} 
+1&0 & 0&0& \dots \\
+q&0& p& 0&\dots \\
+\vdots&    q    &  &\ddots &  p\\
+0 & & & & 1\\
+\end{bmatrix}
+$
+\\
+
+Temos:\\
+$C_1=\{0\}$, classe absorvente e aperi\'odica\\
+$C_1=\{N\}$, classe absorvente e aperi\'odica\\
+$C_1=\{1,2,..,N-1\}$, classe n\~ao fechada  e peri\'odica com per\'iodo 2.
+\newpage
+
+
+\newpage
+Definição. (Ergodicidade)\\
+\\
+Uma Cadeia de Markov $\{x_n,n\ge0\}$ com $ P^{(n)}=(P_{ij}^n), \ i,j\ \in S $ \'e ergodica se :\\
+$$
+\lim_{n\rightarrow \infty} P_{ij}^n=\Pi_j\ (independente\ de \ i) $$
+e
+$$ \sum\limits_{j\in S} \Pi_j=1$$
+A distribuição $ \Pi=(\Pi_0,\Pi_1,...)$ é chamada de distribuição limite da cadeia:
+\\
+
+\(
+P^{(n)}\rightarrow (n\rightarrow\infty)
+\left( {\begin{array}{c}
+		\Pi\\
+		\Pi\\
+		.\\
+		.\\
+		.\\
+			\Pi
+\end{array} } \right)
+\)
+\\
+Proposição: Se $\{x_n,n\ge0\}$  \'e Cadeia de Markov com S, irredutível, aperiódico e recorrent, então a cadeia é ergódica e $\Pi$ satisfaz:
+$$ \sum\limits_{j\in S} \Pi_j=1$$
+e
+$$\Pi=\Pi\cdot P (\text{$\Pi$ \'e estacion\'aria})$$
+\newpage
+Exemplos\\
+\\
+(1) Considere a Cadeia de Markov com espaço de estados S=\{0,1\} 
+\\
+$
+P = 
+\begin{blockarray}{cccc}
+  0&0&0   & 1   \\
+\begin{block}{r(rr)r}
+0 & 0.4 & 0.6 & ,\text{ 0 = chuva} \\
+1 & 0.3 & 0.7  & ,\text{1 = seco} \\	  
+\end{block}
+\end{blockarray}
+$
+\\
+Estude a ergodicidade da cadeia.\\
+\\
+Temos :\\
+$S=C$ : classe fechada $\Rightarrow$ irredut\'ivel, aperi\'odica, e recorrente (Pois S \'e finito).\\
+\\
+Então, pela proposição anterior a cadeia é ergótica e tem $\Pi=(\Pi_0,\Pi_1)$\\
+Determinar $\Pi$:\\
+$
+\begin{cases}
+	\Pi=\Pi \cdot P\\
+	\sum\limits_{j=0}^{1}\Pi_j
+	\end{cases}
+$
+$\Rightarrow$
+$
+\begin{cases}
+(\Pi_1,\Pi_0)=(\Pi_1,\Pi_0)\cdot P\\
+\Pi_0+\Pi_1=1
+\end{cases}
+$
+\\
+
+
+ \begin{equation*}
+ \iff 
+ \begin{cases}
+\Pi_0=0.4\Pi_0+0.3\Pi_1\ \ (1)\\
+\Pi_1=0.6\Pi_0+0.7\Pi_1\ \ (2)\\
+\Pi_0+\Pi_1=1\ \ \ \ \ \ \ \ \ \ \ (3)
+ 
+ \end{cases}
+ \end{equation*}
+ \newpage
+ Re-escrevendo (1) e (2)\\
+  \begin{equation*}
+ \iff 
+ \begin{cases}
+ 0.6\Pi_0-0.3\Pi_1=0\ \ \\
+ 0.6\Pi_0-0.3\Pi_1=0\ \ (4)\\
+ \Pi_0+\Pi_1=1\ \ \ \ \ \ \ \ \ \ \ (5)
+ 
+ \end{cases}
+ \end{equation*}
+ $$0.3(5)+4$$
+ $$0.9\Pi_0=0.3 \ \iff \ \Pi_0=1/3\ \ (6)$$
+ Substituindo (6) em (5),\\
+ $$\Pi_1=2/3$$
+ $$\Rightarrow \Pi=\left(\frac{1}{3},\frac{2}{3}\right)$$
+ Ao longo do tempo o cima estar\'a 1/3 chuvoso e 2/3 seco.
+ \newpage
+ (2) Para uma Cadeia de Markov com S=\{0,1,2,...\}, considere:\\
+ \begin{equation*}
+ \text{Jogador em cada jogada}=
+ \begin{cases}
+ \text{Ganha \$1}, & \text{Com prob p} \\
+ \text{Perde \$1}, & \text{Com prob q}
+ \end{cases}
+ \end{equation*}
+ $
+ P_4=
+ \begin{bmatrix} 
+ q&p & 0&0& 0&\dots \\
+ q&0& p& 0&0&\dots \\
+ 0&    q    &0  &p &  0&\dots\\
+ \vdots& & & & &\ddots\\
+ \end{bmatrix}
+ $
+ \\
+ \\
+ Estude a ergodicidade da cadeia.\\
+ \\
+ \underline{Sol:}\\
+ \\
+ S: irredutível, aperiódica,...\\
+ \\
+ analisando a recorrência:\\
+ $d(0)=inf\{1,2,3,4,...\}=1$\\
+ Suponha que $\Pi=(\Pi_0,\Pi_1,....)$ existe, ent\~ao:\\
+$ (\Pi_0,\Pi_1,\Pi_2,....)=(\Pi_0,\Pi_1,\Pi_2,....)\cdot$
+  $
+ \begin{bmatrix} 
+ q&p & 0&0& 0&\dots \\
+ q&0& p& 0&0&\dots \\
+ 0&    q    &0  &p &  0&\dots\\
+ \vdots& & & & &\ddots\\
+ \end{bmatrix}
+ $\\
+ e $\sum\limits_{j=0}^{\infty} \Pi_j=1$
+ \newpage
+ $
+ \iff 
+ \begin{cases}
+ \Pi_0=q\Pi_0+q\Pi_1\\
+ \Pi_1=p\Pi_0+q\Pi_2\\
+.\\
+.\\
+.\\
+\sum\limits_{j=0}^{\infty} \Pi_j=1
+
+ \end{cases}
+$
+$ 
+ \iff 
+ \begin{cases}
+ \Pi_1=\frac{p}{q}\Pi_0\\
+ \Pi_2=\left(\frac{p}{q}\right)^2\Pi_0 .\\
+ .\\
+ .\\
+ \Pi_i=\left(\frac{p}{q}\right)^i\Pi_0 .
+ 
+ \end{cases}
+$
+ e $\sum\limits_{j=0}^{\infty} \Pi_j=1$\\
+Usando as equações anteriores,\\
+$$\sum\limits_{i=0}^{\infty} \left(\frac{p}{q}\right)^i\Pi_0=1$$
+$$\iff\Pi_0\sum\limits_{i=0}^{\infty} \left(\frac{p}{q}\right)^i=1 $$
+$$\iff\sum\limits_{i=0}^{\infty} \left(\frac{p}{q}\right)^i=\frac{1}{\Pi_0}\ \text{\'e uma s\'erie geom\'etrica}\iff p<q$$
+$$\iff \frac{1}{1-\frac{p}{q}}=\frac{1}{\Pi_0} \iff \ \Pi_0=1-\frac{p}{q}$$
+logo,\\
+$
+\Pi=\left(
+	1-\frac{p}{q} , \frac{p}{q}(1-\frac{p}{q}), \frac{p^2}{q^2}(1-\frac{p}{q}),....
+\right)
+\iff p<q
+$
+ \\
+ \\
+ $\Pi=(0,0,0,....) \iff p=q=\frac{1}{2}$
+ \newpage
+ (3) Lista:\\
+ \\
+ $
+ P_4 = 
+ \begin{blockarray}{cccccc}
+ &  0   & 1 &2&3&4  \\
+  \begin{block}{r(rrrrr)}
+ 0&1/4 & 3/4 & 0 & 0&0\\
+ 1&1/2 & 1/2 & 0  & 0&0 \\
+ 2&0&0&1&0&0\\
+ 3&0&0&1/3&2/3&0\\
+ 4&1&0&0&0&0 \\
+   \end{block}
+ \end{blockarray}
+ $\\
+ Temos:\\
+ \\
+ $C_1=\{0,1\}$: fechada, aperi\'odica\\
+ $C_2=${4}: transit\'orios\\
+ $C_3=${3}: transit\'orio, aperi\'odico\\
+ $C_4=${2}: absorvente (fechada), aperi\'odica\\
+ 
+ 
+ \newpage
+ \underline{Ergodicidade para S finito e não irredutível}\\
+ \\Uma C.M. $\{x_n,n\ge0\}$ com $ P^{(n)}=(P_{ij}^n), \ i,j\ \in S $, t.q. :\\
+ $$S=C_R\cup C_T\ ,$$
+$$ C_R=\text{Classe de estados recorrentes}$$  
+ $$ C_T=\text{Classe de estados transit\'orios}$$  
+ $$\Rightarrow Determinar \Pi:$$
+ (1) Reescrever P\\
+ $
+ P\rightarrow P^* = 
+ \begin{blockarray}{ccc}
+ 	&  C_R   & C_T  \\
+ 	   \begin{block}{r(rr)}
+ 		C_R& P_1 & 0\\
+ 		C_T& R & T\\
+ 	 \end{block}	
+ \end{blockarray}\\
+ $
+ \\
+ (2) $ \Pi=(\Pi^*,0,...)$
+ $$\forall j\in C_R, \lim\limits_{n\rightarrow\infty}P_{ij}^n=\pi_j$$
+  $$\forall j\in C_T, \lim\limits_{n\rightarrow\infty}P_{ij}^n=0\ ,\ \pi^*=\pi^*\cdot P_1$$
+  \\
+  \newpage
+  Exemplo (anterior)\\
+  \\
+  Considere
+  $$C_R=\{0,1\}$$
+  $$C_T=\{2,3,4\}$$
+  $
+  P^* = 
+  \begin{blockarray}{cccccc}
+  &  0   & 1 &2&3&4  \\
+   \begin{block}{r(rrrrr)}
+  0&1/4 & 3/4 & 0 & 0&0\\
+  1&1/2 & 1/2 & 0  & 0&0 \\
+  2&0&0&1&0&0\\
+  3&0&0&1/3&2/3&0\\
+  4&1&0&0&0&0 \\
+   \end{block}
+  \end{blockarray}
+  $
+  $
+  P_1= 
+ \begin{blockarray}{ccc}
+  &  0   & 1   \\
+   \begin{block}{r(rr)}
+  0&1/ 4 & 3/ 4 \\
+  1&1/ 2 & 1/ 2  \\
+   \end{block}
+  \end{blockarray}
+  $
+  \\
+  $
+  \begin{cases}
+  \pi^*=\pi^*P_1\\
+  \sum\pi_j=1\\
+  j\in C_R
+  
+\end{cases}
+$
+\\
+\\
+
+  $
+\begin{cases}
+3/4\pi_0-1/2\pi_1=0\\
+\pi_0+\pi_1=1
+
+\end{cases}
+$
+  $$2(1)+(2),$$
+$$ 5\pi_0=1 \Rightarrow \pi_0=2/5\ , \pi_1 =3/5 $$
+logo
+$$
+\pi=(2/5,3/5,0,0,0)  $$
+\newpage
+\section*{11/09}
+
+$$Processos\ de \ Poisson$$
+Def. ( Processo de contagem )\\
+Um processo estoc\'astico a tempo cont\'inuo, $\{N(t),t\ge0\}$ com espaço de estados e numerável é um processo de contagem se:\\
+$N(t)=$ número total de eventos ocorridos at\'e t, ( ocorridos em$ \ ( 0,t \ ] )$.
+$$N_t:\Omega\longrightarrow S\ \'e \ enumer\'avel $$
+$$ w \longleftrightarrow N_t(\omega)=n$$
+
+Def1. (Processo de Poisson)\\
+Um processo de contagem $\{N(t),t\ge0\}$ tais que satisfaz :\\
+(i)  N(0)=0\\
+(ii)$\{N(t),t\ge0\}$ tem incrementos independentes\\
+(iii)$P\left(N(t+s)-N(t)=n\right)=\frac{e^{-\lambda s}(\lambda s)^n}{n!}\ \forall\  t,s\ge0$\\
+\'e chamado processo de poisson com taxa $\lambda$\\
+OBS!!\\
+1. de (iii), tem-se que $\{N(t),t\ge0\}$ tem encrementos estacion\'arios pois :
+$$P(N(s)=n)=P\left(N(t+s)-N(0)=n\right)\underbrace{=}_{(iii)}\frac{e^{-\lambda s}(\lambda s)^n}{n!}
+$$
+Ou seja, $P(N(t+s)-N(t)=n)=P(N(s)=n),\forall t,s\ge0$.\\
+A distribuição depende to tamanho do intervalo.\\
+\\
+2. Notação $\{N(t),t\ge0\}$ \'e o processos de possion com taxa $\lambda$\\
+$\iff N(t)\sim Poisson(t) $\\
+$\Rightarrow E[N(t)]=\lambda t
+$\\
+\\
+Def 2,],. 
+
+
+
+\newpage
+\section*{(Exercíos para a prova 2, Capítulo 5)}
+$$35-43,46,47,49,53,55,59,65,68,70,78,88
+$$
+\newpage
+
+
+\begin{equation*}
+Processos\ de\ poisson
+\begin{cases}
+\text{Não homogêneo} \\
+Composto\\
+Misto\\
+\end{cases}
+\end{equation*}
+\\
+\begin{equation*}
+\text{Processo Renovação} 
+\begin{cases}
+\text{Taxa média de renovação} \\
+\text{Tempo de renovação} \\
+\text{distribuição número de renovação} \\
+\end{cases}
+\end{equation*}\\
+\\
+\underline{Processo de Poisson homogêneo}\\
+\\
+$\{N(t),t\ge0\}$  Processo estocástico de contagem com espaço de estados S=\{0,1,...\}\\
+t.q $ N(t)\sim Poisson(\lambda t)$, tem \underline{incrementos independentes e estacionários}
+ e instantaneamente só pode chegar em um evento com taxa $\lambda$\\
+\begin{tikzpicture}[scale=7]
+\draw[->, thick] (-0.1,0) -- (1.7,0);
+\foreach \x/\xtext in {0.0/0,0.5/$t$,1/$2t$}
+\draw[thick] (\x,0.5pt) -- (\x,-0.5pt) node[below] {\xtext};
+\draw (0.0,0.5pt) node[above] {$N(0)$};
+\draw (0.5,0.5pt) node[above] {$N(t)$};
+\draw (1,0.5pt) node[above] {$N(2t)$};
+\end{tikzpicture}
+ \\
+
+\begin{tikzpicture}[scale=7]
+\draw[->, thick] (-0.1,0) -- (1.7,0);
+\foreach \x/\xtext in {0.0/0,0.2/$t$,0.4/$t+2$,0.6/,0.8/,1/,1.2/$n-1$,1.4/$n$}
+\draw[thick] (\x,0.5pt) -- (\x,-0.5pt) node[below] {\xtext};
+\draw (0.0,0.5pt) node[above] {$N(0)$};
+\draw (0.2,0.5pt) node[above] {$N(t)$};
+\draw (0.4,0.5pt) node[above] {$N(t+s)$};
+\draw (0.1,0.5pt) node[below] {$T_1$};
+\draw (0.3,0.5pt) node[below] {$T_2$};
+\draw (1.3,0.5pt) node[below] {$T_n$};
+\end{tikzpicture}
+\\
+
+ \underline{Proposição}\\
+ \\
+ $\{N(t),t\ge0\}$  é um processo de Poisson com \underline{taxa $\lambda$} se, e somente se, os tempos entre as chegadas dos eventos s são variáveis aleatórias i.i.d Exp($\lambda$)
+ \\
+ \underline{Prova}\\
+ \\
+ $\Rightarrow$ Sejam $T_n$ variáveis aleatórias i.i.d.\\
+ $T_n:$ v.a. tempo entre o $(n-1)$-\'esima chegada e a n-\'esima chegada, \\$n=1,2,....$
+ \\
+ Temos que :
+ $$\cdot P(t_1>t)=?$$
+ \begin{tikzpicture}[scale=7]
+ \draw[->, thick] (-0.1,0) -- (1.7,0);
+ \foreach \x/\xtext in {0.0/0,0.5/$t$,0.75/1,1.5/2}
+ \draw[thick] (\x,0.5pt) -- (\x,-0.5pt) node[below] {\xtext};
+ \draw (0.5,0.5pt) node[above] {$N(t)=0$};
+ \end{tikzpicture}\\
+ \\
+ $$P(T_1>t)=P(N(t)=0)=\frac{e^{-\lambda t}(\lambda t)^0}{0!}=e^{-\lambda t}
+ $$
+ Então,
+ $$P(T_1\le t)1-e^{-\lambda t}, \ \ T_1\sim Exp(\lambda)$$
+ \\
+  $$\cdot P(t_2>t)=?$$
+ 
+  \begin{tikzpicture}[scale=7]
+ \draw[->, thick] (-0.1,0) -- (1.7,0);
+ \foreach \x/\xtext in {0.0/0,0.75/1,1.2/$t+x$,1.5/2}
+ \draw[thick] (\x,0.5pt) -- (\x,-0.5pt) node[below] {\xtext};
+ \draw (0.75,0.5pt) node[above] {$x$};
+\draw (0.375,0.5pt) node[below] {$T_1$};
+\draw (1.1,0.5pt) node[below] {$T_2$};
+ \end{tikzpicture}\\
+ \\
+ \\
+ 
+  $$P(T_2>t)=\int\limits_0^{\infty} \underbrace{P(T_2>t|T_1=x)}_
+  {E(I_{(T_2>t)|T_1=x})}f_{T_1}(x)dx$$
+ $$=\int\limits_0^{\infty}P(N(t+x)-N(x)=0)\lambda e^{-\lambda x}dx
+ $$
+ $$\underbrace{=}_{hip.}\int\limits_0^{\infty}P(N(t)=0)\lambda e^{-\lambda x}dx
+ $$
+ $$\int\limits_0^{\infty}e^{-\lambda t}\lambda e^{-\lambda x}dx=e^{-\lambda t}\int\limits_0^{\infty}\lambda e^{-\lambda x}dx=e^{-\lambda t}
+ $$
+ $\Rightarrow P(T_2\le t)=1-e^{-\lambda t}\Rightarrow T_2\sim Exp(\lambda)$\\
+ \\
+ A prova para $T_n$ segue por indução. A independência segue de:
+ $$P(T_1\le t, T_2 \le s)=P(T_1\le t)\cdot P(T_2\le s|T_1\le t)
+ $$
+ $$P(N(t)\ge 1)\cdot \underbrace{P(N(t+s)-N(t)\ge 1)}_{P(N(s)\ge 1)}
+ $$
+   \begin{tikzpicture}[scale=7]
+ \draw[->, thick] (-0.1,0) -- (1.7,0);
+ \foreach \x/\xtext in {0.0/0,0.75/1,0.9/$t$,1.5/2,1.7/$t+s$}
+ \draw[thick] (\x,0.5pt) -- (\x,-0.5pt) node[below] {\xtext};
+ \draw (0.9,0.5pt) node[above] {$N(t)\ge 1$};
+ \draw (1.7,0.5pt) node[above] {$N(t+s)$};
+ \draw (0.375,0.5pt) node[below] {$T_1$};
+ \draw (1.1,0.5pt) node[below] {$T_2$};
+ \end{tikzpicture}\\
+ $$\Rightarrow P(T_1\le t,T_2\le 2)=[1-P(N(t)=0)][1-P(N(s)=0)]=P(T_1\le t)P(T_2\le s)
+ $$
+ 
+ OBS!!!\\
+ $\{N(t),t\ge0\}$  Processo de Poisson com taxa $\lambda$\\
+ $\iff$\\
+ $T_i$s v.a. i.i.d $Exp(\lambda)$ são os tempos entre as chegadas do processo.\\
+ \\
+ Da\'i,\\
+ $$S_n=T_1+T_2+...+T_{n-1}+T_n=\sum\limits_{i=1}^{n}T_i$$
+ O tempo até a $n$-ésima cheda é uma $Gamma(n,\lambda)$.\\
+ $$\{N(t)\ge n \}\iff\{S_n\le t \}$$ 
+  $$\{N(t)= n \}\iff\{S_n\le t \}\cap\{S_{n+1}> t \}$$ 
+ \newpage
+ \section*{18/09 Processo de Poisson}
+  $\{N(t),t\ge0\}$ \'e o processo de poisson com taxa $\lambda$,
+  $$\iff N(t)\sim Poisson(\lambda t), \text{incrementos independentes e estacionários} $$
+  $$\iff E(N(t))=\lambda t $$
+  $$\iff P(N(t)=1)=\lambda t +0(t) $$
+  $$ \iff \underset{t\rightarrow0}{lim}\frac{P(N(t)=1)}{t}=\lambda:\ taxa\ e \ P(n(t)\ge2)=0(t)  $$ 
+  $\{T_i\} $ tempos entre chegadas, $T_i$ variáveis aleat\'orias i.i.d $Exp(\lambda)$ e \\$S_n=\sum\limits_{i=1}^{n}T_i\sim Gama(n,\lambda):$ tempo até a n-ésima chegada.\\
+  \\
+\begin{tikzpicture}[scale=7]
+\draw[->, thick] (-0.1,0) -- (1.7,0);
+\foreach \x/\xtext in {0.0/0,0.2/$1$,0.4/$2$,0.6/,0.8/,1/,1.2/$n-1$,1.4/$n$}
+\draw[thick] (\x,0.5pt) -- (\x,-0.5pt) node[below] {\xtext};
+\draw (0.0,0.5pt) node[above] {$N(0)$};
+\draw (0.2,0.5pt) node[below] {$t_1$};
+\draw (0.2,0.5pt) node[above] {$N(t)$};
+\draw (0.4,0.5pt) node[above] {$N(t+s)$};
+\draw (0.1,0.5pt) node[below] {$T_1$};
+\draw (0.3,0.5pt) node[below] {$T_2$};
+\draw (1.3,0.5pt) node[below] {$T_n$};
+\end{tikzpicture}
+\\
+\newpage
+\underline{Exemplo}: Suponda que o número de chamadas telefónicas que ocorrem em uma central de atendimento é um processo de poisson com taxa 2 por minuto.\\
+(a) Qual é o tempo esperado até a chegada da décima chamada telefónica?\\
+\\
+(b)Qual é a probabilidade do tempo  entre a décima e a décima chamada primeira chada ser superior o 1 minuto?\\
+\\
+\underline{Solução:}
+\\
+\\
+(a) Temos:
+$$N(t)\sim Poisson(2t)$$
+$$\Rightarrow S_{10}=\sum\lim\limits_{i=1}^{10}T_i\sim Gama(10,2)$$
+$$\Rightarrow E(S_{10})=5\ min $$
+(b)
+$$(*)P(T_i\le t)=1-e^{-\lambda t} \Rightarrow P(T_i>t)=1-(1-e^{-\lambda t})=e^{-\lambda t}$$
+  $$\Rightarrow P(T_{11}>1)=e^{-2(1)}=e^{-2}$$
+  \newpage
+  \underline{Exemplo 2:}\\
+  \\
+  $N(t)\sim Poisson(\lambda t):$ número de clientes que chegam na loja.\\
+  \\
+  A Loja dá brinde a cada décimo terceiro cliente. Qual é a densidade do tempo entre dois ganhadores de brindes?\\
+  \\
+  
+ \underline{Solução:}\\
+ $$P(\{N(t)\ge 13\})\iff P(\{S_{13}\le t\}),\ S_{13}\sim Gama(13,\lambda)
+ $$
+ Derivando,
+ $$f_{13}(t)=\frac{\lambda^{13}t^{12}e^{-\lambda t}}{\Gamma(13)},\ t\ge 0
+ $$
+ \newpage
+ \section*{18/09 Processo de Poisson de dois tipos}
+ Seja  $\{N(t),t\ge0\}$ um processo de Poisson com taxa $\lambda$, em que a cada chegada no instante \underline{\underline{s}} o processo \'e classificado como:\\
+ $$\text{Tipo I com probabilidade P(s)=P(evento tipo I |chegou em s)}
+ $$
+ $$\text{Tipo II com probabilidade 1-P(s)}
+ $$
+ Então:
+ $$N(t)=N_1(t)+N_2(t)\sim Poisson(\lambda t)
+ $$
+ sendo
+ $$ N_1(t):\text{número de chegadas do tipo I até t}$$
+  $$ N_2(t):\text{número de chegadas do tipo II até t}$$
+  
+ \underline{Proposição:} Seja  $\{N(t),t\ge0\}$ um processo de Poisson com taxa $\lambda$ e  $N(t)=N_1(t)+N_2(t)$ sendo $N_i(t)$ o número de chegadas do tipo i até o tempo t, $i=1,2,...$ Então:
+ $$N_1(t)\sim Poisson(\lambda pt)\ e \ N_2(t)\sim Poisson(\lambda(1-p)t)
+ $$
+ São independentes com
+ $$p=\frac{1}{t}\int\limits_{0}^{1}P(s)ds\ \  \text{a probabilidade de ocorrer o evento tipo 1}
+ $$
+ \newpage
+ \underline{Exemplo:}\\
+ \\
+ Suponha que imigrantes chegam a uma área A de acordo com um processo de poisson com taxa de 10 pessoas por dia e cada imigrnte é descedente de inglês com probabilidade $\frac{1}{12}$.\\
+ Qual é a probabilidade que nenhum descendente de inglês migre para a área A em um certo dia.
+ 
+ \underline{Solução:}\\
+ \\
+ $$N(t)\sim Poisson(10t):\ \text{imigrantes para a \'area A}$$
+ $N(t)=N_1(t)+N_2(t)$\\
+ Sendo:\\
+ \\
+ $N_1(t):$ número de imigrantes descendentes de inglês até t.\\
+ \\
+  $N_2(t):$ número de imigrantes não-descendentes de inglês até t.\\
+\\
+\\
+Então:
+$$N_1(t)\sim Poisson(10pt)$$
+Queremos calcular $P(N_1(t)=0) $\\
+\\
+ $p=\frac{1}{t}\int\limits_{0}^{1}P(s)ds=\frac{1}{12}$ por hipótese.\\
+ \\
+ Então:
+ $$N_1(t)\sim Poisson(\frac{10}{12}t)e P(N_1(1)=0)=e^{-\frac{5}{6}}\ por \ dia.$$
+ $$P(N_1(7)=0)=e^{-\frac{35}{6}}\ por \ semana.
+ $$
+ \underline{OBS}\\
+ \\
+ $\cdot E(N_1(t))=\frac{5}{6}t $\\
+ $\cdot N_2(t)\sim Poisson(\underbrace{\frac{55}{6}t}_{\lambda(1-p)t})$\\
+ $E(N_2(t))=\frac{55}{6}t$
+ 
+ \newpage
+ \section*{27/09 Processo de Poisson não-homogêneo}
+ Um processo de contagem   $\{N(t),t\ge0\}$ t.q.:\\
+ \\
+ (i)$N(0)=0$;\\
+ 
+ (ii)Tem incrementos independentes;\\
+ 
+ (iii)$P(N(t+s)-N(s)\ge2)=0(t)(\iff \underset{t\rightarrow0}{lim}\frac{0}{t}=0)$;\\
+ 
+ (iv)  (iii)$P(N(t+s)-N(s=1)=\lambda(t)+0(t)\\
+  \underset{t\rightarrow0}{lim}\frac{P(N(t+s)-N(s=1)=\lambda(t)+0(t)}{t})=\underset{t\rightarrow0}{lim}\frac{\lambda(t)t}{t}+\frac{0(t)}{t}=\lambda(t)$\\
+  
+  \'E chamado processo de poisson não homogêneo com \underline{função de intensidade} $\lambda(t)$
+ \\
+ OBS:
+\\
+(1) $\{N(t),t\ge0\}$  com f.i. $\lambda(t)$, tem m\'edia $m(t)=E(N(t))=\int\limits_{0}^{t}\lambda(s)ds$
+\\
+(2)  $\{N(t),t\ge0\}$  Poisson homogêneo \underline{com taxa $\lambda$} $\iff N(t)\sim Poisson(\lambda t)$\\
+ $m(t)=E(N(t))=\lambda t=\int\limits_{0}^{t}\lambda ds\iff\lambda(t)\lambda$\\
+ \\
+ (3)$\{N(t),t\ge0\}$  com f.i. $\lambda(t)$\\
+ \\
+ $\iff \begin{cases*}
+ N(t)=\text{número dechegadas no tempo(0,t]}\\
+ m(t)=E(N(t)):\text{número médio de chegadas em (0,t]}\\
+ N(t+s)-N(s):\underset{\ne \text{número de chegadas em (0,t]}}{\text{número de chegadas em (s,t+s]}}\\
+  m(t+s)-m(s):\text{número médio de chegadas em (s,t+s]}\\
+ \end{cases*}
+ $
+ \\
+ $$N(t+s)-N(s)\sim Poisson\left(m(t+s)-m(s)\right), \ m(s)=\int\limits_{0}^s\lambda(u)du $$
+ $$m(t+s)-m(s)=\int\limits_0^{t+s}\lambda(u)du-\int\limits_0^{s}\lambda(u)du=\int\limits_s^{t+s}\lambda(u)du $$
+ 
+ Daí,\\
+ \\
+ $$P(N(t+s)-N(s)=n)=\frac{e^{-[m(t+s)-m(s)]}[m(t+s)-m(s)]^n}{n!} $$
+ \newpage
+ \underline{Exemplo 1 :}\\
+ \\
+ Considere que clientes chegam a uma lanchonete das 8h até ás 17h, conforme uma f.i. no gráfico abaixo:\\
+ \\
+ \begin{tikzpicture}
+ \begin{axis}[
+axis lines=middle,
+xlabel=$t$,ylabel=$\lambda(t)$,
+xmin=-1,xmax=25,ymin=-1,ymax=25,
+]
+\addplot+[only marks] coordinates {(5,8) (11,20) (13,20) (17,12)};
+ \draw (axis cs:5,8) -- node[left]{} (axis cs:11,20);
+  \draw (axis cs:11,20) -- node[left]{} (axis cs:13,20);
+   \draw (axis cs:13,20) -- node[left]{} (axis cs:17,12);
+   \draw[dotted] (axis cs:5,0) -- node[left]{} (axis cs:5,8);
+    \draw[dotted] (axis cs:11,0) -- node[left]{} (axis cs:11,20);
+    \draw[dotted] (axis cs:13,0) -- node[left]{} (axis cs:13,20);
+     \draw[dotted] (axis cs:17,0) -- node[left]{} (axis cs:17,12);
+     \draw[dotted] (axis cs:0,8) -- node[left]{} (axis cs:5,8);
+     \draw[dotted] (axis cs:0,20) -- node[left]{} (axis cs:11,20);
+     \draw[dotted] (axis cs:0,20) -- node[left]{} (axis cs:13,20);
+     \draw[dotted] (axis cs:0,12) -- node[left]{} (axis cs:17,12);
+\end{axis}
+ \end{tikzpicture}
+ \\
+  $\lambda(t) 
+ \begin{cases*}
+ 5+5(t-8), \ \ \ \ \ \  8\le t\le11\\
+ 20,\ \ \ \ \ \ \  \ \ \ \ \ \ \ \ \ \ \ 11\le t \le 13\\
+ 20-2(t-13), \ \ \ 13\le t \le 17\\
+ \end{cases*} 
+ $
+ \\
+ (a) Dê um modelo probabilístico para o problema;\\
+ \\
+ (b) Qual é o número médio de chegadas no período das 8h30 ás 9h30?\\
+ \\
+ (c)Qual é a probabilidade de não chegar clientes no período das 8h30 ás 9h30?\\
+ \\
+ \newpage
+ \underline{Sol:}\\
+ \\
+ (a) Seja $\{N(t),t\ge0\}$, N(t)= número de clientes que chegam em (0,t] e assuma que N(t) independe de (0,t]\\
+ \\
+ (b)
+  $\{N(t),t\ge0\}$ é Poisson não homogêneo com f.i. $\lambda(t)$=?\\
+  $m(9:30)-m(8:30)=m(9.5)-m(8.5)=\int\limits_{8.5}^{9.5}(5t-35)dt=10$ clientes\\
+  \\
+  (c)$P(N(9.5)-N(8.5)=0)=\frac{e^{-10}10^0}{0!}=e^{-10}$
+ \newpage
+ \underline{Exemplo 2:}\\
+$M / G / \infty$\\
+\\
+
+$\underbrace{\underset{chegadas}{\longrightarrow}}_{N(t)\sim Poisson(\lambda t)}T\sim G\ \ \ \ \underset{saidas}{\longrightarrow}$\\
+\\
+Vimos $N_1(t)$ número de clientes atendidos em (0,t ] dado que chegaram em S 
+$$\Rightarrow N_1(t)\sim Poisson(\lambda tp), \ \ \ p=\int\limits_{0}^{t}G(y)dy $$
+$\Leftrightarrow N_1(t)\sim Poisson(\lambda\int\limits_{0}^{t}G(y)dy)=Poisson(\int\limits_{0}^{t}\lambda G(y)dy)=Poisson(m(t))$\\
+\\
+$\Leftrightarrow m(t)\int\limits_{0}^{t}\lambda$\\
+$\Leftrightarrow \lambda(t)=\lambda G(t)$\\
+$\therefore \{N_1(t)\}$ é não homogêneo com $f.i.\ \ \lambda G(t)=\lambda(t)$\\
+\\
+$T\sim Exp(10) \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\sim U [0,t]=G$\\
+$G(t)=1-e^{-10t} \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  G(t)=t$\\
+$\lambda(t)=(1-e^{-10t})\lambda \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \lambda(t)=\lambda t$\\
+\newpage
+\section*{02/10  Processo de Poisson Composto}
+Seja $\{N(t),t\ge0\}$ um processo de poisson homogêneo e $\{Y_i,i\ge0\}$ um processo independente de $\{N(t),t\ge0\}$. Então
+$\{X(t)=\sum\limits_{i=1}^{N(t)}Y_i, \ t\ge0\}$ é chamado de \underline{Processo de Poisson Composto}.
+\\
+\\
+OBS:\\
+Exemplo (1):\\
+$\{N(t),t\ge0\},\ \ N(t)\sim Poisson(\lambda t)$\\ 
+\\
+$N(t)$: número de pessoas que fazem compras em um supermercado em $(0,t]$.\\
+\\
+$Y_i$: quantia gasta pelo i-ésimo cliente.\\
+$\Rightarrow X(t)=\sum\limits_{i=1}^{N(t)}Y_i$ : quantia total de vendas em $(0,t]$.
+\\
+\\
+Exemplo (2):\\
+$\{N(t),t\ge0\},\ \ N(t)\sim Poisson(\lambda t)$\\ 
+\\
+$N(t)$: número de clientes que contratam um seguro em uma companhia em $(0,t]$.\\
+\\
+$Y_i$: valor pago ao i-ésimo cliente pela seguradora.\\
+$\Rightarrow \underset{\text{Probabilidade de ruína}}{\Psi(t)}=P\left(\underset{\text{capital inicial}}{\omega }\cdot t+\overset{\text{valor da apólice}}{a}\cdot t-\sum\limits_{i=1}^{N(t)}Y_i\le 0 \right)$ \\
+\newpage
+(3) Seja $\{X(t)=\sum\limits_{i=1}^{N(t)}Y_i, \ t\ge0\}$ um processo de poisson composto em que $N(t)\sim Poisson(\lambda t)$
+Então:\\
+\\
+(i)$E(X(t))=E[\sum\limits_{i=1}^{N(t)}Y_i]=E[\underbrace{E[\sum\limits_{i=1}^{N(t)}Y_i|N(t)]}_{N(t)\cdot E(Y_i)}]$\\
+\\
+$E[\sum\limits_{i=1}^{N(t)}Y_i|N(t)=E[\sum\limits_{i=1}^{n}Y_i|N(t)\overset{indep}{=}E[\sum\limits_{i=1}^{n}Y_i]=n\cdot E(Y_i)$\\
+\\
+$\Rightarrow E[X(t)]=E[N(t)]\cdot E(y_i)$
+\\
+\\
+(ii) $Var[X(t)]=E[X(t)^2]-(E[X(t)])^2$\\
+\\
+$E[X(t)^2]=E[\sum\limits_{i=1}^{n}Y_i^2]=Var[\sum\limits_{i=1}^{n}Y_i]+[E(\sum\limits_{i=1}^{n}Y_i)]^2\\
+=n\cdot Var(Y_i)+n^2[E(Y_i)]^2$\\
+\\
+$E[\sum\limits_{i=1}^{N(t)}X(t)^2|N(t)]=N(t)\cdot Var(Y_i)+[N(t)]^2[E(Y_i)]^2$\\
+\\
+$E[\sum\limits_{i=1}^{N(t)}X(t)^2]=E[N(t)]\cdot Var(Y_i)+E[N(t)]^2[E(Y_i)]^2$\\
+\\
+$Var[X(t)]=$
+\\
+\\
+$E[N(t)]Var(Y_i)+E[N(t)]^2[E(Y_i)]^2-[E[N(t)]]^2[E(y_i)]^2$\\
+$=E[N(t)]Var(Y_i)+[E(y_i)]^2Var[N(t)]$\\
+\\
+Como na Poisson $Var(X)=E(X)$ :\\
+\\
+$E[N(t)]Var(Y_i)+[E(y_i)]^2E[N(t)]=E[N(t)]\Bigg[E[Y_i^2]-[E[Y_i]]^2+[E[Y_i]]^2\Bigg]=E[N(t)]E[Y_i^2]$\\
+\\
+$\therefore X(t)=\sum\limits_{i=1}^{N(t)}Y_i$, $\{ Y_i\}$ i.i.d independentes de $\{N(t)\}$\\
+\\
+$E[X(t)]=(\lambda t) E(y_i)$\\
+\\
+$Var[X(t)]=(\lambda t)E[Y_i^2] $\\
+\newpage
+$P\left(X(t)\le x\right)=? \ \ \ \ x\in \mathbb{R}$\\
+\\
+Pelo T.L.C para o processo de Poisson, tem-se que:\\
+\\
+$E[Y_i]<\infty,\ \ Var[Y_i]<\infty$\\
+ e $N(t)\rightarrow\infty $ para algum t $\Rightarrow X(t)=\sum\limits_{i=1}^{\infty}\sim N(\underbrace{\lambda tE[Y_i]}_{E[X(t)]},\underbrace{\lambda tE[Y_i^2]}_{Var[X(t)]})$\\
+ \\
+ $$\Leftrightarrow P(X(t)\le x)\approx\phi\left(\frac{x-\lambda tE[Y_i]}{\sqrt{\lambda tE[Y_i^2]}}\right) $$
+ \newpage
+ \section*{04/10 }
+ + Exercícios  85 e 86\\
+ \\
+ Pg.  368 Exercício 88.\\
+ \\
+ $N(t)Poisson(12t):$ número de transações em $(0,t]$ (horas)\\
+ $Y_i, \ \ \ i=1,2,.....,$ Variável aleatória com $E[Y_i]=30$ , $Var[Y_i]=50$ (dólares)\\
+ \\
+ O valor total das transações é:
+ $$X(t)=\sum\limits_{i=1}^{N(t}Y_i \ \ \ \ , \ \ \ P(X_{(12)}\le6000)?$$
+ $$\sim N(E[X(t)],Var[X(t)]\Rightarrow N(\lambda t E[Y_i],\lambda t E[Y_i^2])$$
+  $$P(X(t)\le x)\approx\phi\left(\frac{x-\lambda tE[Y_i]}{\sqrt{\lambda tE[Y_i^2]}}\right) $$
+    $$\Rightarrow P(X_{(15)}\le 6000)\approx\phi\left(\frac{6000-12(15)(30)}{\sqrt{12(15)[50+30^2]}}\right) $$
+     $$\Rightarrow P(X_{(15)}\le 6000)\approx\phi\left(\frac{600}{158.745}\right) $$
+          $$\Rightarrow P(X_{(15)}\le 6000)\approx\phi\left(\frac{600}{413.52}\right)\approx\phi(1.4509)\approx 0.92$$
+          \newpage
+           \section*{04/10 Processo de Poisson composto de 2 tipos}
+           Sejam $\{X_{(t),t\ge0}\} \ e \ \{Y_{(t),t\ge0}\}$ processos de Poisson compostos independentes em que
+           $$ X_{(t)}=\sum\limits_{i=1}^{N(t)}X_i \ \ e \ \ Y_{(t)}=\sum\limits_{i=1}^{N(t)}Y_i$$
+           Com $X_i$ variáveis aleatórias i.i.d $F_1$ e $Y_i$ variáveis aleatórias i.i.d $F_2$.\\
+           \\
+           Então $\{Z(t)=X(t)+Y(t),t\ge0\}$ é um processos de Poisson composto e 
+           $$Z_{(t)}=\sum\limits_{i=1}^{N_1(t)+N_2(t)=N(t)}Z_i  $$
+           Sendo \\
+           \\
+           $N(t)=N_1(t)+N_2(t)\sim Poisson\left((\lambda_1+\lambda_2)t\right)$\\
+           $N_1(t)$: o número de chegadas do tipo 1, no sistema, em $(0,t]$\\
+                      $N_2(t)$: o número de chegadas do tipo 2, no sistema, em $(0,t]$\\
+                      e\\
+                      $Z_i\sim F$\\
+           $F(X)=P(Z_i\le x|\text{chegadas do tipo 1})P(tipo \ 1 )+P(Z_i\le x|\text{chegadas do tipo 2})P(tipo \ 2 )$\\
+           $=P(X_i\le x)\cdot P(tipo\ 1)+P(Y_i\le x)\cdot P(tipo\ 2)$\\
+           $\Rightarrow F(x)=F_1(x)\left(\frac{\lambda_1}{\lambda_1+\lambda_2}\right)+F_2(x)\left(\frac{\lambda_2}{\lambda_1+\lambda_2}\right)$\\
+           Pois\\
+           p=Prob tipo 1 = $\frac{\lambda_1}{\lambda_1+\lambda_2} \Leftrightarrow Poisson(\lambda p t )=Poisson\left(\lambda\left(\frac{\lambda_1}{\lambda_1+\lambda_2}\right)t \right)=Poisson(\lambda_1 t)$\\
+           \\   
+          (*) $\lambda_1=\lambda p \Leftrightarrow p=\frac{\lambda1}{\lambda}$\\
+                     (**) $\lambda_2=\lambda(1-p) \Leftrightarrow1-p=\frac{\lambda2}{\lambda}\Rightarrow p=1-\frac{\lambda2}{\lambda} $\\
+                     (*)=(**),\\
+                     $\frac{\lambda1}{\lambda}=1-\frac{\lambda2}{\lambda} \Rightarrow \lambda=\lambda_1+\lambda_2$
+           \newpage
+           \section*{04/10 Exercício 59}
+           $N_1(t)$: o número de reclamações do tipo 1 com taxa $\lambda_1=10$\\
+           $N_2(t)$: o número de reclamações do tipo 2 com taxa $\lambda_1=1$\\
+                      $$X_{(t)}=\sum\limits_{i=1}^{N_1(t)}X_i, \ \ \ \ \ X_i \sim i.i.d\ Exp(\frac{1}{1000})  $$
+                                            $$Y_{(t)}=\sum\limits_{i=1}^{N_2(t)}Y_i, \ \ \ \ \ Y_i \sim i.i.d\ Exp(\frac{1}{5000})  $$
+                                                       $$Z_{(t)}=\sum\limits_{i=1}^{N_1(t)+N_2(t)=N(t)}Z_i  , \ \ Z_i\le 4000$$
+                                                       P(Reclamação tipo 1| $Z_i\le4000$) ?\\
+                                                       \\
+                                                       \underline{Sol.}\\
+                                                       \\
+   P(Reclamação tipo 1| $Z_i\le4000$) =$\frac{P\{\text{Reclamação tipo 1}\}\cap\{Z_i\le 4000\}}{P(Z_1\le 4000)}$ \\
+   \\
+   $=\frac{P(Z_i\le4000|tipo \ 1)P(tipo \ 1)}{F_1(4000)\left(\frac{10}{11}\right)+F_2(4000)\left(\frac{1}{11}\right)}$ =  $\frac{F_1(4000\frac{10}{11})}{F_1(4000)\left(\frac{10}{11}\right)+F_2(4000)\left(\frac{1}{11}\right)}$\\
+   $\frac{\left[1-e^{-\frac{4000}{1000}}\right]\frac{10}{11}}{\left[1-e^{-4}\right]\frac{10}{11}+\left[1-e^{-\frac{4}{5}}\right]\frac{1}{11}}$                              \newpage
+       \section*{09/10 Processo de Renovação} 
+       Um processo de contagem     $\{N(t),t\ge0\}$  Em que os tempos entre chagdas $\{ T_n,n\ge 1,\}$ Em que os tempos entre chegadas são variáveis aleatórios i.i.d F qualquer é um processo de renovação.\\
+       \\
+       $N(t):$ número de renovações no sistema até t (em$(0,t]$)\\
+       $T_n:$ Tempo entre a (n-1)-ésima e n-ésima renovação.\\
+       \\
+       \begin{tikzpicture}[scale=7]
+       \draw[->, thick] (-0.1,0) -- (1.7,0);
+       \foreach \x/\xtext in {0.0/0,0.15/$T_1$,0.45/$T_2$,1.15/$T_n$}
+       \draw[thick] (\x,0.5pt) -- (\x,-0.5pt) node[below] {\xtext};
+       \draw (0.0,0.5pt) node[above] {$0$};
+       \draw (0.3,0.5pt) node[above] {$1$};
+       \draw (0.6,0.5pt) node[above] {$2$};
+        \draw (1,0.5pt) node[above] {$(n-1)$};
+        \draw (1.3,.5pt) node[above] {$n$};
+       \end{tikzpicture}
+       \\
+       \\
+       Neste caso,\\
+       $m(t)=E[N(t)]:$ número médio de renovações até t, é chamado de \underline{função de renovação}.\\
+       \\
+       Além disso,\\
+       \\
+       $S_n=\sum\limits_{i=1}^{n}T_i:$ tempo até a n-ésima renovação, caracteria o processo, pois:
+       $$\{N(t)\ge n\}\iff \{S_n\le t\} $$
+       $$\{N(t)=n\}\iff \{S_n\le t\}\cap \{S_{n+1}>t\} $$
+       $$\therefore $$
+       O processo de renovação pode ser escrito por:
+       $$\{N(t),t\ge 0\}  \ \ ou \ \ \{S_n,n\ge 1 \}$$
+       Cuja função de renovação é $m(t)=E[N(t)]$\\
+       \\
+       OBS  1 \\
+       \\
+       Se  $\{N(t),t\ge0\}$ For processo de poisson com taxa $\lambda$\\  $\iff T_n\sim Exp(\lambda) $ variáveis aleatória i.i.d, $n\ge1$\\
+       $ \iff \{ \underset{Gama(n,\lambda)}{S_n},n\ge 1\}$ é processo de renovação\\ com função de renovação $ E(N(t))=\lambda t =m(t)$
+       $$N(t)\sim Poisson(\lambda t) \ \ \ ou \ \ \ S_n\sim Gama(n,\lambda)$$
+      \newpage
+      \section*{9/10}
+      OBS 2 \\
+      \\
+      $\{N(t),t\ge0\}$ ou $\{S_n\ge1 \}$ processo de renovação com função de renovação $m(t)=E(N(t))$, em que:\\
+      \\
+      $S_n=\sum_{i=1}^{n}T_i$ $T_i$ v.a`s i.i.d F\\
+      \\
+     $ N(t)=sup\{n:s_n\le t\}$\\
+     \\
+     Temos que:\\
+     $$P(S_n\le t )=P(T_1+...+T_n\le t)$$
+     $$=\underset{n\ \ vezes}{F\cdot F\cdot...\cdot F(t)} $$
+     $$=F^*_n(t)\iff S_n\sim F_n^* $$
+     n=2
+     $$P(S_2\le t)=P(T_1+T_2\le t) $$
+     $$=\int\limits_{\mathbb{R}}P(T_1+T_2\le t|T_1=x)f_{T_1}(x)dx $$
+     $$\int\limits_{\mathbb{R}}P(T_2\le t-x) dF(x)$$
+          $$\int\limits_{\mathbb{R}}F(t-x) dF(x)=F\cdot F(t)=F_2^*(t)$$
+          =
+          $\begin{cases*}
+         \int\limits_{\mathbb{R}}F(t-x)f_{T_1}(x)dx, \ \ \ \ \ \ T_i \ cont\\
+         \sum\limits_xF(t-x)P(T_1=x), \ \ \ T_i \ discreta\\
+          \end{cases*}
+          $
+          \newpage
+          \section*{9/10}
+          Coisa
+          \\
+          \\
+          $$E(X)=E[E(X|Y)] $$
+          $X^{(\omega)}=I_{(S_2\le x)^{(\omega)}}=\begin{cases*}
+          1, \ \ \ \ \ S_2(\omega)\le x\\
+                    0, \ \ \ \ \ S_2(\omega) >x\\
+          \end{cases*}$
+          $$P(S_2\le x)=E[P(S_2\le x|Y)] =\int P(S_2\le s|Y=y)dF_Y(y)$$
+          $$E(X)=1\cdot P(S_2\le x) $$
+          \newpage\section*{9/10 Exercícios 2 Pg. 479}
+          Suponha $ T_i\sim Poisson(\mu),n\ge$ variáveis aleatórias i.i.d\\
+          \\
+          (a) $ S\sim ?$\\
+          (b $ N(t)\sim ?$\\
+          \\
+          \underline{Solução:}\\
+          \\
+          (a)$P(T_i=x)=\frac{e^{-\mu}\mu^x}{x!}, \ \ \ i=1,2,....$\\
+          $$P(S_2=t)=\sum\limits_{x=0}^{t}P(S_2=t|T_1=x)P(T_1=x)$$
+                    $$=\sum\limits_{x=0}^{t}P(T_2=t-x)P(T_1=x)$$
+                    $$=\sum\limits_{x=0}^{t}\frac{e^{-\mu}\mu^{t-x}}{(t-x)!}\frac{e^{-\mu}\mu^x}{x!}=
+                    e^{-2\mu}\sum\limits_{x=0}^{t}\frac{\mu^{t}}{(t-x)!}\frac{t!}{t!x!} $$
+                    $$\frac{e^{-2\mu}\mu^t}{t!}\left(\sum\limits_{x=0}^{t}\binom{t}{x}\right) $$
+                    BInômio de newton
+                    $$(a+b)^n=\sum\limits_{k=0}^{n}\binom{n}{k}a^{n-k}b^n $$
+                    Então:
+                                        $$\frac{e^{-2\mu}\mu^t}{t!}\left(\sum\limits_{x=0}^{t}\binom{t}{x}\right)= \frac{e^{-2\mu}\mu^t2^t}{t!}, a=1\ , \ b=1$$
+                                        $$\therefore $$
+                                        $$P(S_2=t)\frac{e^{-2\mu}(2\mu)^t}{t!}\iff S_2\sim Poisson(2\mu)$$
+                                        Em geral,
+                                        $$S_n\sim Poisson(n\mu) $$
+                                        (b)
+                                        $$P(N(t)=n)=P(s_n\le t)-P(S_{n+1}\le t) $$
+                                        $$=\sum\limits_{j=0}^{t}\frac{e^{-n\mu}(n\mu)^j}{j!}-\sum\limits_{j=0}^{t}\frac{e^{-(n+1)\mu}((n+1)\mu)^j}{j!} $$
+                                        
+                                        \newpage
+                                        \section*{16/10 Processos de Renovação ( Teoremas Limite)}
+                                        $$\lambda(t)-\lambda_0(t)=m(t-t_0)$$
+                                        $$50-6=m(14-11)\Rightarrow m=\frac{44}{3}\Rightarrow \lambda(t)=\frac{44}{3}(t-11)+6 $$
+                                        
+   \end{document}
