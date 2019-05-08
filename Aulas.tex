@@ -1,0 +1,1932 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{automata,positioning}
+\usepackage{pgfplots}
+\usepackage{filecontents}
+
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows.meta}
+\usepackage{bm}
+\usepackage{mathrsfs}
+\usepackage{blkarray}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{tkz-euclide}
+\usepackage{geometry}
+\usepackage{enumitem} 
+\usepackage{cancel}
+
+\author{}
+\geometry{textwidth=6in, textheight=9in, marginparsep=7pt, marginparwidth=.6in, top=30mm, bottom=25mm}
+
+\title{Estatística Matemática}
+\date{}
+\begin{document}
+	\maketitle
+	\tableofcontents	
+	
+	\newpage
+	
+	\section*{Biliografia Importante}
+	
+	kai Lai Chung: Introduction to Probability\\
+	Barry R. James: Probabilidade : um Curso Em Nível Intermediário 
+	
+	\newpage
+	\section{ Aula 13/03}
+	\subsection{Espaço de Probabilidade $(\Omega,\mathscr{A},\mathscr{P})$ }
+\underline{Experimento Aleatório($\varepsilon$) }\\
+\begin{itemize}
+	\item Pode ser repetido infinitas vezes se for necessário;
+	\item Permite descrever todos os possíveis resultados;
+	\item Quando repetido um numero grande de vezes os resultados apresentam certa regularidade.($\Rightarrow$  Probabilidade resultante)
+\end{itemize}
+\underline{Exemplos}:
+
+\begin{enumerate}[label=(\arabic*)]
+	\item Lancar um dado e observar sua face superior.
+	\item Lancar duas moedas honestas e observar suas faces superiores.
+	\item Retirar  6 bolas de uma urna com 60 bolas numeradas (Sem reposição e sem ordem).
+	\item Observar o valor de um retorno financeiro.
+	\item Contar o numero de carros que chegam a UnB no primeiro dia de aula.
+\end{enumerate}
+
+\underline{Definição} ( Espaço Amostral)\\
+
+Define-se como espaço amostral o conjunto de todos os possíveis resultados do experimento.
+\\
+
+\underline{Notação}:\\
+\\
+$\Omega=\{\omega:\omega \ \text{é resultado de } \Omega\}$\\
+$\Omega$: Espaço amostral associado a $\varepsilon$.\\
+$\varepsilon$: Experimento Aleatório.\\
+\\
+\underline{Exemplos}\\
+\\
+$\varepsilon_1 \rightarrow \Omega_1=\{1,2,3,4,5,6\}, \ \ \ \ \ |\Omega_1|=6 $\\
+\\
+$\varepsilon_2 \rightarrow \Omega_2=\{(c,c),(c,\hat{c}),(\hat{c},c),(\hat{c},\hat{c})\},  \ \ \ \ \ |\Omega_2|=4 $\\
+\\
+$\varepsilon_2 \rightarrow \Omega_2'=\{(i,j): i,j \in \{c,\hat{c}\}\}, \ \ \ \ \ |\Omega_2|=4  $\\
+\\
+$\varepsilon_3 \rightarrow \Omega_3=\{\{b_1,\dots,b_6\}: b_1,\dots,b_6 \in \{1,..,60\},b_i\ne b_j \forall i\ne j, \ i,j =1,\ldots,6\},\\
+|\Omega_3| = \binom{60}{6} 
+ $\\
+ \\
+$\varepsilon_3' \rightarrow \Omega_3'=\{(b_1,\dots,b_6): b_1,\dots,b_6 \in \{1,..,60\},b_i\ne b_j \forall i\ne j, \ i,j =1,\ldots,6\},\\
+|\Omega_{3'}| = A_{60,6} = \frac{60!}{54!}
+$\\
+ \\
+$\varepsilon_3'' \rightarrow \Omega_3''=\{\{b_1,\dots,b_6\}: b_1,\dots,b_6 \in \{1,..,60\}\}\\
+|\Omega_{3''}| = 60^6
+$\\
+ \\
+$\varepsilon_3''' \rightarrow \Omega_3'''=\{(b_1,\dots,b_6): b_1,\dots,b_6 \in \{1,..,60\}\}\\
+|\Omega_{3'''}| = \frac{60^6}{6!}
+$\\
+ \\
+$\varepsilon_4 \rightarrow \Omega_4=\{0,1,2,\ldots,\} = \mathbb{Z^+}\cup \{0\}\\
+|\Omega_{4}| = \infty
+$\\
+ \\
+$\varepsilon_5 \rightarrow \Omega_5=(-\infty,\infty)=\{r:r\in \mathbb{R} \}, r=P_t-P_{t-1}, P=\text{preço da ação}5
+$\\
+
+	\section{ Aula 18/03 }
+	
+	\underline{Definição}
+	
+	Seja $\Omega$ um espaço amostral de $\varepsilon$. A colecao de eventos de $\Omega$ é uma $\sigma-$algebra se satisfaz:
+	
+	\begin{enumerate}[label=\roman*)]
+		\item $\mathscr{A} \ne \emptyset$
+		
+		\item $A \in \mathscr{a}\Rightarrow A^c =\Omega \textbackslash A \in \mathscr{A}  $ 
+		
+		\item $A_1,A_2,\ldots,\in \mathscr{A} \Rightarrow \bigcup\limits_{i=1}^{\infty}A_i\in \mathscr{A}$
+ 	\end{enumerate}
+ 
+ \underline{Exemplo}:\\
+ \\
+ A= Sair o mesmo resultado  = $\{(c,c,),(\hat c,\hat c) \}$
+ \newpage
+ 	\section{ Aula 20/03}
+ 	
+ 	$$\varepsilon \rightarrow \Omega = \{\omega: \ \  \omega \ \text{ponto amostral (resultado de} \ \varepsilon)\} $$
+ 	
+ 	$\mathscr{A} $=\{ Eventos de $\Omega$ \} Tal que:
+ 	\begin{enumerate}[label=\roman*)]
+\item $\mathscr{ A} \ne \emptyset$
+\item $A \in \mathscr{A} \Rightarrow A^c \in \mathscr{A}$
+\item $A_1,A_2, \ldots \in \mathscr{A}\Rightarrow \bigcup\limits_{i=1}^\infty A_i \in \mathscr{A}$
+ 	\end{enumerate}
+
+ $\sigma$-algebra de eventos de $\Omega$\\
+ \\
+\subsection{Medida de Probabilidade}
+
+Seja $\mathscr{A}$ uma $\sigma$-algebra de eventos de $\Omega$. A função $P:\mathscr{A}\rightarrow [0,1]$ é uma \underline{medida de probabilidade}  se for não negativa e $\sigma$-aditiva, Isto é, satisfaz:
+
+\begin{enumerate}[label=\roman*)]
+	\item $P(A)\ge 0, \forall A\in \mathscr{A} $
+	\item $P(\Omega)=1$
+	\item $A_1,A_2,\ldots \in \mathscr{A}(A_i\cap A_j=\emptyset, \forall i\ne j )$
+	$\Rightarrow P(\bigcup\limits_{i=1}^{\infty}A_i) = \sum\limits_{i=1}^\infty  P(A_i)$: $\sigma$-aditividade
+\end{enumerate}
+
+\underline{Notação}:
+$\varepsilon\longrightarrow (\Omega,\mathscr{A},P) $ Espaço de probabilidade de $\varepsilon$\\
+\\
+\underline{Observação}: $(\Omega,\mathscr{A},P)$
+\begin{itemize}
+	\item $\Omega$ enumerável $\Rightarrow (\Omega,\mathscr{A},P)$ é discreto.
+	\item $\Omega$ não enumerável $\Rightarrow (\Omega,\mathscr{A},P)$ é contínuo.
+	
+\end{itemize}
+
+\underline{Exemplo:} $\Omega_5,\Omega_6$
+\newpage
+\subsection{Propriedade da medida de Probabilidade}
+
+\begin{enumerate}[label=\textbf{\arabic*)}]
+	\item $P(\emptyset)=0 $\\
+ $\Omega\cup\emptyset=\Omega $\\
+ $\Rightarrow P(\Omega) +P(\emptyset)=P(\Omega)$\\
+ $\Rightarrow 1 +P(\emptyset)=1 \Rightarrow P(\emptyset)=0$
+ \item $P(A^c)=1-P(A)$\\
+ $A\cup A^c=\Omega $\\
+ $\Rightarrow P(A)+P(A^c)=P(\Omega)\Rightarrow P(A)=1-P(A^c) $
+ \item $P(A\cup B)=P(A)+P(B)-P(A\cap B)$\\
+ $$A\cup B=A\cup[B\textbackslash A\cap B] \Rightarrow P(A\cup B)=P(A)+P(B\textbackslash A\cap B) \ \ \ \ (1)$$
+ Por outro lado,\\
+ $B=[B\textbackslash A\cap B]\cup(A\cap B)$\\
+ $\Rightarrow P(B) = P(B\textbackslash A\cap B) +P(A\cap B)$\\
+ $P(B\textbackslash A\cap B)=P(B) - P(A\cap B) \ \ \ \ \ (2) $\\
+ Substituindo 2 em 1,  o resultado está provado.
+ \item $P(\bigcup\limits_{i=1}^{n}A_i)=\sum\limits_{i=1}^n P(A_i)- \sum\limits_{i\ne j \le n}P(A_i\cap A_j)+\ldots+(-1)^{n+1}P(\bigcap\limits_{i=1}^nA_i) $\\
+ \underline{Prova por indução}:\\
+ 
+ $n=2: \ P(A_1\cup A_2)=P(A_1)+P(A_2)-P(A_1\cap A_2) $ é válida.\\
+ Hipótese de indução: $P(\bigcap\limits_{i=1}^k A_i)=\sum\limits_{i=1}^{k}P(A_i)- \sum\limits_{i\ne j \le k}P(A_i\cap A_j)+\ldots+(-1)^{k+1}P(\bigcap\limits_{i=1}^kA_i)  $\\
+ Supor que a hipótese é válida\\
+ \\
+ Provar que: $P(\bigcap\limits_{i=1}^{k+1}A_i)=\sum\limits_{i=1}^{k+1}P(A_i)- \sum\limits_{i\ne j \le k+1}P(A_i\cap A_j)+\ldots+(-1)^{k+2}P(\bigcap\limits_{i=1}^{k+1}A_i)  $\\
+ \underline{Observação}:
+ $$P(\bigcup\limits_{i=1}^3 A_i)=P(A_1\cup A_2 \cup A_3)=P(A_1\cup A_2)+P(A_3)-P([A_1\cup A_2]\cap A_3) $$
+ $$=P(A_1)+P(A_2)-P(A_1\cap A_2)+P(A_3)- P([A_1\cap A_3]\cup [A_2\cap A_3]) $$
+ $$=P(A_1)+P(A_2)+P(A_3 )- P(A_1\cap A_2)- \bigg\{ P(A_1\cap A_3)+P(A_2\cap A_3) - P((A_1\cap A_3)\cap (A_2 \cap A_3))  \bigg\} $$
+ $$=\sum\limits_{i=1}^3 P(A_i)-P(A_1\cap A_2) - P(A_1\cap A_3) - P(A_2\cap A_3) + P(A_1\cap A_2\cap A_3) $$
+  $$=\sum\limits_{i=1}^3 P(A_i)-\sum\limits_{i\ne j \le 3}P(A_i\cap A_j) +P(A_1\cap A_2\cap A_3) $$
+\end{enumerate}
+
+\newpage
+\subsection{Cálculo de Probabilidade}
+
+\begin{enumerate}[label = \alph*)]
+	\item $(\Omega,\mathscr{A},P)$ discreto com resultados equiprováveis e finito.\\
+	$\Omega = \{\omega_1,\omega_2,\ldots,\omega_n\}$\\
+	$\forall \omega_i \in \Omega, \ \ P(\omega_i)=\frac{1}{|\Omega|}=\frac{1}{n}$\\
+	Então, $A=\{\omega_1,\ldots, \omega_k  \} \subset \Omega, k\le n$\\
+	$A=\bigcup\limits_{i=1}^k\{\omega_i\}\Rightarrow P(A) = \sum\limits_{i=1}^{k} P(\omega_i) \Rightarrow P(A) = \sum\limits_{i=1}^{k} \frac{1}{n}=\frac{k}{n}$ ou $P(A)=\frac{|A|}{|\Omega|} $\\
+	\\
+	\underline{Exemplo}:\\
+	
+	\begin{enumerate}[label=\textbf{\arabic*)}]
+		\item 
+	
+	De um lote de 100 computadores, no qual sabe-se que há 10 defeituosos, são escolhidos aleatoriamente  5 computadores sem reposição.
+	Qual é a probabilidade de sairem 3 computadores defeituosos na amostra?\\
+	
+	\underline{Solução}:
+	$$\Omega = \bigg\{\omega= \{c_1,\ldots,c_5 \}: c_i \in \{1,\ldots,100\}, c_i\ne c_j , \forall i\ne j,\ \ \ i,j=1,2,3,4,5  \bigg\} $$
+	$$ |\Omega| =\binom{100}{5}   $$
+	$$A = \bigg\{\omega= \{c_1,\ldots,c_5 \} \in \Omega: 3 c_i's \in \{10\ defeituosos \}, 2 c_i's \in \{90 \ nao \ defeituosos\}$$
+	$$\Rightarrow |A| = \binom{10}{3}\cdot\binom{90}{2} $$
+	$$\Rightarrow P(A) = \frac{\binom{10}{3}\binom{90}{2}}{\binom{100}{5}} $$
+	
+	\item $\varepsilon_3 \rightarrow \omega_3, \mathscr{A}=P(\Omega_3)$    $ |\Omega| = \binom{60}{6}$
+	\begin{itemize}
+		\item 
+	
+	A =Obter os números sorteados na megasena.
+	$$ |A| = \binom{6}{6}\binom{54}{0} $$
+	$$\Rightarrow P(A) = \frac{1}{\binom{60}{6}} $$
+	
+	\item  B = Obter uma quina com os números sorteados da megasena
+		$$ |B| = \binom{6}{5}\binom{54}{1} $$
+			$$\Rightarrow P(B) = \frac{\binom{6}{5}\binom{54}{1}}{\binom{60}{6}} $$
+\end{itemize}
+\end{enumerate}
+\newpage
+\item $(\Omega,\mathscr{A},P)$ discreto e infinito.
+$\Omega = \{ \omega_1,\omega_2,\ldots\}$\\
+Tem-se que, $\forall \omega_i \in \Omega $,\\
+$p_i=P(\omega_i)$ é tal que $\sum\limits_{i=1}^{\infty} p_i=1$\\
+Daí,\\
+$A=\{w_1,\ldots,w_k\} \in \Omega, k \in \mathbb{Z}^+$\\
+então $P(A) = P(\bigcup\limits_{i=1}^{k}\omega_i) = \sum\limits_{i=1}^{k} p_i $\\
+\\
+\underline{Exemplo}:\\
+$\varepsilon_4 \rightarrow \Omega_4=\{0,1,2,\ldots\}$\\
+Suponha que os carros chegam conforme
+$$P(\omega_i)=p_i=\frac{e^{-\lambda}\lambda^i}{i!}, \lambda \in \mathbb{R}^+ $$
+Note que:
+$$ \sum\limits_{i=1}^{\infty}p_i = \sum\limits_{i=1}^{\infty} \frac{e^{-\lambda}\lambda^i}{i!}=1$$
+
+ A = \{Chegam no mínimo 2 carros\}
+ $$\Rightarrow P(A)=1-P(A^c) = 1-P(\{0,1\}) = 1 - \bigg[ p_0 + p_1 \bigg] $$
+
+\newpage
+
+\section{Aula 25/03}
+\subsection{Espaço de Probabilidade contínuo}
+	$\varepsilon\longrightarrow(\Omega,\mathscr{A},P)$ Espaço de Probabilidade contínuo.\\
+\\
+$P:\mathscr{A}\longrightarrow[0,1]$ é medida de probabilidade se existir uma função $f:\mathbb{R}\rightarrow\mathbb{R}$ t.q.
+
+\begin{enumerate}[label=\alph*)]
+	\item Se: $ \Omega \subseteq \mathbb{R},f(x)\ge 0$ e $\int\limits_{\Omega} f(x)dx<\infty $ (f-Integrável ou f é  mensurável com respeito á $\mathscr{A}$), $f:\mathbb{R}\longrightarrow\mathbb{R}$ e  $\forall A\in\mathscr{A},$
+	 $P(A)=\frac{\int\limits_{A}f(x)dx}{\int\limits_{\Omega}f(x)dx} = \int\limits_{A} \bigg(\frac{f(x)}{\int\limits_{\Omega} f(x)dx}\bigg)dx$,
+	 $f_1(x)=\frac{f(x)}{\int\limits_{\Omega}f(x)dx} f.densidade $
+	 
+	 \underline{Exemplo}: Medida de probabilidade uniforme ( Eventos equiprováveis)
+	 
+	 $\Omega =[a,b], a<b\in \mathbb{R}, \mathscr{A}=\mathscr{B}\bigg([a,b]\bigg). \forall A\subset [a,b]=\Omega$\\
+	 \\
+	 $P(A) = \frac{Com(A)}{comp(\Omega)}= \frac{\int\limits_A 1dx}{\int\limits_a^b dx}, f(x)\equiv 1 $\\
+$=\int\limits_{A} \frac{1}{b-a} dx, f_1(x) = \begin{cases}
+\frac{1}{b-a}, x\in[a,b]\\
+0 \ \ \ , c.c
+\end{cases}$
+
+\item Se $\Omega \subset \mathbb{R}^2$, f é t.q. $f(x,y)\ge0$ e $\iint\limits_{\Omega } f(x,y) dx dy <\infty$.\\ Então, $\forall A\in \mathscr{A}$,
+
+$$P(A)=\iint\limits_{A}\frac{f(x,y)}{\iint\limits_{\Omega} f(x,y)} dxdy $$
+
+\underline{Exemplo}: 
+$$\varepsilon_6 \rightarrow \Omega=S^2=\{(x,y)\in \mathbb{R}^2: x^2+y^2\le 1\} \, \mathscr{A}=\mathscr{B}(S^2),\forall A\in \mathscr{A},$$
+$$P(A)=\frac{area(A)}{area(\Omega)}= \frac{area(A)}{\pi} $$
+$$=\iint\limits_{A} \frac{1}{\pi}dxdy, \ \ f(x,y)= \begin{cases}
+\frac{1}{\pi}, (x,y)\in S^2\\
+0\  \ \ , c.cc
+\end{cases}=\frac{1}{4}
+$$
+\end{enumerate}
+\newpage
+Pois,
+
+$$P(A) = \frac{1}{\pi} \int\limits_{0}^1 \sqrt{1-x^2} dx =\frac{1}{\pi}\int\limits_{0}^{\frac{pi}{2}} cos\theta\cdot\cos\theta d\theta $$
+$$=\frac{1}{\pi} \int\limits_{0}^{\frac{pi}{2}} cos^2(\theta) d\theta$$
+$$\frac{1}{2\pi} \bigg[\theta - \frac{1}{2}(sen 2\theta)\bigg]\bigg\vert^{\frac{\pi}{2}}_{0}$$
+$$=\frac{1}{2\pi}\bigg[\bigg(\frac{\pi}{2}-\frac{1}{2}(0)\bigg)-(0-0)\bigg] = \frac{1}{4} $$
+
+\underline{OBS}: (Medida uniforme em $\mathbb{R}^n$)
+$$\Omega \subset \mathbb{R}^n, \mathscr{A=\mathscr{B}(\Omega)}$$
+$$f(x)=\begin{cases}
+\frac{1}{Volume(\Omega)}, x\in \mathbb{R}^n\\
+0\ \ \ \ \ \ \ \  \ \  \ ,c.c
+\end{cases} $$
+
+A = retângulo de $\mathbb{R}^n=\prod\limits_{i=1}^n[a_i,b_i], a_i<b_i$
+\newpage
+\subsection{Outras propriedades da medida de probabilidade}
+
+$P_1:$   $A\subset B \Rightarrow P(A)\le P(B) $\\
+\\
+$P_2:$  Continuidade da probabilidade.\\
+\\
+\begin{enumerate}[label=\alph*)]
+	\item Seja $\{A_n\}_{n\ge 1} $ uma sequência crescente de eventos, t.q. \\$\displaystyle{\lim_{n \to \infty}} A_n=A (A_n \uparrow A)$, Então:
+
+$$P(A)=P(\displaystyle{\lim_{n\to \infty}} A_n)= \displaystyle{\lim_{n \to \infty}} P(A_n)$$
+\underline{Prova:} Por hipótese, temos que:
+$$A_1\subset A_2\subset \ldots \subset A_n \subset \ldots \subset A$$
+Então, temos que:
+
+$$A_n=A_1\sqcup(A_2\textbackslash A_1)\sqcup(A_3\textbackslash A_2)\sqcup\ldots\sqcup(A_n\textbackslash A_{n-1})  $$
+$$A=A_1\sqcup(A_2\textbackslash A_1)\sqcup\ldots\sqcup(A_n\textbackslash A_{n-1})\sqcup \ldots $$
+Por outro lado, como
+
+$$\displaystyle{\lim_{n \to \infty}} A_n=A, $$
+Temos que:
+
+$$P(A) = P(\displaystyle{\lim_{n \to \infty}}A_n) $$
+$$P(A) = P\bigg(\bigsqcup\limits_{i=1}^\infty (A_i\textbackslash A_{i-1})\bigg) \overbrace{=}^{\sigma-aditivdade}
+\sum\limits_{i=1}^{\infty}P(A_i\textbackslash A_{i-1}) = \displaystyle{\lim_{n \to \infty}}  \sum\limits_{i=1}^{\infty} P(A_i\textbackslash A_{i-1})
+$$
+
+$$ 
+=\displaystyle{\lim_{n \to \infty}}  P\bigg(\bigsqcup\limits_{i=1}^\infty (A_i\textbackslash A_{i-1})\bigg)  = \displaystyle{\lim_{n \to \infty}} P(A_n)
+$$
+
+
+
+\item Seja $\{A_n\}_{n\ge 1} $ uma sequência crescente de eventos  t.q. \\$\displaystyle{\lim_{n \to \infty}} A_n=A (A_n \downarrow A)$, Então:
+$$P(A)=P(\displaystyle{\lim_{n \to \infty}} A_n)= \displaystyle{\lim_{n \to \infty}} P(A_n)$$
+\end{enumerate}
+
+
+
+\underline{Exemplo}:
+
+$\varepsilon$: lançar um dado indefinidamente.\\
+\\
+Qual a probabilidade de não sair 1 ou 6 em nenhum lançamento.\\
+\\
+\underline{Solução}:\\
+A = não sair 1 ou 6 em nenhuma jogada.\\
+Defina:\\
+$A_n$ = não sair 1 ou 6 até o n-ésima jogada.\\
+Temos que:
+$$P(A_n)= \bigg(\frac{4}{6}\bigg)^n$$
+e
+
+$$A_1\supset A_2 \ldots \supset A_n \supset \ldots \supset \bigcap\limits_{i=1}^{\infty}A_i= A$$
+Então, pela continuidade da probabilidade,
+$$P(A)=\displaystyle{\lim_{n \to \infty}}  P(A_n) = \displaystyle{\lim_{n \to \infty}} \bigg(\frac{4}{6}\bigg)^n=0 $$
+
+$A^c:$ não sair 1 ou 6 em alguma jogada:
+$$P(A^c)=1-P(A)=1 $$
+
+\end{enumerate}
+
+\newpage
+
+\subsection{Limite Superior e inferior de Eventos}
+
+\underline{Definição}: Seja $\{A_n\}_{n\ge 1}$ uma sequência de eventos no espaço de probabilidade $(\Omega,\mathscr{A},P)$. Definem-se os
+seguintes eventos:
+\begin{enumerate}[label=\alph*)]
+	\item $\limsup\limits_{n\rightarrow \infty} A_n = \bigcap\limits_{n=1}^\infty\bigg(\bigcup\limits_{i=n}^\infty A_i\bigg)$ (= $A_n$ infinitas vezes)
+		\item $\liminf\limits_{n\rightarrow \infty} A_n = \bigcup\limits_{n=1}^\infty\bigg(\bigcap\limits_{i=n}^\infty A_i\bigg)$ (= $A_n$ algumas vezes)
+\end{enumerate} 
+
+\underline{Observação 1}:\\
+\\
+
+Se $\limsup\limits_{n\rightarrow \infty} A_n=\liminf\limits_{n\rightarrow \infty} A_n$ então $\{A_n\} $ possui limite e 
+$$\displaystyle{\lim_{n \to \infty}}  A_n=\limsup\limits_{n\rightarrow \infty} A_n=\liminf\limits_{n\rightarrow \infty} A_n $$
+\underline{Observação 2}:\\
+\\
+$$\omega  \in\limsup\limits_{n\rightarrow \infty} A_n = \bigcap\limits_{n=1}^\infty\bigg(\bigcup\limits_{i=n}^\infty A_i\bigg) $$
+$$\Rightarrow  \omega \in \bigcup\limits_{i=n}^\infty A_i, \forall n\ge 1$$
+$$\Rightarrow\omega \in A_{i_{n_1} },\forall n_1\ge n $$
+$$\Rightarrow  \omega \in \bigcup\limits_{i=n_1+1}^\infty A_i,$$
+$$\Rightarrow\omega \in A_{i_{n_2 }},\forall n_2> n1 $$
+$$\Rightarrow\omega \in A_{i_{n_k }},\forall n_k>\ldots> n2>n_1 $$
+Ou seja
+$$\omega \in A_{i_{n_1} },A_{i_{n_2} },\ldots $$
+$\omega $ está em infinitos eventos dessa sequência
+$$ \Leftrightarrow \displaystyle{\limsup_{n \to \infty}}  A_n = \{A_n\  \text{Infinitas vezes}\}$$
+\newpage
+
+\underline{Observação 3}:\\
+\\
+\begin{itemize}
+	\item 
+
+$$\limsup\limits_{n\rightarrow \infty} A_n = \bigcap\limits_{n=1}^\infty\bigg(\bigcup\limits_{i=n}^\infty A_i\bigg), B_n = \bigcup\limits_{i=n}^\infty A_i $$
+
+$$B_1\supset B_2 \ldots \supset B_n \supset \ldots \supset \bigcap\limits_{i=1}^{\infty}B_n= \bigcap\limits_{n=1}^\infty\bigg(\bigcup\limits_{i=n}^\infty A_i\bigg)=\limsup\limits_{n\rightarrow \infty} A_n$$
+
+
+\item 
+$$\liminf\limits_{n\rightarrow \infty} A_n = \bigcup\limits_{n=1}^\infty\bigg(\bigcap\limits_{i=n}^\infty A_i\bigg)$$
+
+$$B_1\subset B_2 \ldots \subset B_n \supset \ldots \supset \bigcup\limits_{i=1}^{\infty}B_n= \bigcup\limits_{n=1}^\infty\bigg(\bigcap\limits_{i=n}^\infty A_i\bigg)=\liminf\limits_{n\rightarrow \infty} A_n$$
+
+\end{itemize}
+
+\newpage
+\subsection{Aula 27/03}
+
+Questões da prova
+
+\begin{itemize}
+	\item Formular um espaço amostral para um experimento
+	\item demonstrar alguma propriedade de probabilidade
+	\item liminf ou limsup
+	\item Probabilidade condicional
+\end{itemize}
+	\subsection{Probabilidade condicional}
+	
+	Seja $(\Omega,\mathscr{A},P)$ o espaço de probabilidade.\\
+	\\
+	\underline{Definição}: Sejam $A,B\in \mathscr{A}$ tais que $P(B)>0$, define-se a probabilidade condicional de A dado B como:
+	
+	$$P(A|B)=\frac{P(A\cap B)}{P(B)} $$
+	\underline{Observação}:
+	Note que $\forall B\in \mathscr{A}$, define-se:\\
+	\\
+	$P_B:\underset{A\longrightarrow P_B(A)}{\mathscr{A}\longrightarrow[0,1] }$ é uma medida de probabilidade,\\
+	\\
+	em que $P_B(A) = P(A|B)= \frac{P(A\cap B)}{P(B)}$ \\
+	\\
+	Pois $P_B$ satisfaz (i)-(iii)
+	
+	\begin{enumerate}[label=(\roman*)]
+		\item $$P_B(A)\ge 0, \forall A\in \mathscr{A} $$
+		De fato,
+		$$P_B(A)=\frac{P(A\cap B)}{P(B)}\ge 0 $$
+		Pois
+		$$P(A\cap B)\ge 0 $$
+		
+		\item $P_B(\Omega)=1 $
+		
+		\item $A_1,A_2,\ldots \in \mathscr{A} $ Eventos disjuntos
+		$$\Rightarrow P_B\bigg( \bigcup\limits_{i=1}^\infty A_i \bigg) = \sum\limits_{i=1}^{\infty} P_B(A_i) $$
+	\end{enumerate}
+
+\newpage
+\underline{Exemplo}:
+$\varepsilon $: Lançar dois dados e observar as faces superiores\\
+\\
+A = ambos resultados são diferentes\\
+\\
+B= Um dos resultados é 6. \\
+\\
+Calcule:\\
+\begin{enumerate}[label=\roman*)]
+	\item $$P(A|B); P(B|A) $$
+	$$\Omega=\bigg\{(i,j),\forall i,j\in \{1,\ldots,6\}\bigg\} $$
+	$$A=\{(i,j)\in \Omega: i\ne j \} $$
+	$$B=\{(i,j)\in \Omega: \{i,j\}\in {6}\cap \{i+j<12\} \} $$
+	$$P(A)=\frac{30}{36} $$
+	$$P(B)=\frac{11}{36} $$
+	$$P(A\cap B)=\frac{10}{36} $$
+\end{enumerate}
+
+\newpage
+
+\underline{Proposição}:\\
+\\
+Seja $(\Omega,\mathscr{A},P)$ o espaço de probabilidade e $A_1,\ldots,A_n\in \mathscr{A} $. Então:
+
+\begin{enumerate}[label=\arabic*)]
+	\item $P(A_1\cap,\ldots,\cap A_{n-1}\cap A_n) $\\
+	$$=P(A_1)\cdot P(A_2|A_1)\ldots P(A_n|A_1\cap\ldots\cap A_{n-1}) $$
+	
+	\underline{Prova}:\\
+	\\
+	Por indução:
+	
+	$$h=2:\ \ \ \ P(A_1\cap A_2)=P(A_1)\cdot P(A_2|A_1) $$
+	$$h=k: \ \ \ \ P(A_1\cap \ldots \cap A_k) = P(A_1)\ldots P(A_k|A_1\cap \ldots \cap A_{k-1}) $$
+		$$P(A_1\cap \ldots \cap A_k\cap A_{k+1}) = P(A_1)\ldots P(A_k|A_1\cap \ldots \cap A_{k}) $$
+		Basta considerar 
+		$$P(\underbrace{A_1\cap \ldots \cap A_k}_{A}\cap A_{k+1})  $$
+		$$\overset{n=2}{=} P(A_1\cap \ldots \cap A_k)\cdot P(A_{k+1}|A_1\cap \ldots \cap A_k) $$
+			$$\overset{(H.I.)}{=} P(A_1)\cdots P(A_k|A_1\cap \ldots \cap A_k)\cdot P(A_{k+1}|A_1\cap \ldots \cap A_k) $$
+		
+	
+	\item Para $B\in \mathscr{A}$ e $\Omega=\bigcup\limits_{i=1}^n A_i$, com $A_i$ disjuntos.\\
+	\\
+	Isto é, $ \{A_i \}$ é uma partição  de $\Omega$, tem-se:
+	
+	
+	$$P(B) = \sum\limits_{i=1}^{\infty} P(B\cap A_i) $$
+	
+	\item $$P(A_i|B)=\frac{P(B\cap A_i)}{P(B)} = \frac{P(B\cap A_i)}{\sum\limits_{i=1}^{\infty}P(B\cap A_i)} $$
+	
+
+
+\end{enumerate}
+
+
+\newpage
+\underline{Exemplo}:\\
+\\
+Considere uma urna com 10 bolas em que 3 são brancas, 5 azuis e 2 vermelhas.\\
+Escolhem-se 4 bolas aleatoriamente, sem reposição. Qual a probabilidade de saírem 2 bolas azuis na amostra?\\
+\\
+$A_i$ = \{Obter duas bolas azuis \}\\
+
+$$P(A)=\frac{\binom{2}{5}\binom{2}{5}}{\binom{4}{10}} $$
+
+\newpage
+
+\underline{01/04}
+
+\begin{enumerate}[label=\alph*)]
+	\item Os eventos $A,B\in \mathscr{A} $, são independentes se:
+	$$P(A\cap B)=P(A)P(B)=P(A)P(B\textbackslash A) $$
+	
+	\item Os eventos $A_1,\ldots,A_n$ são mutuamente independentes,se:
+	
+	$$P(A_1\cap \ldots \cap A_k)=P(A_1)\ldots P(A_k), \forall k\le n $$
+
+\underline{Exemplo, n=3}:
+$$P(A_1\cap A_2)=P(A_1)P(A_2) $$
+$$P(A_2\cap A_3)=P(A_2)P(A_3) $$
+$$P(A_1\cap A_3)=P(A_1)P(A_3) $$
+$$P(A_1\cap A_2\cap A_3)= P(A_1)P(A_2)P(A_3) $$
+
+\underline{Exemplo}:\\
+\\
+$\varepsilon$: Escolher um ponto no retângulo $ [0,1]\times [0,1]$
+$$\Omega = [0,1]\times [0,1] \{(x,y)\in \mathbb{R}: a\le x,y\le 1 \}$$
+
+$A=$ a primeira componente é igual a segunda componente..
+$B=$ a distância da origem ao ponto escolhido é menor de 0.5.\\
+\\
+A e B são independentes?
+
+$$P(A) = \frac{1}{2} $$
+$$P(B)=\frac{1}{4}\pi r^2=\frac{pi}{16}$$
+$$\Rightarrow P(A\cap B)= \frac{\pi}{32}=P(A)P(B) =\frac{1}{2} \frac{\pi}{16}$$
+$\therefore $ A e B são independentes.\\
+\\
+
+
+\underline{Exercícios}:\\ 
+\\
+\begin{enumerate}
+	\item Dê um contra exemplo para a afirmação seguinte:\\
+  "Eventos independentes 2-2 são mutuamente independentes  "
+  \item $\varepsilon$ lançar dados e observar suas faces superiores:\\
+  Defina:\\
+  \\
+  $A_1$ = sair par no primeiro dado\\
+  $A_2$ = sair ímpar no primeiro dado\\
+  $A_3$ = soma dos resultados é par\\
+  São $A_1,A_2,A_3$ mutuamente independentes?
+\end{enumerate}
+
+\end{enumerate}
+
+
+\subsection{Variável aleatória}
+Considere $(\Omega,\mathscr{A},P)$ um espaço de probabilidade.\\
+Informalmente, diz-se que uma função\\
+\\
+$X: \underset{\omega \longrightarrow X(\omega)=x}{\Omega \longrightarrow \mathbb{R}}$ é variável aleatória (v.a.)\\
+\\
+$\{X=x\}=\{\omega: X(\omega)=x \} $ for um característico numérico de pontos de $\Omega$.\\
+\\
+\underline{Exemplo}:\\
+\\
+$\varepsilon:$ Lançar 2 dados e observar suas faces superiores.\\
+Se o interesse for de calcular a probabilidade associada á soma dos resultados, então:
+
+$$|\Omega|=36,X: \underset{\omega \longrightarrow X(\omega)=x}{\Omega \longrightarrow \{2,3,\ldots,12\}} $$
+$X$= soma dos resultados
+$$\{X=2\}=\{\omega \in (i,j)\in \Omega: X(\omega)=2 \} $$
+$$=\{\omega=(i,j)\in \Omega:i+j=2 \} $$
+$$=\{(1,1)\} $$
+$$\{X=3\}=\{(1,2),(2,1)\} $$
+
+\subsubsection{Imagem Inversa}
+
+$$f: \mathbb{R}_D\longrightarrow \mathbb{R}_I, \ \forall B \subset \mathbb{R}_I, $$
+$$\bigg[f(A)=B \bigg]  \ \ \ ou \ \ \ f(B)=A$$
+\begin{center}é o conjunto imagem inversa de B \end{center}
+
+\underline{Propriedades:}\\
+\\
+\begin{enumerate}[label=\alph*)]
+	\item $\bigg[f^{-1}(B) \bigg]^c = f^{-1}(B^c)$
+	
+	\item $f^{-1}(\bigcup\limits_{i=1}^{n}B_i) = \bigcup\limits_{i=1}^{n}f^{-1}(B_i)$
+\end{enumerate}
+
+\underline{Definição: Variável aleatória}\\
+\\
+Seja $(\Omega,\mathscr{A},P)$ um espaço de probabilidade. A função $X:\Omega \longrightarrow \mathbb{R} $ é uma variável aleatória, se:\\
+\\
+$\forall  B \in \mathscr{B}(\mathbb{R}) , X^{-1}(B)\in \mathscr{A}$, sendo $\mathscr{B}(\mathbb{R})$ a $\sigma$-algebra dos Borelianos de $\mathbb{R}$\\
+\\
+\underline{Note que}: $\mathscr{B}(\mathbb{R}) $ é $\sigma$-algebra pois:
+\begin{enumerate}[label=\roman*)]
+\item $\mathscr{B}(\mathbb{R}) \supset \mathbb{R},\mathscr{B}(\mathbb{R})\ne \emptyset$
+\item  $B \in \mathscr{B}(\mathbb{R})$, sempre que $X^{-1}(B)\in \mathscr{A}$
+$$\Rightarrow \bigg[ X^{-1}(B)\bigg]^c \in \mathscr{A} $$
+$$\Rightarrow \bigg[ X^{-1}(B^c)\bigg] \in \mathscr{A} $$
+$$\Rightarrow B^c \in \mathscr{B}(\mathbb{R}) $$
+\item Exercício*
+
+
+
+\end{enumerate}
+
+\underline{Obs}: 
+$$X:\underbrace{\Omega}_{A=X^{-1}(B)\in \mathscr{A}} \longrightarrow \underbrace{\mathbb{R}}_{B \in \mathscr{B}( \mathbb{R})}  $$
+
+\underline{Definição 2}: Variável aleatória
+Seja $(\Omega,\mathscr{A},P)$ um espaço de probabilidade, a função $X:\Omega \longrightarrow \mathbb{R} $ é variável aleatória se:
+
+$$\forall x \in \mathbb{R}, X^{-1}\bigg( (-\infty.x] \bigg) \in \mathscr{A} $$
+$$\Leftrightarrow \forall x \in \mathbb{R}, B=(-\infty,x]$$
+$$\forall x \in \mathbb{R},   X^{-1}\bigg( (-\infty.x] \bigg) = \{ \omega \in \Omega: X(\omega)\in (-\infty,x] \}$$
+$$= \{\omega \in \Omega: X(w)\le x \} $$
+$$\{ X\le x \}\in \mathscr{A}$$
+
+\newpage
+\underline{Exemplo}:\\
+\\
+Seja $\Omega = \{1,2,3,4\}$ e $\mathscr{A} = \bigg\{\emptyset,\Omega, \underbrace{\{1,2\}}_{A} , \underbrace{\{3,4\}}_{A^c} \bigg\}$\\
+\\
+Verifique se $I_A(\omega) = \begin{cases}
+1,\omega \in A\\
+0, \omega \in A^c
+\end{cases} $ 
+\\
+e $I_B(\omega) = \begin{cases}
+1,\omega \in B\\
+0, \omega \in B^c
+\end{cases} $, $B=\{1,4\}$\\
+\\
+São variáveis aleatórias.\\
+\\
+
+\underline{Solução}:
+
+$$I_A^{-1}\bigg ( (-\infty,x] \bigg) = \begin{cases}
+\emptyset, x<0\\
+A^c=X^{-1}(\{0\}), x\le 0 <1\\
+X^{-1}(\{0\})\cup X^{-1}(\{1\}), x\ge 1
+\end{cases} \in \mathscr{A} $$
+
+$\therefore  \ I_A$ é uma variável aleatória
+
+$$I_B^{-1}\bigg ( (-\infty,x] \bigg) = \begin{cases}
+\emptyset, x<0\\
+B^c=X^{-1}(\{0\})=\{2,3\}, x\le 0 <1\\
+B\cup B^c, x\ge 1
+\end{cases} \notin \mathscr{A} $$
+
+\underline{Obs}:
+\begin{itemize}
+	\item 
+
+Se a $\sigma$-algebra $\mathscr{A}$ conter $B$ e $B^c$, $I_B$ seria variável aleatória 
+\item 
+Em geral, se $\Omega = \{\omega_1,\ldots, \omega_n\}$ e $\mathscr{A}=P(\Omega)$, toda  função  $X:\Omega \longrightarrow \mathbb{R} $
+é variável aleatória.
+\item 
+$\Omega = \mathbb{R}$ e X é uma função contínua então  X é variável aleatória
+\item 
+
+$\Omega = \mathbb{R}$ ,  $X:\Omega \longrightarrow \mathbb{R} $ é variável aleatória $\Leftrightarrow$ X é Borel Mensurável
+
+\item 
+Seja $X:\Omega$  $X:\Omega \longrightarrow \mathbb{R} $  variável aleatória e g Borel mensurável, então
+$X\circ g$ é uma variável aleatória\\
+$X\circ g :\Omega$  $X:\Omega \longrightarrow \mathbb{R}$
+
+\end{itemize}
+\newpage
+\underline{Definição:}Medida de Probabilidade:
+Seja $(\Omega,\mathscr{A}=\sigma(x),P_X)$ o espaço de probabilidade. A função \\
+$P_X: \mathscr{A}\longrightarrow[0,1] $ é medida de probabilidade.\\
+
+\underline{Prova}:
+\begin{enumerate}[label=\roman*)]
+	\item 
+
+$P_X(B)=P\bigg(X^{-1}(B) \bigg)=P\bigg([X\in B]\bigg)\ge 0, \forall B \in \mathscr{B}(\mathbb{R}) $
+
+\item $P_X(\mathbb{R})=P\bigg(X^{-1}(\mathbb{R}\bigg) = P(\Omega)=1 $
+
+\item $B_1,B_2,\ldots \in \mathscr{B}(\mathbb{R})$ disjuntos,
+
+$$P_X\bigg(\bigcup\limits_{i=1}^{\infty}B_i\bigg)= 
+P_X\bigg(X^{-1}\bigg(\bigcup\limits_{i=1}^{\infty}B_i\bigg)\bigg)
+ $$
+ 
+ $$
+ P_X\bigg(\bigcup\limits_{i=1}^{\infty}X^{-1}\bigg(B_i\bigg)\bigg)
+ $$
+ 
+ $$
+ =\sum\limits_{i=1}^{\infty}P(X^{-1}(B_i))
+ $$
+ 
+ $$=\sum\limits_{i=1}^{\infty}P_X(B_i) $$
+ 
+\end{enumerate}
+
+\underline{Obs}:
+
+$$B=(-\infty,x] \in \mathscr{B}(\mathbb{R}), \forall x\in \mathbb{R} $$
+$$\Rightarrow P_X(B)= P_X\bigg( (-\infty,x])\bigg) $$
+$$= P\bigg(X^{-1}\bigg(-\infty,x]\bigg)\bigg) $$
+$$=P\bigg( x\in (-\infty,x] \bigg) = P(X\le x) = F_X(x)	 $$
+
+\newpage
+
+\section{03/04}
+
+\subsection{Variável Aleatória }
+Revisão:\\
+\\
+
+
+$(\Omega,\mathscr{A},P)$ \\
+Uma função 
+$$X:\Omega \longrightarrow \underbrace{I}_{\text{conjunto de valores de X}}\subset \mathbb{R}\ \text{é variável aleatória}$$
+
+\begin{itemize}
+	\item  $$\forall B \in \ \mathscr{B}(\mathbb{R}) , \ A=X^{-1}(B) = [ X\in B]\in \mathscr{A}$$
+	$$X^{-1}(B)=\{\omega \in \Omega: X(\omega)\in B \} $$
+	$$\Rightarrow P\bigg(X^{-1}(B)\bigg) = P(X\in B) \ \ \underline{f.d.a}$$
+	$$(\Omega,\underbrace{\mathscr{A}}_{A \in x^{-1}(B)},P) \longrightarrow(\mathbb{R},\underset{\in B}{\mathscr{B}(\mathbb{R})},p_x) $$
+\item $B=(-\infty,x]$, X é variável aleatória se $\forall x \in \mathbb{R}$,
+$$X^{-1}\bigg( (-\infty,x] \bigg) = [X\le x]\in \mathscr{A}, \Rightarrow P(X\le x)=P_X\bigg( (-\infty,x] \bigg) =F_X(x) $$
+$$X^{-1}\bigg( (-\infty,x] \bigg) =\{\omega \in \Omega: X(\omega)\in (-\infty,x]\} $$
+$$=\{\omega \in \Omega: X(\omega)\le x \}  $$
+\end{itemize}
+
+\newpage
+\subsection{Tipos de Variáveis aleatórias}
+
+\begin{enumerate}
+	\item Uma  variável aleatória  $X$ é discreta se o conjunto dos seus valores for enumerável
+	$$\underset{\omega: \longrightarrow X(\omega)=x_i}{X:\Omega \longrightarrow\{x_1,x_2,\ldots\}} $$
+	Neste caso, $P_X: \mathscr{B}(\mathbb{R}) \rightarrow [0,1]$, satisfaz:
+	\begin{enumerate}[label=\roman*)]
+		\item $P_x(\{X_i\})= P\bigg(X^{-1}(\{x_i\}) \bigg)=P(X=x_i)\ge 0$;
+		\item $\sum\limits_{i\ge 1}P_X(\{x_i\})=1$
+	\end{enumerate}
+Então $P_x$ é conhecida como função de probabilidade da variável aleatória X.\\
+\\
+Note que:\\
+\\
+$1=P(\Omega)=P\bigg( \bigcup\limits_{i\ge 1} X^{-1}(\{x_i\})\bigg)=\sum\limits_{i\ge 1}P_X(x_i)$\\
+ou\\
+$1=P\bigg( \bigcup\limits_{i\ge 1} X^{-1}(\{x_i\})\bigg)=\sum\limits_{i\ge 1}P_X(x_i) = P\bigg(\bigcup\limits_{i\ge 1} [X=x_i]\bigg)
+=P\bigg( X\in \{x_1,x_2,\ldots\}\bigg)=\sum\limits_{i\ge 1} P_X(x_i)
+$\\
+	 X é variável aleatória com valores $\{x_1,x_2,\ldots\}$
+	 $$\Leftrightarrow P\bigg( X\in \{x_1,x_2,\ldots\} \bigg) =1$$
+	 \\
+	 \\
+	 \subsubsection{Fução de distribuição acumulada (f.d.a)}
+	 Seja $X$ v.a. talve que $P\bigg( X\in \{x_1,x_2,\ldots\} \bigg) =1$\\
+	 Então, $\forall b \in \mathscr{B}(\mathbb{R}),$
+	 $$P_X(B)=P\bigg( X^{-1}(B) \bigg) = P(X\in B)= \sum\limits_{i:x_i\in B} P_X(x_i) $$
+	 Em particular, $B=(-\infty,x], \forall x\in \mathbb{R}$,
+	 $$F_x(x)= P_X\bigg( (-\infty,x]\bigg)=P\bigg( X^{-1}((-\infty,x])\bigg) =  \sum\limits_{i:x_i\in (-\infty,x]} P_X(x_i)   $$
+\end{enumerate}
+
+\newpage
+\underline{Exemplo}:\\
+\\
+\underline{E.1} $X\sim B(n,p),n \in \mathbb{N}, 0<p<1 $\\
+\\
+$\varepsilon:\rightarrow\begin{cases}
+	Sucesso = A, \ \ \ \ \ P(A)=p\\
+	Fracasso = B, \ \ \ P(B)=1-p
+\end{cases}$\\
+Cada repetição de  $\varepsilon$ = Prova de Bernoulli\\
+\\
+\begin{enumerate}[label=\alph*)]
+	\item 
+
+$Y:\Omega \longrightarrow \{0,1\} $ é uma variável aleatória se:
+$$P(X=0)=P_X(\{0\})=p $$
+$$P(X=1)=P_X(\{1\})=1-p $$
+Pois $P_X$ é função de probabilidade.\\
+\\
+Y é conhecida como variável aleatória $Bernoulli(p)$
+
+\item  $$\underset{\omega \longrightarrow X(\omega)=k}{X:\Omega \longrightarrow \{0,1,\ldots,n\}}$$
+X = número de sucessos em \underline{n provas} independentes de Bernoull, p = P(sucesso)\\
+\\
+Temos que:
+$$P_X(k)=P\bigg( X^{-1}(\{k\})\bigg)=P\bigg(\{ \omega \in \Omega: X(\omega)=k \}\bigg)=P(X=k) $$
+
+$$P\bigg( \bigg\{\omega =\{\underbrace{r_1,\ldots, r_k}_{\in \{A\}},\underbrace{r_{k+1},\ldots, r_n}_{\in A^c} \} \bigg\} \bigg) $$
+
+
+$$\Omega = \bigg\{ \omega=\{ r_1,\ldots,r_n\}: r_i \in \{ A,A^c \},i=1,\ldots,n \bigg\}$$
+
+$$\Rightarrow P_X(k)=\binom{n}{k}\cdot P\bigg( (\overbrace{A,\ldots,A}^{k},\overbrace{A^c,\ldots,A^c}^{n-k}) \bigg)  $$
+$$= \binom{n}{k}P(A)\cdots P(A)\cdot P(A^c)\cdots P(A^c) $$
+$$\Rightarrow P_X(k)= \binom{n}{k} p^k (1-p)^{n-k}, k=0,1,\ldots,n\ \ \ \ (*)$$
+Como:
+
+$$\sum\limits_{k=0}^{n}P_X(k) = \sum\limits_{k=0}^{n}\binom{n}{k} p^k (1-p)^{n-k} = \bigg[ (1-p)+p\bigg]^n=1 $$
+Então $P_x$ dada em (*) é uma função de probabilidade de $X\sim B(n,p)$
+
+\end{enumerate}
+\newpage
+\underline{Aplicação}:\\
+\\
+
+Suponha que para a megasena da Páscoa são vendidas 120 000 000 de cartelas.
+\begin{enumerate}[label=\alph*)]
+	\item 
+
+ Qual é a probabilidade da megasena da páscoa ser ganha por 10 pessoas?\\
+ 
+ \item 
+ Qual a probabilidae da megasena ser ganha por no maximo 10 pessoas ?
+ $$P(X\le 10) = \sum\limits_{k=0}^{10} \binom{n}{k} p^k(1-p)^{n-k}= P\bigg( X^{-1}\bigg((-\infty,10 ]\bigg)\bigg) $$
+ 
+\end{enumerate}
+\underline{Solução}: 
+$$p=\frac{1}{50063860} $$
+$$\Rightarrow P(X=10) = P(x^{-1}(10))=\binom{n}{10}p^{10}(1-p)^{n-10} $$
+
+
+\newpage
+
+Revisar as v.as
+\begin{enumerate}
+	\item  $X\sim Geo(p) $
+	
+	$$P_X(k|p)=P(X^{-1}({k}))=P\bigg(\{\omega \in \Omega:X(\omega)=k \}\bigg)=P(X=k)$$
+$$P\bigg( \bigg\{\omega =\underbrace{\{f_1,f_2,\ldots}_{\in A^c}\underbrace{s_1}_{\in A} \} \bigg\} \bigg) $$
+$$\Omega = \bigg\{ \omega= \{ f_1,f_2,\ldots,s_1\}: t_k \in \{A^c \},k=1,2,\ldots \ \ s_1 \in \{A\} \bigg\}$$
+$$\Rightarrow P_X(k)=P\bigg( \overbrace{A^c,A^c,\ldots}^{k},\overbrace{A}^{1} \bigg)  $$
+$$P(A)=p \Rightarrow P(A^c)=1-p$$
+	$$\Rightarrow P_X(k|p)=(1-p)^{k}\cdot p, \ k=0,1,2,\ldots $$
+	
+	
+	\item $X \sim Pascal (r,p) $
+	
+	$$P_X(k|p)=P(X^{-1}({k}))=P\bigg(\{\omega \in \Omega:X(\omega)=k \}\bigg)=P(X=k)$$
+$$P\bigg( \bigg\{\omega =\underbrace{\{f_1,f_2,\ldots}_{\in A^c},\underbrace{s_1,s_2,\ldots}_{\in A}\} \bigg\} \bigg) $$
+$$\Omega = \bigg\{ \omega= \{ f_1,f_2,\ldots,s_1,s_2,\ldots\}: f_k \in \{A^c \},k=1,2,\ldots \ \ s_i \in \{A\},i=1,2\ldots\bigg\}$$
+$$\Rightarrow P_X(k)=P\bigg( \overbrace{A^c,A^c,\ldots}^{k},\overbrace{A,\ldots,A}^{i} \bigg)  $$
+$$P(A)=p \Rightarrow P(A^c)=1-p$$
+$$= \binom{i+k-1}{i}P(A)\cdots P(A)\cdot P(A^c)\cdots P(A^c) $$
+$$\Rightarrow P_X(k)= \binom{i+k-1}{i} p^k (1-p)^{i}, k=0,1,\ldots \ \ i=1,2,\ldots$$
+	\newpage
+	\item $X\sim Hipergeo(N,r,p)$
+		$$P_X(k|p)=P(X^{-1}({k}))=P\bigg(\{\omega \in \Omega:X(\omega)=k \}\bigg)=P(X=k)$$
+		
+		$$P\bigg(\omega=\bigg\{A_k\cap A_k^c:A_k= \{e_1,e_2,\ldots,e_j, \ j=0,1,\ldots,k \}, k=0,1,\ldots,i\bigg\},i=0,1,\ldots,N\bigg) $$
+		$$K\le N $$
+	$$\Omega = \bigg\{ \omega= (d_1,\ldots,d_n): d_i \in  :  \bigg\}$$
+	
+
+
+	$$= \binom{i+k-1}{i}P(A)\cdots P(A)\cdot P(A^c)\cdots P(A^c) $$
+	$$\Rightarrow P_X(k)= \binom{i+k-1}{i} p^k (1-p)^{i}, k=0,1,\ldots \ \ i=1,2,\ldots$$
+	
+	
+	\item $X \sim Poisson(\lambda)$
+\end{enumerate}
+
+\newpage
+\section*{08/04}
+
+$(\Omega,\mathscr{A},P) \overset{X}{\longrightarrow}(\mathbb{R},\mathscr{B}(\mathbb{R}),P_x) \Leftrightarrow P(A)=P(X^{-1}(B))=P(X\in B)\ f.d.a $ 
+
+\begin{enumerate}
+	\item  Variável aleatória discreta, $P(X\in \{x_1,x_2,\ldots\})=1,\forall B in \mathscr{B}(\mathbb{R}) \,$\\
+$P(X\in B)= \sum\limits_{i: x_i\in B}P_X(x_i), P_x $ $P_X(x_i), \forall x_i $ é função de probabilidade $P(X=x_i)$
+
+\begin{itemize}
+	\item $ B=(-\infty,x]$, $P(X\le x)=\sum\limits_{i:x_i\le x} P(X=x_i)$ f.d.a
+	\item $B=[a,b]$,  $a,b\in\mathbb R$
+	$$P(a\le X\le b)=\sum\limits_{i:x_i=a}^{b}P(X=x_i) $$
+\end{itemize}
+
+\item Variável aleatória Absolutamente Contínua (a.c.)\\
+X é a.c. se existir $f:\mathbb R \longrightarrow \mathbb R$\\
+Tais que $f(x)\ge0, \forall x\in \mathbb R$ e $\int\limits_{\mathbb R} f(x)dx=1$,\\
+chamada de função de densidade de probabilidade (fdp).\\
+Neste caso,
+$$P(X\in B)=\int\limits_{[X\in B]=\{\omega \in \Omega: X(\omega)=x\in B \}=X^{-1}(B)} f(x)dx  $$
+\begin{itemize}
+	\item $(-\infty,x], \forall x \in \mathbb R$
+	$$P(X\le x) = \int\limits_{X^{-1}\bigg((-\infty,x]\bigg) = \bigg[X\in (-\infty,x]\bigg]=[X\le x]} $$
+	
+	\item $B=[a,b]$
+	$$P(a\le x\le b)\int\limits_{a}^{b} f(x)dx$$
+\end{itemize}
+\end{enumerate}
+
+\newpage
+\underline{Exemplos}:
+\begin{itemize}
+	\item
+$$X\sim Exp(\beta) \Leftrightarrow f(x)=\begin{cases}
+\beta e^{-\beta x}, \ \ x\ge 0\\
+0, \ \ \ \ \ \ \ \  x<0
+\end{cases} $$
+\item 
+
+$$X\sim Gamma(\alpha,\beta) \Leftrightarrow f(x)=\begin{cases}
+\frac{\beta^\alpha x^{\alpha-1}e^{-\beta x}}{\Gamma(\alpha)}, \ \ x\ge 0\\
+0, \ \ \ \ \ \ \ \ \ \ \ \ \ \  \   x<0
+\end{cases} $$
+$$\Gamma(\alpha)= \int\limits_{0}^\infty x^{\alpha-1}e^{-x}dx, \alpha>0 $$
+$\begin{cases}
+\Gamma(\alpha+1)=\alpha\Gamma(\alpha)\\
+\alpha=n\in \mathbb N, \ \ \ \Gamma(n)=n!\\
+\Gamma\bigg( \frac{1}{2}\bigg) = \sqrt \pi\\
+\Gamma(1)=1
+\end{cases}
+$\\
+$\int\limits_{0}^{\infty} x^{a-1} e^{- bx^c}dx=\frac{\Gamma (\frac{a}{c} )}{c\cdot b^{\frac{a}{c}}} $
+\item $X\sim N(\mu,\sigma^2)$
+\item $X\sim W(\alpha,\beta) $
+\item $X\sim ogN(\mu,\sigma^2) $
+\item $X\sim logistica (\alpha)$
+\item $X\sim Cauchy(\alpha)$ 
+\end{itemize}
+
+\newpage
+
+\subsection{Função de variável aleatória}
+Seja $X:\Omega \rightarrow \mathbb R $ variável aleatória e $g: \mathbb R \longrightarrow \mathbb R$\\
+\underline{Borel Mensurável}. Então $Y:\Omega \rightarrow \mathbb R$, $Y=g(x)$ é variável aleatória.
+
+$$\Omega,\mathscr{A} \overset{X}{\longrightarrow}  \mathbb R , \mathscr{B}(\mathbb{R})  \overset{g}{\longrightarrow} \mathbb R,\mathscr{B}(\mathbb{R})  $$
+
+Y é variável aleatória se $\forall B \in \mathscr{B}(\mathbb{R}), \ Y^{-1}(B)\in \mathscr A$,
+$$Y^{-1}(B)= X^{-1}\bigg( g^{-1}(B)\bigg)=[y\in B]= [X\in g^{-1}(B)] $$
+$$\Leftrightarrow P(y\in B = P\bigg( X\in g^{-1}(B)\bigg) $$
+\underline{Casos:}
+	\begin{enumerate}[label=\alph*)]
+		\item X discreta, $P(X\in \{x_1,x_2,\ldots\})=1\Rightarrow$ Y discreta
+		$$\Omega \overset{X}{\longrightarrow} \{x_1,x_2,\ldots\} \overset{g}{\longrightarrow} \{y_1,y_2,\ldots\} $$
+		$$Y=g(X) $$
+		Caracterizada por
+		$$P(Y=y)=P(Y\in \{y\}) = \sum\limits_{=\underset{x_i:g(x_i)=y}{i:\{x_i \in g^{-1}(\{y\}) \}}}^{\infty}P(X=x_i), \ \ B=\{y\} $$
+		
+		\item 
+		
+		X a.c. com fdp $f:\mathbb R \longrightarrow \mathbb R \Rightarrow Y=g(x)$?\\
+		Temos que, $\forall B\in \mathscr{B}(\mathbb{R}) $, $B=(-\infty,y]$
+		$$P(Y\le y) = \int\limits_{=\underset{[x:g(x)\in (-\infty,x]}{[X \in g^{-1}((-\infty,x])]] }}^{\infty}f(x)dx$$ 
+		\underline{Y discreta}
+		$$P(Y=y)=\int\limits_{[x:g(x)=y]}f(x)dx $$
+		\underline{Y a.c.}\\
+		fdp:  $F'_Y(y) = f_Y(y) \forall y $\\
+		Em particular, se g for inversível:
+		$$F_Y(y)=P(Y\le y) $$
+		$$=P\bigg( g(X) \le y \bigg) $$
+		$$=P\bigg(X \le g^{-1}(y) \bigg)$$
+		$$=F_X\bigg( g^{-1}(y)\bigg) \Leftrightarrow F'_y(y) = f_x\bigg(g^{-1}(y)\bigg)\bigg|\frac{d}{dy}\bigg(g^{-1}(y)\bigg) \bigg|$$
+	\end{enumerate}
+\newpage
+\underline{Exemplo}:\\
+\begin{enumerate}[label=\arabic*)]
+	\item Considere $X\sim B(n,0.5)$: o número de caras que aparecem em n lançamentos de uma moeda honesta.\\
+	Um jogador lança a moeda e 
+	$\begin{cases}
+		ganha \ 1, se\ sair\ cara\\
+		perde\ 1, se\ sair\ coroa
+	\end{cases}$  \\
+	\\
+	Determine a distribuição do ganho do jogador\\
+	\\
+	\underline{Solução:}\\
+	Y = Ganho do jogador após n lançamentos
+ $$Y=\underbrace{X}_{Caras}-\underbrace{(n-X)}_{Coroas} = 2X-n$$
+ $$\Omega \overset{X}{\longrightarrow}  \{0,1,2,\ldots,\}\overset{g}{\longrightarrow} \{-n,2-n,\ldots,n\} $$
+ $$Y=g(x) $$
+ $$\forall y\in \mathbb R, \ \ P(Y=y)= \sum\limits_{x_i:g(x_i)=y} P(X=x_i)$$
+ $$ g(x)=2x-n =y\Rightarrow x = \frac{y+n}{2}$$
+  $$\forall y\in \mathbb R, \ \ P(Y=y)= \sum\limits_{\{x_i:g(x_i)=y\}} P(X=x_i)= P(X=\frac{y+n}{2})= 
+  \binom{n}{\frac{y+n}{2}} \bigg(\frac{1}{2}\bigg)^n$$
+  ou 
+  $P(Y=y)= P(2x-n=y)=P(X=\frac{y+n}{2}) $
+  	pois g é inversível 
+  	
+  	\item 
+  	$X\sim Binom(3,\frac{1}{2}) $ e $Y=|X-1|$\\
+  	Determine a distribuição de Y\\
+  	\underline{Sol}:
+  	$$\Omega \overset{X}{\longrightarrow}  \{0,1,2,\ldots\}\overset{g}{\longrightarrow} \{0,1,2\} $$
+  $$Y=g(x) $$
+  $$P(Y=0)=P(X=1) $$
+    $$\forall y\in \mathbb R, \ \ P(Y=1)= \sum\limits_{\{x_i:g(x_i)=1\}} P(X=0)+P(X=2)$$
+    $$P(Y=2)=P(X=3)$$
+    \newpage
+    \item $$X\sim U[0,1],  \ \ \ g(x)=\begin{cases}
+  1,  \ \ \ x\le \frac{1}{2}\\
+  0,\ \ \  x>\frac{1}{2}
+    \end{cases} $$
+    e $Y=g(x) $, Determine a distribuição de Y.\\
+    \underline{Sol}:
+    $$\Omega \overset{X}{\longrightarrow} [0,1] \overset{g}{\longrightarrow} \{0,1\}  $$
+    $$P(Y=0)= \int\limits_{x:g(x)=0}f(x) dx = \int\limits_{0.5}^1 1 dx= \frac{1}{2}$$
+        $$P(Y=1)= \int\limits_{x:g(x)=0}f(x) dx = \int\limits_{0}^{0.5} 1dx = \frac{1}{2}$$
+        
+        \item $X\sim U[0,1]$ e $g(x)=-log(x)$, $Y=g(x)$\\
+        Determine a distribuição de Y\\
+        \\
+        \underline{Sol}:
+        $$\Omega \overset{x}{\longrightarrow} [0,1] \overset{g}{\longrightarrow} \mathbb R   $$
+        $$Y=g(x) $$
+       $$f_Y(y)= f_x\bigg(g^{-1}(y)\bigg)\bigg|\frac{d}{dy}\bigg(g^{-1}(y)\bigg) \bigg|$$
+       $$-log(x)=y \Leftrightarrow x=e^{-y}=g^{-1}(y) $$
+       Assim,
+       $$f_Y(y)= f_x\bigg( e^{-y}\bigg)\bigg| -e^{-y} \bigg|, \ \ \ f_X(x)= \begin{cases}
+       1, \ \ \ x\in[0,1]\\
+       0, \ \ \ c.c.
+       \end{cases}$$
+       
+       $$x\in [0,1]\Leftrightarrow y\ge 0 \Rightarrow f_Y(y)= e^{-y} $$
+              $$x\notin [0,1]\Leftrightarrow y< 0 \Rightarrow f_Y(y)= 0 $$
+              $$\therefore Y\sim Exp(1)$$
+       
+\end{enumerate}
+\newpage
+\section*{Função de Distribuição }
+
+\underline{Definição}: uma função $F:\mathbb R \longrightarrow \mathbb R $ é unfção de distribuição (f.d.), se 
+\begin{enumerate}
+	\item $\forall x \in \mathbb R$, F é não decrescente;
+	$$x<y \Rightarrow F(X)\le F(y) $$
+	\item F é contínua a direit.\\
+	$\{x_n\}$ é uma sequencia t.q. $x_n \downarrow x\Rightarrow \lim\limits_{n\rightarrow \infty}  F(X_n)=F(x)  $
+	\item 
+	$\lim\limits_{n\rightarrow \infty} F(x)=1$ e$ \lim\limits_{n\rightarrow -\infty} F(x)=0$
+\end{enumerate}
+\underline{Tipos}:\\
+\begin{enumerate}
+	\item F.d Discreta\\
+	uma f.d. F é discreta se existir uma função p t.q.
+	$P(x_i)\ge 0 $,  $\sum\limits_{i=1}^{\infty}P(x_i)=1$, $x_i\in \mathbb{R}, i\ge 1$\\
+	Então,\\
+	$\forall x\in \mathbb R$, $F(x) = \sum\limits _{i:x_i\le x}P(x_i)$
+	
+	\item F.d absolutamente contínua  (a.c)\\
+	Uma f.d. é a.c. se existir uma função f t.q. $f(x)\ ge 0, \forall x \in \mathbb R$ e $\int\limits_{\mathbb R}f(x)=1$ \\
+	Neste caso,
+	$\forall x \in \mathbb R $,
+	$$F(x) = \int\limits_{-\infty}^{\infty}f(x)dx $$
+	Daí,
+	$$F'(x)= f(x) \ f.d.p$$
+	\item F.d Mista 
+	$$F=F_d+F_c $$
+	$F_d $: Parte discreta\\
+		$F_c $: Parte contínua, $F_c=F_{a.c}+F_s$\\
+		Sendo $F_{ac}$: parte a.c. e $F_s$: parte singular\\
+		$F_{ac}$ é t.q. $F_{ac}=f(x)$ f.d.p e $F_s'(x)=0$
+		$$\therefore F=F_d+F_{ac}+F_s $$
+\end{enumerate}
+\newpage
+\underline{Passos}:
+\begin{enumerate}
+	\item Identificar os pontos de descontinuidade 
+	$$F_j\bigg( \{x_1,x_2,\ldots \}\bigg) $$
+	
+	\item Calcular o tamanho do salto em cada $x_i$,
+	$$b_{x_i}= F(x_i^+) - F(x_i^-) = F(x_i)-F(x_i^-)$$
+	
+	\item Parte discreta:
+	$$F_d(x)=\sum\limits_{i:x_i\le x} b_{x_i}, \ \forall x\in \mathbb R $$
+	\item Parte a.c.
+	$$F_{ac}'(x)=f(x)=F'(x), $$
+Pois $$F'(x)=\cancelto{0}{F_d'(x)}+F'_{ac}(x)+\cancelto{0}{F'_s(x)} $$	
+$$\Rightarrow F_{ac}(x)=\int\limits_{-\infty}^{x} f(t)dt$$
+
+\item Parte singular
+$$F_S=F-(F_x+F_{ac}) $$
+\end{enumerate}
+\newpage
+\underline{Exemplo}:\\
+
+Seja $X\sim U[0,1]$ e $Y=min\bigg\{ X,\frac{1}{2}\bigg\}$
+
+\begin{enumerate}[label=\alph*)]
+	\item Determine a distribuição de Y 
+	\item Decomponha a distribuição em parte discreta e contínua.
+	
+\end{enumerate}
+\underline{Sol}:\\
+\\
+\begin{enumerate}[label=\alph*)]
+	\item 
+
+ $X\sim U[0,1]\Rightarrow F_X(x)=
+ \begin{cases}
+ 0,\ \ \ x<0\\
+ x, \ \ \ 0\le x \le 1\\
+ 1,\ \ \ x\ge 1
+ \end{cases}
+ $
+e
+
+$$Y=\begin{cases}
+X , \ \ \ X\le \frac{1}{2}\\
+\frac{1}{2}, \ \ \ X>\frac{1}{2}
+\end{cases} $$
+
+$$\Rightarrow \forall y \in \mathbb R,$$
+$$P\bigg(Y\le y,X\le \frac{1}{2}\bigg) +P\bigg(Y\le y,X> \frac{1}{2}\bigg)$$
+$$= P\bigg(X=Y\le y , X\le \frac{1}{2}\bigg) +P\bigg(Y=\frac{1}{2} ,Y\le y, X> \frac{1}{2}\bigg)$$
+
+$$F_Y(y)=\begin{cases}
+0, \ \ \ \ \ \ \ y<0\\
+y, \ \ \ \ \ \ \ 0\le y<\frac{1}{2}\\
+\underbrace{P\bigg(X\le \frac{1}{2}\bigg)+P\bigg(X> \frac{1}{2}\bigg)}_{=1}, \ \ \ \ \ \ \ y\ge \frac{1}{2}\\
+\end{cases} $$
+
+\item 
+
+\begin{enumerate}[label=\roman*)]
+	\item  Descontinudade = $\{y_1=\frac{1}{2}\}$
+	\item Tamanho do salto:\\
+	$$b_{x_1}=F(y_1)-F(y_1^-) $$
+	$$=F\bigg(\frac{1}{2}\bigg)- F\bigg(\frac{1}{2}^{-1}\bigg) $$
+	$$= 1-\frac{1}{2} =\frac{1}{2} $$
+	
+	\item $\forall x \in \mathbb R $
+	$$F_y(d)= \begin{cases}
+	0, \ \ \ \ y\le \frac{1}{2}\\
+	\frac{1}{2} \ \ \ \ y \ge \frac{1}{2}
+
+	
+	\end{cases} $$
+	
+	\item $$F'_Y(y)=\begin{cases}
+	0, \ \ \ \ \ \ \ y<0\\
+	1, \ \ \ \ \ \ \ 0\le y<\frac{1}{2}\\
+0,\ \ \ \ \ \ \  y\ge \frac{1}{2}\\
+	\end{cases} 
+	=\begin{cases}
+	1, \ \ \ 0<y<\frac{1}{2}\\
+	0, \ \ \ c.c
+	\end{cases}=f(x)
+	$$
+	
+	$$\Rightarrow
+F_{ac}(y)=\begin{cases}
+		0, \ \ \ \ \ \ \ y<0\\
+		\int\limits_{0}^{y}1 dy \ \ \ \ \ \ \ 0\le y<\frac{1}{2}\\
+	\int\limits_{0}^{\frac{1}{2}}1 dy=\frac{1}{2}, \ \ \ \ \ \ \ y\ge \frac{1}{2}\\
+	\end{cases} 
+	 $$
+	 $$\therefore F_{ac}(y) = \begin{cases}
+	 0, \ \ \ \ y<0\\
+	 y, \ \ \ \ 0\le y < \frac{1}{2}\\
+	 \frac{1}{2}, \ \ \ y>\frac{1}{2}
+	 \end{cases} $$
+	 
+	 \item $$F_s(x) = F(y)- \bigg( F_d(y)- F_{ac}(y)\bigg) $$
+	 
+	 $$F_d(y)- F_{ac}(y)=\begin{cases}
+	 0, \ \ \ \ \ \ \ y<0\\
+y  \ \ \ \ \ \ \ 0\le y<\frac{1}{2}\\
+	 1 , \ \ \ \ \ \ \ y\ge \frac{1}{2}\\
+	 \end{cases} =F(y) \Rightarrow F_S(y)\equiv 0 $$
+	 \end{enumerate}
+
+
+\end{enumerate}
+\newpage
+\underline{f.d. de variável aleatória}:\\
+X v.a.
+$$\rightarrow F(x)= P_X\bigg((-\infty,x]\bigg), \ \ \ \forall x \in \mathbb R \ \ = \ P(X\le x)  \ \ \ f.d $$
+
+\underline{Prova}:\\
+\begin{enumerate}[label=\roman*)]
+	\item $x<y \Rightarrow (-\infty,x]\subset (-\infty,x]$\\
+	 $ P\bigg((-\infty,x]\bigg)\le P\bigg((-\infty,x]\bigg)$\\
+	 $$\Rightarrow F(x)\le F(y) $$
+	  \item $\{x_n\} $, $x_n \downarrow x $
+	  $$(-\infty,x_1]\subset (-\infty,x_2]\subset\ldots \bigcup\limits_{n\ge 1}A_i(-\infty,x_n]= (-\infty,x] $$
+	  $$\lim\limits_{n\rightarrow \infty} F(x_n)= \lim\limits_{n\rightarrow \infty} P_X\bigg((-\infty,x] \bigg) $$
+	  Como $\{(-\infty,x]\}_{n\ge 1}$ é uma sequencia decrescente de eventos, pela continuidade de probabilidade.
+	  $$\lim\limits_{n\rightarrow \infty} P_X\bigg((-\infty,x_n] \bigg) = P_X\bigg((-\infty,x] \bigg)=F(x) $$
+	  $$\Rightarrow \lim\limits_{n\rightarrow \infty} F(x_n)=F(x) $$
+	  
+	  \item $$x_n\downarrow-\infty \Rightarrow \lim\limits_{n\rightarrow \infty} F(x_n)=0 $$
+	  e 
+	  $$x_n\uparrow \infty \Rightarrow \lim\limits_{n\rightarrow \infty}  F(x)-1 $$
+
+\end{enumerate}
+\newpage
+
+\section{22/04}
+
+\underline{Vetores Aleatórios}\\
+\\
+
+Seja$ X_1,\ldots,X_n$ variaveis aleatorias definidas sob $(\Omega,\mathscr{A},P)$\\
+Então, $\bm X=(X_1,\ldots,X_n): \underset{\omega \longrightarrow X(\omega)=\bm x}{\Omega\longrightarrow \mathbb R^n}$ é um vetor aleatório se:\\
+$\forall \bm x = (x_1,\ldots,x_n) \in \mathbb R^n$, $A = \underbrace{\bm X^{-1}\bigg((-\infty,\bm x]\bigg)}_{ \{\omega \in \Omega: X(\omega)\in (-\infty,\bm x]\}}
+ \in \mathscr A = \sigma(X_1,\ldots,X_n)$,
+ \\
+ Sendo \\
+ $\underbrace{(-\infty,\bm x]}_{\text{Retângulo de } \ \mathbb R^n} = (-\infty, x_1]\times \ldots \times (-\infty,x_n]\in \mathbb R^n $\\
+ Então:\\
+ $$\underbrace{P_{\bm X}(\bm x) = P\bigg(\bm X^{-1}\bigg((-\infty,\bm x)\bigg)\bigg)= P\bigg(\bm X\le \bm x\bigg)}_
+ {\text{Função de distribuição Acumuladada de } \ \bm X}$$
+$$=P(X_1\le x_1,\ldots, X_n\le x_n) $$
+$$= \underbrace{P\bigg (X_1,\ldots,X_n)\in  (-\infty, x_1]\times \ldots \times (-\infty,x_n]\bigg)}_
+{\bigg\{\omega:\bigg(X_1(\omega),\ldots,X_n(\omega)\bigg)\in (-\infty,x_1]\times\ldots\times(-\infty,x_n] \bigg\}} $$
+\underline{Casos Particulares}\\
+\\
+\begin{enumerate}
+	\item Vetor Aleatório discreto
+	$$\bm X:\Omega  \longrightarrow\{\bm x_1,\bm x_2\,\ldots \} $$
+	Tal que:
+	$$P_X: \ \sigma(X_1,\ldots, X_2) \longrightarrow[0,1]$$
+	Satisfaz:
+	\begin{enumerate}[label=\roman*)]
+		\item $\forall \bm x,  \ \ P_{\bm X}(\bm x)= P(\bm X = \bm x)\ge 0 $
+		\item $\sum\limits_{\bm x}P(\bm X = \bm x)=1$ \\
+		$\Leftrightarrow  P(\bm X=\bm x)=P(X_1=x_1,\ldots,X_n=x_n)\ge 0  $\\
+		e\\
+	 $\sum\limits_{i_n}\cdots \sum\limits_{i_1}P\bigg(X_1=x_{i1},\ldots,X_n=x_{in}\bigg)=1$\\
+	 $\bm x_i=(x_{i1},\ldots x_{in})$.\\
+	  Neste caso, $P_X$ é chamada de \underline{Função de probabilidade conjunta de}
+	 $X_1,\ldots,X_n $.\\
+	 \\
+	 Assim,\\
+	 fda: $P_{\bm x}\bigg((-\infty,\bm x]\bigg) = P\bigg(\bm X^{-1}(\infty,\bm x]  \bigg)=P\bigg( \bm X\le \bm x\bigg)$\\
+	 $$\Rightarrow F_{\bm X}(\bm x) = P(\bm X\le \bm x)= \sum\limits_{i_n\le x_n}\cdots \sum\limits_{i_1\le x_1}
+	 P\bigg(X_1=x_{i1},\ldots,X_n=x_{in}\bigg)
+	  $$
+	  \underline{Exemplo} (E18):\\
+	  $X:\Omega \rightarrow \{1,2,3\} $: número da primeira bola retirada\\
+	  $Y:\Omega \rightarrow \{1,2,3\} $: número da segunda bola retirada\\
+	  $\bm X = (X,Y): \underset{\omega \longrightarrow \bm X(\omega)}{\Omega \longrightarrow} I \subset \{1,2,3\}\times \{1,2,3\}$\\
+	  $I=\bigg\{(1,2),(1,3),(2,1),(2,3),(3,1),(3,2)   \bigg\}$
+	  \\
+	  $\bm X(\omega)=(X(\omega),Y(\omega) $\\
+	  \begin{enumerate}[label=\alph*)]
+	  	\item $P(X=x,Y=y)=\frac{1}{A_{3,2}}=\frac{1}{6},\forall(x,y)$\\
+	  	Satisfaz:\\
+	  	$P(X=x.Y=y)=\frac{1}{6}>0$\\
+	  	e\\
+	  	$\sum\limits_{(x.y)\in I}P(X=x,Y=y)=1$
+	  	\item $P(X<Y)=\frac{3}{6}=\frac{1}{2}$
+	  \end{enumerate}
+	  
+	\end{enumerate}
+
+\item \underline{Vetor aleatório absolutamente contínuo}\\
+$\bm X=(X_1\ldots,X_n):\Omega \longrightarrow \mathbb R$ é absolutamente contínuo se existir uma função, chamda de f.d.p conjunta,
+$$f:\mathbb R^n \longrightarrow \mathbb R $$
+\begin{enumerate}[label=\roman*)]
+	\item $f(\bm x)\ge 0, \ \ \forall \bm x=(x_1,\ldots,x_n)\in \mathbb R$
+	\item $\int\limits_{\mathbb R^n} f(\bm x)d\bm x=\int\limits_{\mathbb R}\cdots \int\limits_{\mathbb R}f(x_1,\ldots,x_n)dx_1\ldots dx_n = 1$\\
+	a f.d.a conjunta, é dada por:
+	$$F_{\bm X}(\bm x) = P\bigg(\bm X^{-1}\bigg((-\infty,x]\bigg)\bigg)=P(\bm X\le \bm x) $$
+	$$= \int\limits_{-\infty}^{\bm x}f(\bm t)d\bm t = \int\limits_{-\infty}^{x_1}\cdots \int\limits_{-\infty}^{x_n}f(t_1,\ldots,t_n)dt_1,\ldots,dt_n $$
+	Tem-se também que:\\
+	$$\frac{\partial}{\partial \bm x}F_{\bm X}(\bm x)= \frac{\partial F(x_1,\ldots,x_n)}{\partial x_1\ldots \partial x_n } =f(x_1,\ldots,x_n)  $$
+\end{enumerate}
+\underline{Exemplos:}
+\begin{enumerate}
+	\item $\bm X=(X,Y)$\\
+	$P\bigg((X,Y)\in (a_1,b_1]\times(a_2,b_2] \bigg)= P(a_1< X\le b_1,a_2< Y\le b_2)$ \\
+	$\begin{cases}
+		\sum\limits_{a_2\le y \le b_2}\sum\limits_{a_1\le x \le b_1}P(X=x,Y=y), \ \ \ \ \bm X \ discreto\\
+\int\limits_{a_2}^{b_2}\int\limits_{a_2}^{b_2}f(x,y)dxdy, \ \ \ \ \ \bm X \ absolutamente \ continuo
+	\end{cases}$
+\end{enumerate}
+\underline{Distribuição Marginal}:\\
+Seja $\bm X=(X_1,\ldots,X_n )$ um vetor aleatório com f.d.a $F_{\bm X}(x_1,\ldots,x_n)$\\
+Então:
+$$\lim\limits_{x_k\rightarrow \infty}F_{\bm X}(x_1,\ldots,x_{k-1},x_k,x_{k+1},\ldots,x_n)$$
+$$ =
+\lim\limits_{n\rightarrow \infty} P\bigg(
+X_1^{-1}\bigg((-\infty,x_1]\bigg),\ldots, \underbrace{X_k^{-1}\bigg((-\infty,\cancelto{\infty}{x_k}]\bigg)}_{\Omega},\ldots, X_n^{-1}\bigg((-\infty,x_n]\bigg)
+\bigg)$$
+$$= \underbrace{F_{X_1\ldots,X_{k-1},X_{k+1},\ldots X_n}(x_1,\ldots,x_{k-1},x_{k+1},\ldots,x_n)}_{\text{Distribuição marginal de ordem n-1}} $$ 
+Em particular,
+$$\bm X=(X,Y) $$
+$$ \underbrace{F_{X,Y}(x,y) = P(X\le  x,Y\le y)}_{\text{f.d.a conjunta de X e Y}} $$
+$$\Rightarrow \lim\limits_{x\rightarrow \infty} F_{X,Y}(x,y)=F_Y(y) $$
+$$\Rightarrow \lim\limits_{y\rightarrow \infty} F_{X,Y}(x,y)=F_X(x) $$
+São distribuições marginais de Y e X respectivamente.
+\begin{itemize}
+	\item Distribuição marginais $\not\Rightarrow$ Determina modelo conjunto
+	\item Modelo conjunto $\Rightarrow$ Distribuição marginais
+\end{itemize}
+\underline{Casos Particulares}\\
+
+\begin{itemize}
+	\item  $\bm X=(X_1,\ldots,X_n)$ Discreto\\
+	$\Rightarrow P(X_1=x_1,\ldots, X_n=x_n) $ f.p conjunta \\
+	As probabilidade marginais,
+	$$P(X_1=x_1,\ldots,X_{n-1}=x_{n-1})
+	=
+	P\bigg( X_1^{-1}(\{x_1\}),\ldots, X_{n-1}^{-1}(\{x_{n-1}\})\bigg)
+	 $$
+
+$$P(X=x,Y=y)$$
+$$ \Rightarrow  P(X=x)=\sum\limits_{y}P(X=x,Y=y)$$
+$$ \Rightarrow  P(Y=y)=\sum\limits_{x}P(X=x,Y=y)$$
+São funções de probabilidade marginal de X e Y, respectivamente, Pois:\\
+$$P(X=x)=P\bigg(X^{-1}(\{x\}) \bigg) = P\bigg(X^{-1}(\{x\}),\Omega \bigg) 
+=
+ P\bigg(X^{-1}(\{x\}),Y^{-1}\bigg(
+\bigcup_{y_i}\{y_i\}  \bigg) \bigg)
+$$
+$$
+=\sum\limits_{y_i}P\bigg(
+X^{-1}(\{x \}),Y^{-1}(\{y_i\})\bigg)
+=\sum\limits_{y_i}P\bigg(X=x,Y=y
+\bigg)
+$$
+\item $\bm X = (X_1,\ldots,X_n)$ absolutamente continuo $\Leftrightarrow$ fdp conjunta $f_{\bm X}(\bm x)$\\
+As densidade marginais são:
+$$f_{X_1,\ldots,X_{n-1}}(x_1,\ldots,x_{n-1})=\int\limits_{\mathbb R}f(t_1,\ldots,t_n)dt_n $$
+n=2:\\
+$f(x,y)$ f.d. conjunta e 
+$$f_X(x)= \int\limits_{\mathbb R}f(x,y)dy, \ \ \ \ f_Y(y)= \int\limits_{\mathbb R}f(x,y)dx $$
+São as densidades marginais de X e Y, respectivamente. 
+\end{itemize}
+\end{enumerate}
+\underline{Definição:} As variaveis aleatorias $X_1,\ldots,X_n$ são independentes, se:
+$$F_{X_1,\ldots,X_n}(x_1,\ldots,x_n)=F_{X_1}(x_1)\cdots F_{X_n}(x_n), \ \ \ \forall
+\bm x\in \mathbb R^n$$
+Em particular:\\
+\begin{itemize}
+	\item $X_1,\ldots,Xn $ discretas  são independentes, se:\\
+	 $$P(X_1=x_1,\ldots,X_n=x_n)=P(X_1=x_1)\cdots P(X_n=x_n)$$
+	 \item \item $X_1,\ldots,Xn $ abs continuas  são independentes, se:\\
+	 $$f_{\bm X}(\bm x)= f_{X_1}(x_1)\cdots f_{X_n}(x_n) $$
+\end{itemize}
+\newpage
+\section{24/04}
+$$ 
+X\sim N(\mu,\sigma^2)\Leftrightarrow f(x) = \frac{1}{(2\pi)^{\frac{1}{2} }(\sigma^2)^\frac{1}{2}}\exp \bigg\{- \frac{1}{2}\bigg(
+\frac{x-\mu}{\sigma}
+\bigg)^2\bigg\}$$
+$$
+=
+\frac{1}{(2\pi)^{\frac{1}{2} }(\sigma^2)^\frac{1}{2}}
+\exp \bigg\{- \frac{1}{2}\
+(x-\mu)'(\sigma^2)^{-1}(x- \mu)
+\bigg\}
+$$
+
+$$
+\bm X = (X_1,\ldots,X_n) \Leftrightarrow f(\bm x) = 
+\frac{1}{(2\pi)^{\frac{n}{2} }|\Sigma|^\frac{n}{2}}
+\exp \bigg\{- \frac{1}{2}\
+(\bm x-\mu)'(\sigma^2)^{-1}(\bm x- \mu)
+\bigg\}
+$$
+
+$$\bm X \sim N(\mu,\Sigma) $$
+
+$$\bm X = (X,Y)\sim N(\mu,\Sigma), \ \ \ \mu=(\mu_1,\mu_2), \ \ \ \Sigma = \begin{bmatrix}
+\sigma_1^2 & \sigma_{21}\\
+\sigma_{21} & \sigma_2^2
+\end{bmatrix} $$
+
+$$f(x,y) = 
+\frac{1}{2\pi \sigma_1\sigma_2(1-\rho_{12})^2}
+\exp\bigg\{
+\frac{1}{2(1-\rho_{12})^2}\bigg[
+\bigg(
+\frac{x-\mu_1}{\sigma_1}
+\bigg)^2
+-
+2\rho_{12}
+\bigg(
+\frac{x-\mu_1}{\sigma_1}
+\bigg)
+\bigg(
+\frac{y-\mu_2}{\sigma_2}
+\bigg)
++
+\bigg(
+\frac{y-\mu_2}{\sigma_2}
+\bigg)^2
+\bigg]
+\bigg\}
+ $$
+ 
+ 
+ $$
+ f(x) =\int\limits_{-\infty}^{\infty}  f(x,y)dy= \frac{1}{(2\pi)^{\frac{1}{2} }(\sigma^2)^\frac{1}{2}}\exp \bigg\{- \frac{1}{2}\bigg(
+ \frac{x-\mu}{\sigma}
+ \bigg)^2\bigg\}$$
+$$
+ f(y) =\int\limits_{-\infty}^{\infty}  f(x,y)dx= \frac{1}{(2\pi)^{\frac{1}{2} }(\sigma^2)^\frac{1}{2}}\exp \bigg\{- \frac{1}{2}\bigg(
+\frac{y-\mu}{\sigma}
+\bigg)^2\bigg\}$$
+
+$$\rho_{12}=\frac{\sigma_{12}}{\sigma_1\sigma_2} $$
+
+$$\therefore \bm X\sim N(\mu,\Sigma)\underbrace{\Rightarrow}_{\Leftarrow \ valido,  \ \ \rho=0} X_i \sim N(\mu_i,\sigma^2_i),\ \ i=1,\ldots,n $$
+
+Por outro lado, correlação nula $\not\Rightarrow$ variáveis aleatórios (componentes) são independentes  \\
+\\
+
+
+
+
+
+
+\newpage
+\underline{Função de distribuição multivariada }\\
+\underline{Definição:} Uma função de distribuição $F:\mathbb R^n \longrightarrow[0,1]$ é uma função de distribuição n-dimensional, se satisfaz:
+\begin{enumerate}[label=\roman*)]
+	\item F é não decrescente em cada componente;
+	$$\forall x,y,\in \mathbb R, x<y\Rightarrow 
+	F(x_1,\ldots,x,\ldots,x_n)\le 	F(x_1,\ldots,y,\ldots,x_n)
+	 $$
+	 \item F é contínua á direita em cada componente;
+
+Dada $y_n\downarrow y$,
+$$\lim\limits_{n\rightarrow \infty} F(x_1,\ldots,y_n,\ldots,x_n)= 	F(x_1,\ldots,y,\ldots,x_n) $$
+\item 
+$$\lim\limits_{x_i\rightarrow \infty} F(x_1,\ldots,x_k,\ldots,x_n)=1, \ \ \ \ i=1,\ldots,n $$
+e
+$$\lim\limits_{para \ algum \ x_i\rightarrow- \infty} F(x_1,\ldots,y_n,\ldots,x_n=0)$$
+\item  $\forall$ retângulo de $\mathbb R^n$, $(a,b ] =  (a,b ]\times\ldots\times (a_n,b_n ]$, $Vol_F\bigg(
+ (a,b ]
+\bigg)\ge 0 $
+
+$$Vol_F\bigg(
+(a,b ]
+\bigg) =  \Delta^{b_n}_{a_n}\ldots\Delta^{b_1}_{a_1}F(t_1,\ldots,t_n)$$
+Com
+$$\Delta^{b_k}_{a_k}F(t_1,\ldots,t_n)=F(t_1,\ldots,b_k,\ldots,t_n) -F(t_1,\ldots,a_k,\ldots,t_n)  $$
+Para n=2:
+
+$$Vol_F\bigg((a,b]\bigg)=Vol_F\bigg(
+(a_1,b_1]\times(a_2,b_2]
+\bigg)=\Delta^{b_2}_{a_2}\Delta^{b_1}_{a_1}F(t_1,t_2) $$
+
+$$Vol_F\bigg(
+(a_1,b_1]\times(a_2,b_2]
+\bigg)=\Delta^{b_2}_{a_2}\bigg[
+F(b_1,t_2)-F(a_1,t_2)
+\bigg] 
+$$
+$$
+=
+F(b_1,b_2)-F(b_1,a_2)-F(a_1,b_2)+F(a_1,a_2)\ge 0
+$$
+\newpage
+\underline{Proposição:}\\
+\\
+Seja $\bm X=(X_1,\ldots,X_n):\Omega \longrightarrow \mathbb R^n$ um vetor aleatório. Então 
+$F_{\bm X} :\mathbb R^n \longrightarrow [0,1]$ definida por:
+$$F_{\bm X}(\bm x)= P\bigg(\bm X^{-1}\bigg((-\infty,\bm x]\bigg) \bigg), \forall \bm x\in \mathbb R $$
+$$=P\bigg(\bm X \in (-\infty,\bm x]\bigg) =P(\bm X\le \bm x)  $$
+É função de distribuição n-variada.\\
+\\
+\underline{Prova}:
+$$F_{\bm X}(\bm x)=F_{\bm X}(x_1,\ldots,x_n)
+=P(
+X_1\in (-\infty,x_1],
+\ldots,
+X_n\in (-\infty,x_n]
+) $$
+Provar seguindo prova para o caso n=1
+
+$$Vol_F\bigg(
+(a,b]
+\bigg)=
+\Delta^{bn}_{an}\ldots\Delta_{a_1}^{b_1}F(t_1,\ldots,t_n)=P(a_1<X_1\le b_1,\ldots,a_n<X_n\le b_n) \ge 0$$
+$$Vol_F\bigg(
+(a,b]
+\bigg)
+=
+P(a_1<X_1\le b_1,a_2<X_2\le b_2)
+ $$
+ 
+ $$
+ =P(X_1\le b_1,a_2,X_2\le b_2) - P(X_1\le a_1,a_2<X_2\le b_2)
+ $$
+ 
+
+
+
+\end{enumerate}
+	
+	
+	\newpage
+	\section{29/04}
+	\underline{Função de Vetor Aleatório}
+	Seja $\bm X = (X_1,\ldots X_n)$ um vetor aleatório definido em $(\Omega,\mathscr{A},P)$ \\
+	Então: 
+	$$\underset{\bm X^{-1}\bigg(g^{-1}(B)\bigg)\in \mathscr A }{\Omega} \overset{\bm X}{\longrightarrow}  
+	\underset{g^{-1}(B)\in \mathscr{B}(\mathbb{R}^n) }{\mathbb R^n}
+	\overset{g}{\longrightarrow} 
+	\underset{B \in \mathscr{B}(\mathbb{R}) }{\mathbb R}
+	 $$
+	$$Z=g(\bm X) $$
+	Se $g:\mathbb R^n \rightarrow \mathbb R$ é Borel mensurável,\\
+	\\
+	$Z=g(\bm X): \Omega\longrightarrow\mathbb R$ é uma variável aleatória, Então:\\
+	\\
+	$$\forall B \in \mathscr{B}(\mathbb{R}),  $$
+	$$Z^{-1}(B)=[Z\in B] $$
+$$=\bm X^{-1}\bigg(g^{-1}(B)\bigg) $$
+$$=[\bm X \in g^{-1}(B)] $$
+Assim, 
+$$P\bigg(Z^{-1}(B)\bigg)=P(Z\in B)=P\bigg(\bm X \in g^{-1}(B) \bigg) $$
+$\forall B\in \mathscr{B}(\mathbb{R}) $ é f.d.a de Z\\
+\\
+\underline{Casos Particulares}\\
+\begin{enumerate}[label=\arabic*)]
+	\item $\bm X$ é discreto $\Rightarrow Z=g(\bm X)$ discreto.
+	
+	$$P(Z\in B) = P\bigg(\bm X \in g^{-1}(B)\bigg) $$
+	$$=\sum\limits_{\bm x_i: g(\bm x_i)\in B} P(\bm X=\bm x_i) $$
+	Também:\\
+	\\
+	f.p. :
+	$$P(Z=z)=\sum\limits_{\bm x_i=g(\bm x_i)=z} P(\bm X = \bm x_i) $$
+	
+	\item $\bm X$ absolutamente contínuo $   \Rightarrow Z= g(\bm X)\begin{cases}
+		Discreta\\
+		Continua
+	\end{cases}$
+	$$
+	P(Z \in B) = P\bigg(\bm X \in g^{-1}(B)\bigg)	$$
+	$$= \int\limits_{\bm x: g(\bm x\in B} f_{\bm X}(\bm x)dx \overset{\bm X =(X,Y)}{=}
+	\int\limits_{(x,y):g(x,y)\in B}f_{(X,Y)}(x,y)dxdy
+	$$
+	
+
+	
+\end{enumerate}
+	\underline{Método do Jacobiano} (Teorema da função Implícita)\\
+	\\
+	$
+	h:\begin{cases}
+	\mu = x\\
+	v=g(x,y), \ \ \ \ v=z
+	\end{cases}
+	$
+	\\
+	\\
+	Se as derivadas parciais de $\mu$ e $v$ existem, são contínuas e 
+	$$
+	|J(x,y)| = \bigg|\begin{pmatrix}
+	\frac{\partial\mu}{\partial x} & \frac{\partial\mu}{\partial y}\\
+	\frac{\partial v}{\partial x}   & \frac{\partial v}{\partial y} 
+	\end{pmatrix}\bigg|
+	$$
+	Então pelo Teorema da função Implícita existe $h^{-1}$ e:
+	
+	$$
+	h^{-1}:\begin{cases}
+	x=\mu\\
+	y=y(\mu,v)
+	\end{cases}
+	\Rightarrow
+	\begin{cases}
+	dx=d\mu\\
+	dy = dh^{-1}(\mu,v)\\
+	dy=\frac{1}{J(\mu,v)}dv
+	\end{cases}
+	 $$
+	Logo,
+	$$P(Z\le z)= 
+	\iint\limits_{\{(x,y): g(x,y)\le z \}}
+	f_{X,Y}(x,y)dxdy
+	 $$
+	 $$
+	 =\int\limits_{-\infty}^{z}\bigg[\int\limits_{-\infty}^{\infty}f_{X,Y}\bigg(\mu,y(\mu,v\bigg)d\mu\bigg] \bigg|\frac{1}{J(\mu,v)}\bigg|dv
+	 $$
+	 
+	 $$
+	\therefore F_Z(z)=P(Z\le z)	= \int\limits_{-\infty}^{z}\bigg[\int\limits_{-\infty}^{\infty}f_{X,Y}\bigg(\mu,y(\mu,v\bigg)d\mu \bigg|\frac{1}{J(\mu,v)}\bigg|\bigg]dv
+	 $$
+	 
+	 $$
+	 \Rightarrow F_Z'(v) = \int\limits_{-\infty}^{\infty}f_{X,Y}\bigg(\mu,y(\mu,v)\bigg)
+	 \frac{1}{|J(\mu,v)|}d\mu=f_Z(v), \indent v=z=g(x,y)
+	 $$
+	
+	\newpage
+	
+	\underline{Exemplo}:\\
+	\\
+	Sejam $X,Y$ i.i.d $U(0,1)$. Determine a densidade de $Z=\frac{X}{Y}$\\
+	\\
+	\underline{Solução}:\\
+	Defina:\\
+	\\
+	$h:
+	\begin{cases}
+		u=x\\
+		v=\frac{x}{y}, \indent v=z
+	\end{cases} 
+	$\\
+	\\
+	$J(x,y)=\begin{pmatrix}
+	1 & 0\\
+	\frac{1}{y} & \frac{-x}{y^2}
+	\end{pmatrix}
+	,
+	\indent |J(x,y)| = \frac{-x}{y^2}\ne 0
+	$
+	\\
+	\\
+	$
+	h^{-1}:\begin{cases}
+	x=u
+	y=\frac{u}{v}
+	\end{cases}
+	$\\
+	
+	$
+	\frac{1}{J(\mu,v)}=\begin{pmatrix}
+	1 & 0\\
+	\frac{1}{v} & -\frac{u}{v^2}
+	\end{pmatrix} = -\frac{u}{v^2}
+	$
+	\\
+	$$\Rightarrow f_Z(v)= \int\limits_{-\infty}^{\infty}f_{X,Y}\bigg(u,\frac{u}{v}\bigg)  \frac{|u|}{v^2}du$$
+	$$=\int\limits_{-\infty}^{\infty}f_X(u)\cdot f_Y\bigg(\frac{u}{v}\bigg)   \frac{|u|}{v^2}du$$
+	$$f_Y\bigg(\frac{u}{v}\bigg) = \begin{cases}
+	1, \indent 0<\frac{u}{v}<1 \Leftrightarrow 0<u<v\\
+	0, \indent c.c.
+	\end{cases} $$
+	
+	$$v<0 \Rightarrow f_Z(v)=0 $$
+	
+	$$0<v<1\Rightarrow f_Z(v) = \int\limits_{-0}^{v} 1\cdot 1 \frac{u}{v^2} du = \frac{1}{v^2}\bigg(\frac{u^2}{2}\bigg)\bigg|_0^v=\frac{1}{2}$$
+	
+	$$v\ge 1 \Rightarrow f_Z(v) = \int\limits_{0}^{1} 1\cdot 1 \frac{u}{v^2}du = \frac{1}{2v^2}$$
+	
+	$$\therefore f_Z(v)=\begin{cases}
+	0,\indent v<0\\
+	\frac{1}{2 } \indent 0\le v<1\\
+	\frac{1}{2v^2},\indent v\ge 1
+	\end{cases} $$
+	\newpage
+	\underline{Exercício}:
+	$$X\sim N(0,1),\indent Y\sim \chi^2_{(n)} $$
+	Determina a densidade de $Z=\frac{X}{\sqrt{\frac{Y}{n}}}$ 
+	
+	\newpage 
+	\section*{Questão 7 - Item e (Lista 5) }
+	$$f(x)=\bigg(4x^3 -\frac{5}{x^3}+\sqrt x \bigg)
+	\bigg(
+	\frac{3}{x} - 4x+6
+	\bigg)
+	$$
+	
+	$$f'(x) = \bigg(4x^3 -\frac{5}{x^3}+\sqrt x\bigg)'\cdot 	\bigg(
+	\frac{3}{x} - 4x+6
+	\bigg)	
+	+
+		\bigg(
+	\frac{3}{x} - 4x+6
+	\bigg)'\cdot
+	\bigg(4x^3 -\frac{5}{x^3}+\sqrt x\bigg) $$
+
+	$$ 
+		(1)\indent  \bigg(4x^3 -\frac{5}{x^3}+\sqrt x\bigg)' = 12x^2 +\frac{15}{x^4} + \frac{1}{2\sqrt x}
+	$$
+	
+	$$
+	(2)\indent 	\bigg(
+	\frac{3}{x} - 4x+6
+	\bigg)' = \frac{-3}{x^2}- 4
+	$$
+	
+	
+	\begin{center}Substituindo: \end{center}
+	$$f'(x) = \bigg(
+	12x^2 +\frac{15}{x^4} + \frac{1}{2\sqrt x}
+	\bigg)
+	\cdot 
+	\bigg(
+	\frac{3}{x} - 4x+6
+	\bigg)	
+	+
+	\bigg(
+	 \frac{-3}{x^2}- 4
+	\bigg)
+	\cdot 
+	\bigg(4x^3 -\frac{5}{x^3}+\sqrt x\bigg)
+	 $$
+	 
+	 \newpage
+	 	\section*{Questão 7 - Item c (Lista 5) }
+	 $$f(x)=\frac{\sqrt x}{x^2 - 2x} $$
+	 $$f'(x) = 
+	 \frac{
+	\bigg(\sqrt x\bigg)'\bigg(x^2-2x\bigg) - \bigg(x^2-2x\bigg)'\bigg(\sqrt x\bigg) 
+ }{\bigg(x^2-2x\bigg)^2}
+	  $$
+	  
+	  $$ 
+	  (1)\indent (\sqrt x)' = \frac{1}{2\sqrt x}
+	  $$
+	  
+	  $$
+	  (2)\indent (x^2-2x)' = 2x-2=(x-1)2
+	  $$
+	  \begin{center}Substituindo:\end{center}
+	  $$
+	  f'(x)=\frac{
+	  	\frac{x^2-2x}{2\sqrt x}	  
+	  	- (2x-2)\sqrt x 
+  }{\bigg(x^2-2x\bigg)^2}
+	  $$
+	 \begin{center} Utilizando o MMC: \end{center}
+	 	  $$
+	 f'(x)=\frac{
+	 	\frac{x^2-2x}{2\sqrt x}	  
+	 	- (x-1)2\sqrt x \bigg(\frac{2\sqrt x}{2\sqrt x}\bigg)
+	 }{\bigg(x^2-2x\bigg)^2}
+ =
+\frac{
+ 	\frac{x^2-2x}{2\sqrt x}	  
+ 	-  \frac{(x-1)4x}{2\sqrt x}
+ }{\bigg(x^2-2x\bigg)^2}
+ =
+\frac{
+	\frac{x^2-2x}{2\sqrt x}	  
+	-  \frac{4x^2-4x}{2\sqrt x}
+}{\bigg(x^2-2x\bigg)^2}
+=
+\frac{
+	\frac{-3x^2+2x}{2\sqrt x}	  
+}{\bigg(x^2-2x\bigg)^2}
+	 $$
+	
+	\newpage
+	
+	(X,Y) vetor aleatório $g(X,Y)=Z$, $g:\mathbb R^2\rightarrow \mathbb R$
+	
+	$$f_Z(v)= \int\limits_{\mathbb R} f_{X,Y}(u,y(u,v))\bigg|\frac{1}{J(u,v)}\bigg|du $$
+	$g:\begin{cases}
+	u=x\\
+	v=g(u,y)
+	\end{cases}
+	\Rightarrow det\bigg(J(x,y)\bigg)\ne 0 \bigg(J_h(u,v)=\frac{1}{J(u,v)}\bigg)
+	$
+	
+	$$\exists g^{1}h:\begin{cases}
+	x=u\\
+	y=y(u,v)
+	\end{cases} 
+	\Rightarrow 
+	\frac{1}{J(u,v)}=det\begin{pmatrix}
+	\frac{\partial x}{\partial u}& \frac{\partial x}{\partial v}  \\
+		\frac{\partial y}{\partial u}& \frac{\partial y}{\partial v}  
+	\end{pmatrix}=J_h(u,v)
+	$$
+	\newpage
+	\underline{Vetor aleatório de vetor aleatório}
+	
+	$$\Omega  \overset{\bm X}{\longrightarrow}  
+\underset{g^{-1}(B)\in \mathscr{B}(\mathbb{R}^n) }{\mathbb R^n}
+\overset{\bm g}{\longrightarrow} 
+\underset{B \in \mathscr{B}(\mathbb{R}) }{\mathbb R^n}
+$$
+	$$\bm Z = g(\bm X), \indent \bm Z = g(\bm X)= \bigg(
+	g_1(X_1),\ldots,g_n( X_n)
+	\bigg)$$
+	
+	\begin{enumerate}
+		\item \underline{$\bm X$ abs. cont. e g inversível}
+		Defina
+		$$ g:
+		\begin{cases}
+		z_1=g_1(x_1,\ldots,x_n)\\
+		\vdots\\
+		z_n = g_n(x_1,\ldots,x_n)
+		\end{cases}
+		$$
+		Se $$
+		det(J(x_1,\ldots,x_n))=det\begin{pmatrix}
+			\frac{\partial x}{\partial u}&\ldots &\frac{\partial x}{\partial v}  \\
+			\vdots & &\vdots\\
+			\frac{\partial y}{\partial u}&\ldots & \frac{\partial y}{\partial v}  
+			\end{pmatrix}\ne 0$$
+			e as derivadas são contínuas, então existe $g^{-1}$,
+			$$h=g^{-1}:\begin{cases}
+			x_1=h_1(z_1,\ldots,z_n)\\
+			\vdots\\
+						x_n=h_n(z_1,\ldots,z_n)\\
+			
+			\end{cases} $$
+			e
+$$J_h(z_1,\ldots,z_n)=
+det\begin{pmatrix}
+\frac{\partial x}{\partial u}&\ldots &\frac{\partial x}{\partial v}  \\
+\vdots & &\vdots\\
+\frac{\partial y}{\partial u}&\ldots & \frac{\partial y}{\partial v}  
+\end{pmatrix}
+ $$
+ Daí
+ $$f_{Z'}(z')=f_{X'}\bigg(h_1(z_1,\ldots,z_n),\ldots,h_n(z_1,\ldots,z_n)\bigg)\bigg|
+ J_h(z_1,\ldots,z_n)
+ \bigg| $$
+			Note que para n=2:
+			$$f_{Z_1,Z_2}(z_1,z_2)=
+			f_{X_1,X_2}\bigg(
+			h_1(z_1,z_2),h_2(z_1,z_2)
+			\bigg)\bigg|
+			J_h(z_1,z_2)
+			\bigg|
+			 $$
+			$$\Rightarrow
+			f_{Z_1}(z_1)= \int\limits_{\mathbb R} f_{X_1,X_2}(h_1,h_2)\cdot \bigg|
+			J_h(z_1,z_2)
+			\bigg|dz_2
+			 $$
+			 
+			 $$
+			 			f_{Z_2}(z_2)= \int\limits_{\mathbb R} f_{X_1,X_2}(h_1,h_2)\cdot \bigg|
+			 J_h(z_1,z_2)
+			 \bigg|dz_1
+			 $$
+			 
+			 Em geral, tem-se que:
+			 
+			 $$F_{\bm Z}(\bm z)=P(\bm Z\le\bm  z) = \int\cdots\int  f_{\bm X}\bigg(
+			 h_1(t_1,\ldots,t_n),\ldots,h_n(t_1,\ldots,t_n)
+			 \bigg)
+			 \bigg|
+			 J_h(t_1,\ldots,t_n)
+			 \bigg|d\bm t
+			 $$
+			 $$\bm t=(t_1,\ldots,t_n),\indent \bm z=(z_1,\ldots,z_n) $$
+			 \newpage
+			 \underline{Exemplo}:\\
+			 \\
+			 Considere (X,Y) com fdp conjunta
+			 $$f(x,y)= \begin{cases}
+			 \frac{1}{x^2y^2}, \ \ \ \ x\ge1,y\ge 1\\
+			 0, \ \ \ c.c.
+			 \end{cases} $$
+			 Sema $Z_1=X\cdot Y$ e $Z_2=\frac{X}{Y}$
+			 \begin{enumerate}
+			 	\item Determine a f.d.p conjunta de $Z_1$ e $Z_2$
+			 	\item Determine a densidade de $X\cdot Y=Z_1$
+			 \end{enumerate}
+		 \underline{Sol}:
+		 $$ 
+		 g:\begin{cases}
+		 z_1=x\cdot y\\
+		 z_2=\frac{x}{y}
+		 \end{cases}
+		 \Rightarrow
+		 det\bigg(J(x,y)\bigg)=det\begin{pmatrix}
+		 y & x\\
+		 \frac{1}{y} & -\frac{x}{2y}
+		 \end{pmatrix}=-\frac{2x}{y}\ne 0
+		 $$
+		 
+		 	 $$ 
+		 g^{-1}=h:\begin{cases}
+		 x=(z_1\cdot z_2)^{\frac{1}{2}}\\
+		 y=\frac{z_1}{z_2}^\frac{1}{2}
+		 \end{cases}
+		 \Rightarrow
+		 det\bigg(J(x,y)\bigg)=det\begin{pmatrix}
+		 \frac{1}{2}(z_1\cdot z_2)^{-\frac{1}{2}}z_2 &  \frac{1}{2}(z_1\cdot z_2)^{-\frac{1}{2}}z_1\\
+		 \frac{1}{2}\bigg(\frac{z_1}{z_2}\bigg)^{-\frac{1}{2}}\frac{1}{z_1} & \frac{1}{2}\bigg(\frac{z_1}{z_2}\bigg)^{-\frac{1}{2}}\frac{-z_1}{z_2} 
+		 \end{pmatrix}
+		 $$
+		 $$=-\frac{1}{4z_2}-\frac{1}{4z_2}=\frac{1}{2z_2} $$
+		 $$\Rightarrow det\bigg(
+		 J(z_1,z_2)=-\frac{1}{2z_2}
+		 \bigg) $$
+		 Daí
+		 
+		 \begin{enumerate}[label=\alph*)]
+		 	\item 
+		 	$$f_{Z_1,Z_2}(z_1,z_2)= \begin{cases}
+		 	\frac{1}{2z_1^2\cdot z_2}, \ \ \ \ \frac{1}{z_1}\le z_2\le z_1, \ \ z_1 \ge 1\\
+		 	0,c.c
+		 	\end{cases} $$
+		 	$f_{Z_1,Z_2}(z_1,z_2)=f_{X,Y}\bigg(
+		 	(z_1\cdot z_2)^{\frac{1}{2}},\bigg(\frac{z_1}{z_2}\bigg)^{\frac{1}{2}}
+		 	\bigg)\cdot \bigg|
+		 	\frac{-1}{2z_2}
+		 	\bigg|$,
+		 	\\
+		 	\\
+	
+	$z_1\ge 1$, pois $x,y,\ge1$, $z_2=\frac{x}{y}$
+	\item 
+	$$f_{Z_1}(z_1)= \int\limits_{-\infty}^{\infty}f_{X,Y}\bigg(
+	(z_1\cdot z_2)^{\frac{1}{2}},\bigg(\frac{z_1}{z_2}\bigg)^{\frac{1}{2}}
+	\bigg)\cdot 
+	\frac{1}{2z_2}dz_2
+$$
+$$
+=\int\limits_{\frac{1}{z_1}}^{z_1} \bigg(
+	\frac{z_2}{z_1z_2z_1}
+	\bigg)
+	\bigg(
+	\frac{1}{2z_2}
+	\bigg)
+	dz_2=\frac{1}{2z_1^2}\int\limits_{\frac{1}{z_1}}^{z_1}\frac{1}{z_2}dz_2
+$$
+$$\Rightarrow f_{X\cdot Y}(z_1)= \frac{1}{2z_1^2}\bigg[ln(z_1)-ln(\frac{1}{z_1})\bigg] $$
+$$\Rightarrow f_{X\cdot Y}(z_1)= \frac{1}{z_1^2}ln(z_1), \ \ \ z_1\ge 1 $$
+		 \end{enumerate}
+		 \item $\bm X$ abs cont. e g qualquer (não inversível)
+		 $$ \bm Z=g(\bm X) \rightarrow f_{\bm Z} $$
+		 
+	\end{enumerate}
+\end{document}
