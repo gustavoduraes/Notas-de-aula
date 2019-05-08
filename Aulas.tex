@@ -1929,4 +1929,185 @@ $$\Rightarrow f_{X\cdot Y}(z_1)= \frac{1}{z_1^2}ln(z_1), \ \ \ z_1\ge 1 $$
 		 $$ \bm Z=g(\bm X) \rightarrow f_{\bm Z} $$
 		 
 	\end{enumerate}
+
+
+
+\newpage 
+
+\section*{08/05}
+\underline{Esperança}\\
+\\
+* Revisão (Integral de Riemann-Stiles)\\
+\\
+Seja $F:\mathbb R \longrightarrow \mathbb R$ f.d.a e $\phi: [a,b]\longrightarrow \mathbb R$ uma função borel-mensurável. A integral de R-S de $\varphi$ com respeito a F é definida por:
+
+$$\int\limits_a^b \varphi(x)dF(x)
+:= \lim\limits_{||\tau||} \sum\limits_i \varphi(y_i)[F(x_i)-F(x_i-1)]
+ $$
+ Sendo a partição de [a,b]
+ 
+ $$=[x_1,x_2]\cup\cdots\cup[x_{n-1},x_n] $$
+ 
+ $$\tau = \underset{1\le i\le n}{max} \{x_i-x_{i-1}\} \ \ e \ \ y_i \in [x_{i-1},x_i], \ i=1,\ldots,n$$
+ Note que:
+ $$F(x)=x $$
+ Então
+ $I=\int\limits_a^b \varphi(x)dx =\lim\limits_{||\tau||} \sum\limits_i \varphi(y_i)\Delta_{x_i}$ \bigg(
+ Integral de Riemann
+ \bigg)\\
+\newpage 
+ \underline{Integral de Lebesgue-Stieltjes}\\
+ \\
+ Seja:\\
+ \\
+ 
+$I = \int\limits_a^b \varphi(x)dF(x)$ Integral de R-S\\
+\\
+Resultado (Theorema de Caratheodory) \\
+\\
+Dada uma f.d. F, existe uma medida de probabilidade
+$p_F: \mathscr A \longrightarrow [0,1] $ t.q.
+
+$$F(x) = p_F\bigg((-\infty,x]\bigg) $$
+em que $\mathscr A$  é $\sigma$-algebra do espaço amostral $\Omega$\\
+\\
+Utilizando o resultado anterior, tem-se que:
+
+$$\int\limits_a^b \varphi(x)dF(x)= \int\limits_{\Omega} \varphi d\underbrace{p_F}_{medida \ de \ probabilidade} 
+\ \ \ \bigg(Integral \ de \ Lebesgue-Stieltjes \bigg)
+$$
+
+\newpage 
+
+\underline{Propriedade da integral de R-S}\\
+\\
+
+\begin{enumerate}[label=\arabic*)]
+	\item  $$\int\limits_a^b c\varphi(x)dx = \lim\limits_{||\tau||}\sum\limits_{i=1}^n c\varphi(y_i)[F(x_i)-F(x_i-1)] $$
+	$$ c\int\limits_a^b \varphi(x)dx = \lim\limits_{||\tau||}\sum\limits_{i=1}^n c\varphi(y_i)[F(x_i)-F(x_i-1)] $$
+		$$=c\int\limits_a^b \varphi(x)dF(x)$$
+		\item 
+		$$ 
+		\int\limits_a^b[\alpha \varphi_1(x)+ \beta \varphi_2(x)]dF(x)
+		$$
+				$$ 
+		=\alpha \int\limits_a^b\varphi_1(x)dF(x)+ \beta  \int\limits_a^b\varphi_2(x)dF(x)
+		$$
+		
+		\item $F$ fx
+		\begin{itemize}
+			\item F discreta com descontinuidade $\{x_1,x_2,\ldots,x_n\}$, Então:
+			$$\int\limits_a^b \varphi(x)dF(x) = \sum\limits_{i=1}^{n} \varphi(x_i)[F(x_i)-F(x_i-1)] $$
+			$$= \sum\limits_{i=1}^{n}\varphi(x_i)b_{x_i} $$
+			Se X é uma variável aleatória tal que $X\sim F$, então
+			$$\int\limits_a^b \varphi(x)dF(x) = \sum\limits_{i=1}^{n}\varphi(x_i)P(X=x_i)$$
+			\item F absolutamente contínua com f.d.p f, então:
+			$$\int\limits_a^b \varphi(x)dF(x)= \int\limits_a^b \varphi(x) f(x)dx $$
+			
+			\item $F=F_d +F_{ac} + F_S$
+			$$ \int\limits_a^b \varphi(x)dF(x)= \sum\limits_{x_i \ desc. de F}\varphi(x_i)b_{x_i} + 
+			\int\limits_a^b \varphi(x) f(x)dx 
+			$$
+		\end{itemize} 
+	\newpage 
+	\underline{Definição de Esperança}:
+	Seja X uma variável aleatória definida sob o espaço de probabilidade $(\Omega,\mathscr{A},P)$ e F dua f.d.a.
+	
+	Seja $\varphi:\mathbb R\longrightarrow \mathbb R$ uma função Borel mensurável. A esperança de $\varphi(x)$ é definida por:
+	
+	$$E\bigg(\varphi(x)\bigg) =\int\limits_{\mathbb R} \varphi(x)dF(x) $$
+	Sempre que ela \underline{existir}
+	
+	
+	\underline{Obs:}
+	$$E\bigg(\varphi(x)\bigg) =\int\limits_{-\infty}^{\infty} \varphi(x)dF(x) 
+	=
+	\underbrace{\int\limits_{-\infty}^{a} \varphi(x)dF(x) }_{(1)}
+	+
+	\underbrace{\int\limits_{a}^{\infty} \varphi(x)dF(x) }_{(2)}
+	$$
+	Existe, se:
+	\begin{itemize}
+		\item $(1)<\infty$ , $(2) < \infty \Rightarrow E\bigg(\varphi(x)\bigg)<\infty$
+		
+				\item $(1)=-\infty$ , $(2) < \infty \Rightarrow E\bigg(\varphi(x)\bigg)=-\infty$
+				
+						\item $(1)<\infty$, $(2) =+ \infty \Rightarrow E\bigg(\varphi(x)\bigg)=+\infty$
+		
+	\end{itemize}
+	
+\end{enumerate}
+\newpage 
+\underline{Exemplo}:\\
+\\
+X v.a.
+$$E(X) = \int\limits_{\mathbb R }x dF(x)= \begin{cases}
+\sum\limits_i x_iP(X=x_i), \ \ \ \ X \ dicreto\\
+ \int\limits_{\mathbb R }x f(x)dx, \ \ \ \ X \ absolutamente \ continuo\\
+\end{cases}
+ $$
+
+$$E(X^k) = \int\limits_{\mathbb R} x^k dF(x)= \begin{cases}
+\sum\limits_i x_i^kP(X=x_i), \ \ \ \ X \ dicreto\\
+\int\limits_{\mathbb R }x^k f(x)dx, \ \ \ \ X \ absolutamente \ continuo\\
+\end{cases} $$
+
+$$var(X) = E\bigg(X - E(X)\bigg)^2 $$
+\underline{Exercícios}\\
+\\
+Calculdae a esperança e variância, se existir, de:
+\begin{enumerate}[label = \arabic*)]
+	\item $$X\sim Cauchy(1), \ \ f(x) = \frac{1}{(1+x)^2\pi}, \ x\in \mathbb R $$
+	
+	\item $$X\sim N(\mu,\sigma^2) $$
+	
+	\item $$X\sim Gamma(\alpha,\beta) $$
+	\item $$X\sim Weibull(\alpha,\beta) $$
+	\item $$X\sim t_{(n)} $$
+	
+	
+\end{enumerate}
+
+\newpage 
+
+\underline{Exemplo}:
+
+$$X\sim Exp(\lambda), \ \ \ \ Z=min\{X,Y\} $$
+$$E(Z)=\int min\{X,\lambda\}f_X(x)dx 
+= \int\limits_{0}^{\infty} min\{X,\lambda\}\lambda e^{-\lambda x}dx
+$$
+
+$$= \int\limits_{0}^{\lambda}x\lambda e^{-\lambda x}dx +
+\int\limits_{\lambda}^{\infty} \lambda\cdot \lambda e^{-\lambda x}dx
+$$
+
+$$
+= \bigg(-xe^{-\lambda x} \bigg)\bigg|_0^\lambda + \int\limits_0^\lambda e^{-\lambda x}dx +\lambda \bigg(
+-e^{-\lambda x}
+\bigg)\bigg|_\lambda^{+\infty}
+$$
+
+$$
+= -\lambda e^{-\lambda^2} - \frac{1}{\lambda}\bigg(e^{-\lambda^2}-1\bigg) + \lambda e^{-\lambda^2} 
+$$
+
+$$
+=\frac{1}{\lambda}\bigg(1-e^{-\lambda^2}\bigg)
+$$
+\underline{Proposição}:\\
+\\
+X é uma variável aleatória definida em $(\Omega,\mathscr{A},P)$, Então:
+
+$$E\bigg(\varphi(x)\bigg) = \int\limits_0^\infty P(\varphi(X)>x)dx- \int\limits_{-\infty }^0 P(\varphi(X)\le x)dx $$
+
+\underline{Obs:}
+
+\begin{enumerate}[label=\arabic*)]
+	\item  X discreta com valores inteiros:,
+	
+	$$E(X) = \sum\limits_{k=0}^{\infty} P(X>k) \Leftrightarrow E(X) =
+	 \sum\limits_{k=0}^{\infty} kP(X=k) 
+	$$
+	
+\end{enumerate}
 \end{document}
