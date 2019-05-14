@@ -2109,5 +2109,137 @@ $$E\bigg(\varphi(x)\bigg) = \int\limits_0^\infty P(\varphi(X)>x)dx- \int\limits_
 	 \sum\limits_{k=0}^{\infty} kP(X=k) 
 	$$
 	
+	
 \end{enumerate}
+\newpage
+\section{13/05}
+$$\int\limits_{0}^{\infty} x^{a-1} e^{-bx^c}dx = \frac{\Gamma\bigg(\frac{a}{c}\bigg)}{c(b)^{\frac{a}{c}}} $$
+\underline{Exemplo}:
+$$X\sim Exp(p) $$
+$$E(X) = \int\limits_{0}^{\infty} P(X>x)dx  = \int\limits_x^{\infty} e^{-\beta x}dx$$
+$$=\bigg(
+-\frac{1}{\beta} e^{-\beta x}
+\bigg)\bigg|_{0}^{\infty} $$
+$$E(X^2) = \int\limits_0^\infty P(X^2>x)dx
+=
+\int\limits_0^\infty P(X>\sqrt x)dx
+=
+\int\limits_0^\infty e^{-\beta x^{\frac{1}{2}}}dx 
+ = \frac{\Gamma(2)}{\beta^2\frac{1}{2}} 
+ $$
+
+X > 0 discreta com valores \{0,1,2,\ldots\}
+$$E(X) = \sum\limits_{k=0}^{\infty} P(X>k) $$
+\underline{Exemplo}:
+$$X\sim Geo(p) $$
+
+$$E(X) = \sum\limits_{k=0}^{\infty}P(X>k)= \sum\limits_{k=0}^{\infty} (1-p)^k = \frac{1}{1-(1-p)} = \frac{1}{p}$$
+\underline{Exemplo}: (E1, pg. 189)\\
+\\
+X simétrica em torno de $\mu \Rightarrow E(X)=\mu$\\
+\\
+
+\underline{Prova}:\\
+Hipótese: $P(X\ge x+\mu )= P(X\le x-\mu)$\\
+Sugestão: use ($\alpha$), para $\mu=0$ e depois para $Y=X-\mu$ é imediato.
+
+\newpage
+
+\underline{Esperança de função de vetor aleatório}
+\\
+
+$\bm X = (X_1,\ldots,X_n):\Omega \longrightarrow\mathbb R^n $\\
+\\
+$g:\mathbb R^n \longrightarrow \mathbb R^n $  Borel mensurável 
+\\
+\\
+$\Rightarrow Z=g(\bm X)$ é um vetor aleatório
+e 
+
+$$E(Z) = E\bigg(g(\bm X)\bigg)=
+\int\limits_{\mathbb R^n}g(\bm x) dF(\bm x)
+=
+\begin{cases}
+\sum\limits_{i_n}\cdots \sum\limits_{i1} g(\bm x_i)P(\bm X=\bm x_i)\\
+\int\limits_{i_n}\cdots \int\limits_{i1} g(\bm x_i)f_{\bm X}(\bm x_i)dx_n\\
+
+\end{cases}
+$$
+
+\underline{Exemplo}:\\
+\\
+\begin{enumerate}[label=\arabic*)]
+	\item $X_1,\ldots,X_n$ variáveis aleatórias e $a_i \in \mathbb R^n, i=1,2,\ldots,n$, Então:
+	
+	$$E(\underbrace{a_1X_1+\cdots + a_nX_n}_{g(\bm X)}) =
+	\int\limits_{\mathbb R^n} \cdots	\int\limits_{\mathbb R^n} \bigg(a_1x_1+\cdots a_nx_n\bigg) dF_{\bm X}(x_1,\ldots,x_n)
+	$$
+	
+	
+	$$
+	= \int\limits_{\mathbb R^n} a_1x1	\int\limits_{\mathbb R^n} \cdots	\bigg(\int\limits_{\mathbb R^n} 
+	f(x_1,\ldots,x_n) dx_n \bigg)dx_1
+	+\cdots + 
+	\int\limits_{\mathbb R^n} a_n x_n dx_n = a_1 E(X_1)+\cdots +a_n E(X_n)
+	$$
+	Isto é,
+	$$E(a_1,X_1+\cdots a_nX_n) =  a_1 E(X_1)+\cdots +a_n E(X_n) $$
+	\item $$E(X_1\cdots X_2) = \iint\limits_{\mathbb R^n} x_1 x_2 dF_{X_1,X_2}(x_1,x_2)$$
+$$E\bigg(\frac{X_1}{X_2}\bigg) = \iint\limits_{\mathbb R^n} \frac{x_1}{x_2} dF_{X_1,X_2}(x_1,x_2)$$
+
+\item X variável aleatória 
+$$E\bigg[
+X - E(X)
+\bigg]^2 = var(X) $$
+
+$$var(X) =  E\bigg[
+X^2 -2XE(X) + \bigg(E(X)\bigg)^2
+\bigg]$$
+$$\therefore var(X) = E(X^2)-\bigg(E(X)\bigg)^2 $$
+
+\item Medidas de dependência linear (Pearson)
+
+$$\rho_{X_1,X_2} = \frac{Cov(X_1,X_2)}{\sqrt{var(X_1)}\sqrt{var(X_2)}} $$
+
+$$cov(X_1,X_2)= 
+E\bigg[
+(X_1-E(X_1))\cdot(X_1-E(X_2))
+\bigg]
+ $$
+ 
+ $$cov(X_1,X_2) = E(X_1X_2) - E(X_1)E(X_2) $$
+ 
+ \item $X_1, X_2$ são independentes.
+ $$\Rightarrow \rho_{X_1,X_2} = 0 $$  
+ Pois $cov(X_1,X_2) = E(X1,X_2) -E(X_1)E(X_2) $
+ 
+ \item $\rho_{X_1,X_2} = 0 \Rightarrow X_1, X_2$ são independentes?
+ \item $X\sim B(n,p)$ 
+ Defina:
+  $$X = \sum\limits_{i=1}^{n} X_i  \begin{cases}
+  X_i\sim Bernoulli\\
+  E(X_i)=p, var(X_i)=p(1-p)\\
+  X_i = \begin{cases}
+  1,sucesso,P(X_i=1)=p\\
+  0,fracasso, P(X_i=0)=1-p\\
+  \end{cases}
+  \end{cases}
+  $$
+  
+  $$ 
+  \Rightarrow E(X) = \sum\limits_{i=1}^{n} E(X_i)=\sum\limits_{i=1}^{n}p=np
+  $$
+  $$var\bigg(
+  \sum\limits_{i=1}^{n} X_i
+  \bigg)
+  =np(1-p)
+   $$
+\end{enumerate}
+\underline{Exercício}:
+$$X\sim Hiper(N,r,n) $$
+Prover que:
+
+$$E(X)=\frac{nr}{N} $$
+$$var(X) = \frac{nr}{N} \frac{N-r}{N}  \frac{N-n}{N-1}$$
+
 \end{document}
