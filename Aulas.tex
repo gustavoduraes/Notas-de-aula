@@ -2235,11 +2235,107 @@ E\bigg[
   =np(1-p)
    $$
 \end{enumerate}
+\newpage 
 \underline{Exercício}:
 $$X\sim Hiper(N,r,n) $$
 Prover que:
 
 $$E(X)=\frac{nr}{N} $$
 $$var(X) = \frac{nr}{N} \frac{N-r}{N}  \frac{N-n}{N-1}$$
+\underline{Solução:}
+
+$$
+p_X(x)= \frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}}
+$$
+\begin{itemize}
+	\item $$
+E(X) = \sum\limits_{x}x\frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}}
+$$
+$$
+x \binom{r}{x} =x \frac{r!}{(x)!(r-x)!} = \frac{r(r-1)!}{(x-1)!((r-1)-(x-1))!} = r \binom{r-1}{x-1}
+$$
+
+$$
+ \binom{N-r}{n-x} = \frac{(N-r)!}{(N-r-n+x)!(n-x)!}= \frac{\bigg((N-1)-(r-1)\bigg)!}{\bigg(N-r-n+x\bigg)!\bigg((n-1)-(x-1)\bigg)!}$$
+
+$$
+=  \binom{(N-1)-(r-1)}{(n-1)-(x-1)}
+$$
+
+$$
+\binom{N}{n} = \frac{N}{n}\binom{N-1}{n-1}
+$$
+
+
+$$ 
+\therefore 
+E(X) = \frac{rn}{N} \overbrace{\sum\limits_{x}\underbrace{\frac{\binom{r-1}{x-1}\binom{(N-1)-(r-1)}{(n-1)-(x-1)}}{\binom{N-1}{n-1}}}_{X\sim Hiper(N-1,r-1,n-1)}}^{1} \Rightarrow E(X) = \frac{rn}{N}
+$$
+
+\newpage 
+\item
+$$Var(X) = E(X^2) - E(X^2) $$
+$$
+E(X^2) = \sum\limits_{x}x^2\frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}}
+$$
+Note que 
+$$ E(X^2) = E(X(X-1)+X) $$
+Utilizando uma argumentação similar a utilizada acima, tem-se:
+$$
+x(x-1)\binom{r}{x} =x(x-1) \frac{r!}{(x)!(r-x)!} = (x-1)\frac{r(r-1)!}{(x-1)!((r-1)-(x-1))!} $$
+$$
+=r(r-1) \frac{(r-2)!}{(x-2)!((r-2)-(x-2))!} = r(r-1)\binom{r-2}{x-2}
+$$
+
+$$
+\binom{N-r}{n-x} = \frac{(N-r)!}{(N-r-n+x)!(n-x)!}= \frac{\bigg((N-2)-(r-2)\bigg)!}{\bigg(N-r-n+x\bigg)!\bigg((n-2)-(x-2)\bigg)!}$$
+
+$$
+\binom{N}{n} = \frac{N(N-1)}{n(n-1)}\binom{N-2}{n-2}
+$$
+$$ 
+\therefore 
+E(X(X-1)+X) = \frac{r(r-1)n(n-1)}{N(N-1)} \overbrace{\sum\limits_{x}\underbrace{\frac{\binom{r-2}{x-2}\binom{(N-2)-(r-2)}{(n-2)-(x-2)}}{\binom{N-2}{n-2}}}_{X\sim Hiper(N-2,r-2,n-2)}}^{1}
++ \frac{rn}{N}$$
+$$
+ \Rightarrow E(X^2) = \frac{r(r-1)n(n-1)}{N(N-1)} +  \frac{rn}{N}
+$$
+
+$$
+Var(X) =  \frac{r(r-1)n(n-1)}{N(N-1)} +  \frac{rn}{N} - \bigg(\frac{rn}{N}\bigg)^2 = \frac{r}{N}
+\bigg(
+\frac{(r-1)n(n-1)}{(N-1)} + 1- \frac{rn^2}{N} 
+\bigg)
+$$
+$$
+=  \frac{r(r-1)n(n-1)}{N(N-1)} +  \frac{rn}{N} - \bigg(\frac{rn}{N}\bigg)^2
+ = \frac{rn}{N}
+\bigg(
+\frac{N(r-1)(n-1)}{N(N-1)} + \frac{N(N-1)}{N(N-1)}- \frac{rn(N-1)}{N(N-1)} 
+\bigg)
+$$
+$$
+ = \frac{rn}{N}
+\bigg(
+\frac{N(rn-n-r+1)}{N(N-1)} + \frac{N^2-N}{N(N-1)}- \frac{rnN-rn}{N(N-1)} 
+\bigg)
+$$
+$$
+= \frac{rn}{N}
+\bigg(
+\frac{\cancel{Nrn}-Nn-Nr\cancel{+N}}{N(N-1)} + \frac{N^2\cancel{-N}}{N(N-1)}- \frac{\cancel{Nrn}-rn}{N(N-1)} 
+\bigg)
+$$
+
+$$
+= \frac{rn}{N}
+\bigg(
+\frac{N^2-Nn-Nr+rn}{N(N-1)} 
+\bigg)
+=
+ \frac{rn}{N}
+\frac{(N-r)(N-n)}{N(N-1)} 
+$$
+\end{itemize}
 
 \end{document}
