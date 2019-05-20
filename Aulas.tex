@@ -2337,4 +2337,175 @@ $$
 $$
 \end{itemize}
 
+\newpage
+
+\section*{20/05}
+
+\underline{Esperança}\\
+\\
+Seja $(\Omega,\mathscr{A},P)$ espaço de probabilidade e $A\in \mathscr A$
+
+$\mathrm{I}_A : \underset{\omega \longrightarrow \mathrm I_A(\omega)}{\Omega \longrightarrow\{0,1\}} $ função Indicadora de A
+
+$\mathrm I_A(\omega) = \begin{cases}
+1, & \omega \in A\\
+0 & \omega \not\in A
+\end{cases}
+\Leftrightarrow \begin{cases}
+P(\mathrm I_A =1) = P(A)\\
+P(\mathrm I_A=0) = P(A^c)
+\end{cases}
+$
+
+$$\Rightarrow E(I_A)= \int\limits_{\mathbb R} x dF_{\mathrm I_A}(x)= \sum\limits_{x_i=0} x_i P(\mathrm{I}_A=x_i) $$
+$$\Rightarrow E(\mathrm I_A)=P(A) $$
+
+\underline{Esperança Condicional}
+
+\begin{enumerate}[label=\roman*)]
+	\item Esperança condicional dado um evento\\
+	Seja $(\Omega,\mathscr{A},P)$ um espaço de probabilidade e $A,B, \in \mathscr A$, Então:
+	
+	$$P(A|B)=\frac{P(A,B)}{P(B)}, \ \ \ P(B)>0$$
+	
+	Por outro lado, seja $X:\Omega \longrightarrow \mathbb R$, uma variável aleatória, Então:\\
+	\\
+	
+	A esperança condicional de X dado B é a função definida por:\\
+	\\
+	$$E(X|B) = \int\limits_{\mathbb R} xdF_{X}(x|B), \ \ \ \ \ \ (1) $$
+	Sendo 
+	$$F_X(x|B) = P(X\le x|B) = \frac{P(\{ X\le x\}\cap B)}{P(B)}$$
+	A equação (1) pode ser reescrita como:
+	
+	$$E(X|B) = \int\limits_{\mathbb R} x  \frac{dP(\{ X\le x\}\cap B)}{P(B)} $$
+	$$=\frac{1}{P(B)}\int\limits_{B} xdF_x(x) $$
+	$$= \frac{1}{P(B)}E(X\cdot I_B) \ \ \ \ \ (2) $$
+	$$\frac{1}{P(B)}\begin{cases}
+	\sum\limits_{i:\{X=x_i\}\cap B}P(X=x_i), & X \ Discreto\\
+	\int\limits_B xf(x)dx, & X \ Continuo
+	\end{cases} $$
+	\newpage 
+	
+	\underline{Exemplo}:
+	
+Seja $X\sim U[0,1]$ e $B_i = [\frac{i-1}{10},\frac{i}{10}]$ com   $\Omega = \bigcup\limits_{i=1}^{10} B_i$\\
+\\
+Determine $E(X|B_i)$.]\\
+\\
+\underline{Solução:}\\
+\\
+$\bigg(\underbrace{\Omega}_{[0,1]},\mathscr B([0,1]),P\bigg)$, Sendo P Uniforme
+
+$$E(X|B_i) = \frac{1}{P(B_i)} \int\limits_{B_i} xf(x)dx = \frac{1}{\frac{1}{10}}\int\limits_{\frac{i-1}{10}}^{\frac{i}{10}}x\cdot 1 dx $$
+$$E(X|B) = \frac{2i-1}{20}, \ \ \ 1=1,\ldots,10 $$
+
+\underline{Exemplo 2}:
+
+$X\sim U[-1,1]$. Calcule $E(X|X>0)$\\
+\\
+\underline{Solução:}
+$$E(X|X>0) = \frac{1}{P(X>0)} \int\limits_{\{X>0\}} xf(x)dx = $$
+
+$$= \frac{1}{\frac{1}{2}} \int\limits_0^1 x \frac{1}{2} dx =\frac{1}{2}$$
+Pois
+
+$$f_X(x) = \begin{cases}
+\frac{1}{2}, & x \in [-1,1]\\
+0, & c.c
+\end{cases},
+P(X>0) = \int\limits_0^1 \frac{1}{2}dx = \frac{1}{2}
+ $$
+ 
+ \item Esperança condicional dada uma variável aleatória discreta .\\
+ \\
+ Sejam $X:\Omega \longrightarrow \mathbb R $ e $Y:\Omega \longrightarrow \{y_1,y_2,\ldots\} $.\\
+\\
+Como
+
+$$B_i = Y^{-1}(\{y_i\}) = \{Y=y_i\} \in \mathscr A, i=1,\ldots $$
+Tal que $\bigcup_{i\ge 1}B_i = \bigcup\limits_{i\ge 1} \{Y=y_i\}=\Omega$. Então a função $E(X|Y)$ chamada de esperança condicional de Y, é tal que:
+
+$$E(X|Y)(\omega) = E(X|Y=y_i)  = \frac{E\bigg( X\cdot I_{\{Y=y_i\}}\bigg)}{P(Y=y_i)}$$
+Note que se X for discreta, $X:\Omega \longrightarrow \{x_1,x_2,\ldots \}$
+
+$$E(X|Y)(\omega) = E(X|Y=y_i) = \frac{1}{P(Y=y_i)}\sum\limits_j x_j P(X=x_i,Y=y_i) $$
+$$= \sum\limits_j x_j \frac{P(X=x_j,Y=y_i)}{P(Y=y_i)} $$
+
+\underline{Questão:}
+
+X e Y são absolutamente contínuas, $E(X|Y)=?$
+
+$$E(X|Y)(\omega) = E(X|Y=y)= \int\limits_{\mathbb R} x \frac{f_{X,Y}(x,y)}{f_Y(y)}dx $$
+
+\item $\sigma$-algebra gerada por uma variável aleatória
+
+\begin{itemize}
+	\item Considere\\
+	\\
+	$Y:\Omega \longrightarrow \{y_1,y_2,\ldots\}$ variável aleatória discreta, 
+	Então
+	
+	$$B_i = y^{-1}(\{y_i\})= \{Y=y_i\} \in \mathscr A $$
+	 e $\cup B_i=\Omega$. Uma $\sigma$-algebra que contém a coleção $\mathscr C =\{B_1,B_2,\ldots\}$\\
+	É chamada de $\sigma$-algebra gerada por Y, denotada por $\sigma(Y)$.
+	
+	Temos que $\sigma(Y)$ é a coleção de uniões e intersecções finitas de eventos de $\mathscr C$ e seus complementares, Isto é:
+	
+	$$\sigma(Y) = \bigg\{
+		\emptyset = \bigcup\limits_{i \in I=\emptyset}\{Y=y_i\}, \ldots, \mathscr C, \ldots, \Omega= \bigcup\limits_{i \in I=\mathbb N}\{Y=y_i\} \bigg\}
+$$
+
+I = conjunto de índices. Além disso, $\forall a,b,\in \mathbb R$,
+
+$$\overbrace{Y^{-1} \bigg(
+(a,b]
+\bigg)}^{Info\ de \ Y} = \bigcup\limits_{i:a<y_i\le b} \{Y=y_i\} \in \sigma(y) $$
+
+\item 
+$Y:\Omega \longrightarrow \mathbb R$ absolutamente contínua.
+
+$\sigma(Y)$ contém a coleção de Borelianos do tipo,
+$$\forall a,b,\in \mathbb R, Y^{-1}\bigg((a,b]\bigg)\in \sigma(Y) $$
+\item  Y é uma variável aleatória qualquer definida em $(\Omega,\mathscr{A},P)$
+
+$$\Rightarrow \sigma(Y) \subset \mathscr A $$
+
+A informação de Y está contida em $\mathscr A$
+
+
+\end{itemize}
+
+\item \underline{Esperança Condicional }
+
+Seja X uma variável aleatória definida em $(\Omega,\mathscr{A},P)$. Uma variável aleatória denotada por $ W = E(X| \mathscr A)$, é a esperança condicional de X dado $\mathscr A$, se :
+\begin{enumerate}
+	\item $\sigma(W)\subset \mathscr A$
+	\item $E(X\cdot I_A) = E(W I_A), \forall A \in \mathscr A$ quase certamente (Exceto, A t.q. P(A)=0)
+\end{enumerate}
+* Se $E|X| < \infty$, tem-se que W existe e é única.
+\underline{Exemplos}:
+
+\begin{enumerate}[label = \arabic*)]
+	\item  X variável aleatória e $Y:\Omega \longrightarrow \{y_1,y_2,\ldots\}$
+	
+	Temos que
+	\begin{enumerate}[label=\roman*)]
+		\item  $W=E(X|Y)$ e $W(\omega) = E(X|Y=y_i)=g(y_i)$
+		$$\Rightarrow W=g(Y) \Rightarrow \sigma(W)\subset \sigma(Y) $$
+		$$W=E(X|Y)=E(X|\sigma(Y)) $$
+		
+		\item Considere $A=\bigcup\limits_{i\in I}$, I = índices. Temos que:
+		
+		$$E(X\cdot I_A) = E\bigg(X\cdot \sum\limits_{i \in I}I_{\{Y=y_i\}}\bigg) $$
+		$$=\sum\limits_{i \in I} E(X\cdot I_{\{Y=y_i\}}) $$
+		Por outro lado, 
+		$$E(\underbrace{W\cdot I_A}_{g(Y) \ discreta}) $$
+		$$E(W\cdot I_A)=\sum\limits_i g(y_i)\cdot P(Y=y_i)  $$
+		$$\sum\limits_i E(X|Y=y_i) P(Y=y_i) $$
+		$$\sum\limits_i \frac{PE(X\cdot I_{\{Y=y_i\}})}{\cancel{P(Y=y_i)}}\cancel{P(Y=y_i)} $$
+		$$=\sum\limits_i E(X\cdot I_{\{Y=y_i\}}) $$
+	\end{enumerate}
+\end{enumerate}
+\end{enumerate}
 \end{document}
