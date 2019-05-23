@@ -2478,10 +2478,10 @@ A informação de Y está contida em $\mathscr A$
 
 \item \underline{Esperança Condicional }
 
-Seja X uma variável aleatória definida em $(\Omega,\mathscr{A},P)$. Uma variável aleatória denotada por $ W = E(X| \mathscr A)$, é a esperança condicional de X dado $\mathscr A$, se :
+Seja X uma variável aleatória definida em $(\Omega,\mathscr{A},P)$. Uma variável aleatória denotada por $ W = E(X| \mathscr A_1 )\mathscr A_1\subset \mathscr A,$, é a esperança condicional de X dado $\mathscr A_1$, se :
 \begin{enumerate}
-	\item $\sigma(W)\subset \mathscr A$
-	\item $E(X\cdot I_A) = E(W I_A), \forall A \in \mathscr A$ quase certamente (Exceto, A t.q. P(A)=0)
+	\item $\sigma(W)\subset \mathscr A_1$
+	\item $E(X\cdot I_A) = E(W I_A), \forall A \in \mathscr A_1$ quase certamente (Exceto, A t.q. P(A)=0)
 \end{enumerate}
 * Se $E|X| < \infty$, tem-se que W existe e é única.
 \underline{Exemplos}:
@@ -2505,7 +2505,160 @@ Seja X uma variável aleatória definida em $(\Omega,\mathscr{A},P)$. Uma variá
 		$$\sum\limits_i E(X|Y=y_i) P(Y=y_i) $$
 		$$\sum\limits_i \frac{PE(X\cdot I_{\{Y=y_i\}})}{\cancel{P(Y=y_i)}}\cancel{P(Y=y_i)} $$
 		$$=\sum\limits_i E(X\cdot I_{\{Y=y_i\}}) $$
+		$$E(XI_A)=E\bigg[E(X|\mathscr A_1)I_A\bigg] $$
 	\end{enumerate}
 \end{enumerate}
 \end{enumerate}
+
+\newpage 
+
+\section*{22/05}
+E1 : $$Y:\Omega \longrightarrow\{y_1,y_2,\ldots\} $$
+$$E(X|\sigma(Y)) = E(X|Y) = W $$
+Note que:
+$$E(X|Y)(\omega) = E(X|Y=y_i)\begin{cases}
+\sum\limits_j x_j \frac{P(X=x_i,Y=y_i)}{P(Y=y_i)}, & X \ Discreta\\
+\int\limits_{\{Y=y_i\}} x_i \frac{f_X(x)dx}{P(Y=y_i)}, & X \ Abs. \ Cont
+\end{cases}
+ $$
+ 
+ E2:
+ 
+ $\Omega$, $A,B\in \Omega $, $X:\Omega \longrightarrow \mathbb R$ e $\mathscr A_B=\{ \emptyset,B,B^c,\Omega \}=\sigma(B)$
+\begin{itemize}
+	\item  $W = E(X|\sigma(B))$ é tal que:
+	
+	$W(\omega) = E(X|B)  $ para $\omega in B$
+	
+	$W(\omega) = E(I_A|\sigma(B))=P(A|\sigma(B))$
+	\item $X=I_A$
+	$$W=E(I_A|\sigma(B)) = P(A|\sigma(B)) $$
+\end{itemize}
+Obs: X,Y variáveias aleatórias contínuas
+
+$$E(X|Y)(\omega) = E(X|Y=y) $$
+$$=\int\limits_\mathbb R x dF_{X|Y}(x|y) $$
+$$=\int\limits_{\mathbb R} x \frac{f_{X,Y}(x,y)}{f_Y(y)}dx $$
+
+\subsection{Propriedades}
+$$\bigg(
+X:\Omega \longrightarrow \mathbb R, (\Omega,\mathscr{A},P)
+\bigg) $$
+
+P1. $E(X) = E[E(X|\mathscr A_1)] $ , $\mathscr A_1 \subset \mathscr A$
+
+Prova segue pela definição.
+
+EX1:
+
+$$E(X) = E[E(X|Y)] $$
+
+$$=\begin{cases}
+\sum\limits_{y_i} E(X|Y=y_i)P(Y=y_i), & Y \ discreta\\
+\int\limits_{\mathbb R} E(X|Y=y)f_Y(y)dy, & Y \ ads. \ Cont.
+\end{cases} $$
+\newpage 
+EX2
+
+Considere X e Y com densidade conjunta
+
+$$f_{X,Y}(x,y) =\frac{e^{-\frac{x}{y}} e^{-y}}{y}, x,y,>0 $$
+
+Determine $E(X|Y)$
+
+\underline{Solução}
+
+$$E(X|Y=y) = \int\limits_0^\infty  x \frac{f_{X,Y}(x,y)}{f_Y(y)} dx
+=\int\limits_0^\infty  x\frac{e^{-\frac{x}{y}} e^{-y}}{ye^{-y}} dx
+$$
+
+$$
+= \int\limits_0^\infty \frac{x}{y} e^{-\frac{x}{y}}dx = y
+$$
+
+$$\therefore E(X|Y=y) = y $$
+$$\leftrightarrow E(X|Y)=y\sim Exp(1) $$
+P2. $X_1,X_2$ variáveis aleatórias definidas em $(\Omega,\mathscr{A},P)$, $\mathscr A_1\subset \mathscr A$ e $c_1,c_2 \in \mathbb R$, Então:
+
+$$E(c_1X_1+c_2X_2|\mathscr A_1) = c_1E(X_1|\mathscr A_1) + c_2E(X_2|\mathscr A_1) $$
+
+P3. Se X e Y são variáveis aleatórias independentes, então
+
+$$E(X|\sigma(Y)) = E(X|Y) = E(X) $$
+Em geral, se X e $\mathscr A_1$ são independentes,
+
+$$E(X|\mathscr A_1)=E(X) $$
+
+P4. Se $\sigma(X)\subset \mathscr A_1$, então
+
+$$E(X|\mathscr A_1)=X $$
+
+Neste caso, $\mathscr A_1$ fornece toda a estrutura de X (\underline{X se torna conhecida ou não aleatória})
+
+\underline{Exemplo}:
+
+Seja $X=g(y)$, $\sigma(x) = \sigma(g(y))\subset \sigma(Y)$
+
+$$E\bigg(
+g(y)|\sigma(y)
+\bigg) = g(y) $$
+
+p5. Se $\sigma(x)\subset \mathscr A_1$ e Z é uma variável aleatória qualquer, então
+
+$$E(Z\cdot X|\mathscr A_1) = g(y)E(Z|\sigma(y)) $$
+
+\underline{Exemplo}:
+$$E(g(y)Z)|\sigma(Y)) = g(y)E(Z|\sigma(y))$$
+
+\newpage 
+
+
+\underline{Exemplo}:
+$(X,Y)$,  $X\sim Exp\bigg(\frac{1}{2}\bigg)$ e $\forall x>0$ , $Y|X \sim U[0,x^2]$  
+
+\begin{enumerate}[label=\alph*)]
+	\item Distribuições de $Y|X^2=Z$
+	$$ 
+	F_{Y|x=x}=\begin{cases}
+	0, & t<0\\
+	\frac{t}{x^2} & 0\le t < x^2\\
+	1 & t\ge x^2
+	\end{cases}
+	$$
+	$$F_{Y|X^2} = P(Y\le y| X^2=x)=P(Y\le y|X=x^\frac{1}{2})$$
+	$$F_{Y|X=x^\frac{1}{2}}= \begin{cases}
+	0, & y<0\\
+	\frac{y}{x}, & 0\le y < x\\
+	1, & y>x
+	\end{cases}
+	 $$
+	
+	 $$Y|X^2=2 \sim  U[0,x] \Leftrightarrow Y|X \sim U[0,x]$$
+
+
+\item $E(X) = \frac{1}{\frac{1}{2}}=2$
+$$E(Y) = E[E(Y|X^2)] = E[\frac{X}{2}] \frac{1}{2}E(X)=1$$
+
+$$E(XY)= E[E(XY|X^2)] \underbracket{=}_{P5} E(XE(Y|X^2))$$
+$$=E[X\frac{X}{2}] = \frac{1}{2}E(X^2) $$
+$$\frac{1}{2} \bigg[var(X) - E(X)^2 \bigg] $$
+$$=\frac{1}{2}\bigg[4+4\bigg]=4 $$
+
+$$\therefore Cov(XY)=4 $$
+
+\end{enumerate}
+
+\newpage 
+
+\underline{Exemplo}:
+
+$$E(X|\sigma(Y)) $$
+$X_1,X_2,\ldots,X_n $  variáveis aleatórias independentes e $S_n = \sum\limits_{i=1}^{n}X_i$
+$$E(S_{n+1} \mathscr A_n)  = E(S_n+X_{n+1}|\mathscr A_n) $$
+$$\overbracket{=}^{P2} E(S_n|\mathscr A_n) + E(X_{n+1}|\mathscr A_n) $$ 
+$$\overbracket{=}^{P3}S_n + E(X_{n+1}) $$
+
+Se $E(X_{n+1})=0$
+$$E(S_{n+1}|\mathscr A_n) = S_n $$
+$\Leftrightarrow \{ S_n,\mathscr A\} $ é uma Martingale.
 \end{document}
