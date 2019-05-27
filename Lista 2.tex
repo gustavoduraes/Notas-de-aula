@@ -1,0 +1,371 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{automata,positioning}
+\usepackage{pgfplots}
+\usepackage{filecontents}
+\usepackage{cancel}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows.meta}
+\usepackage{bm}
+\usepackage{mathrsfs}
+\usepackage{blkarray}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\graphicspath{/Users/gustavo/Desktop/Estatística\ Matemática}
+\usepackage{amssymb}
+\usepackage{tkz-euclide}
+\usepackage[margin=0.1in]{geometry}
+\usepackage{enumitem} 
+\usepackage{accents}
+
+
+\author{}
+\geometry{textwidth=6in, textheight=9in, marginparsep=7pt, marginparwidth=.6in, top=30mm, bottom=25mm}
+
+\title{Exercícios Inferência Matemática\\
+Barry R. James - Probabilidade: um curso em nível intermediário\\
+Capítulo 1 e Capítulo 2
+}
+\date{}
+\begin{document}
+	\maketitle
+	\tableofcontents	
+	\newpage
+	
+	
+	\chapter{Páginas 88- 32}
+	\section*{Questão 17}
+	 \begin{enumerate}[label=\alph*)]
+	 	\item 
+	 	$$P(0<X\le 1 , 0 <Y\le 1) = F(1,1) - F(1,0)-F(0,1)+F(0,0) $$
+	 	$$1-e^{-2} - (1-e^{-1})  - (1-e^{-1}) + 1 = -2e^{-1} -e^{-1}\not>0 $$
+	 	Logo, a função não é função de distribuição de um vetor aleatório
+	 	
+	 	\item Para demonstrar temos que avaliar que a função é não decrescente, absolutamente contínua, tem valor 0 quando x e y tendem a $-\infty$ e valor 1 quando x e y tendem a $\infty$ e provar que  o  retângulo gerado pela distribuição em $\mathbb R^2$ tem área maior ou igual a 0.
+	 \end{enumerate}
+	 		\section*{Questão 18}
+
+ 	
+	 	\begin{enumerate}[label=\alph*)]
+	 		\item  $P(X=x,Y=y)=\begin{cases}
+	 			0, & x=y\\
+	 			\frac{1}{6}, & x\ne y
+	 		\end{cases}, \ \ \ \  x,y=1,2,3$
+	 			 	\item  $P(X<Y) = \frac{1}{2}$
+	 	\end{enumerate}
+	 	
+	\section*{Questão 19}
+	
+		\section*{Questão 20}
+		\begin{enumerate}[label=\alph*)]
+			\item $f(x,y)=\begin{cases}
+			\frac{1}{\pi}, & -1\le x,y\le 1\\
+			0, & c.c
+			\end{cases}$
+			\item $P(X>Y)$ Corresponde á metade inferior da área do circulo a partir da reta x=y, portanto, a probabilidade equivale a  $\frac{1}{2}$. O mesmo é válido para $P(X<Y)$, que correndo a metade superior.
+			
+			O caso onde P(X=Y) é uma reta e portanto não determina uma região a ser calculada, resultado em probabilidade 0
+		\end{enumerate}
+	
+			\section*{Questão 21}
+			O problema trata do produto de duas variáveis uniformes contínuas, então:
+					\begin{enumerate}[label=\alph*)]
+						\item 
+			$$f_(X,Y)(x,y)=\begin{cases}
+			1, & x,y \in [0,1]\\
+			0, & c.c
+			\end{cases} $$
+			\item $$P\bigg(|\frac{Y}{X}-1| \le \frac{1}{2}\bigg)  = 
+			P\bigg(\frac{1}{2} X \le Y \le \frac{3}{2} X  \bigg)$$
+			$$= \int\limits_{0}^{\frac{2}{3}}\int\limits_{\frac{x}{2}}^{\frac{3x}{2}}1 dydx +   
+			\int\limits_{\frac{2}{3}}^{1}\int\limits_{\frac{x}{2}}^{1}1 dydx
+			$$
+			$$ 
+=	\int\limits_{0}^{\frac{2}{3}}x dx +   
+	\int\limits_{\frac{2}{3}}^{1}(1-\frac{x}{2}) dx = \frac{5}{12}
+			$$
+			\item $$P\bigg(Y\ge X| Y \ge \frac{1}{2}\bigg)  = P\bigg(
+			\frac{P(Y\ge X, Y\ge \frac{1}{2})}{P(Y\ge \frac{1}{2})}
+			\bigg)
+			=
+			\frac{\int\limits_{\frac{1}{2}}^1\int\limits_0^y 1 dxdy}{\frac{1}{2}} = 
+				\frac{\int\limits_{\frac{1}{2}}^1 y dy}{\frac{1}{2}} = \frac{3}{4}
+			$$
+			\end{enumerate}
+	 		\section*{Questão 22}
+
+	\section*{Questão 23}
+	
+	Por definição, o conjunto de 3 variáveis aleatórias é dito independente se:
+	
+	\begin{itemize}
+		 \item $P(X_i=x_i,X_j=x_j) = P(X_i=x_i)P(X_j=x_j)$, $\forall i\ne j  \ \ i,j=1,2,3$	
+		 		 \item $P(X_i=x_i,X_j=x_j,X_k=x_k) = P(X_i=x_i)P(X_j=x_j)P(X_k=x_k)$, $\forall i\ne j \ne k\ \ i,j=1,2,3$	
+	
+	\end{itemize} 
+Sendo assim, independência 2 a 2 não garante que as variáveis aleatórias são independentes.
+\newpage 
+	\section*{Questão 24}
+	
+	$$F_{X,Y}(x,y) = \begin{cases}
+	(1-e^{-x})(1-e^{-y}), & x,y>0\\
+	0, & cc
+	\end{cases} $$
+	
+	$$
+	f_{X,Y}(x,y)=\begin{cases}
+	e^{-x}	e^{-y}, & x,y > 0\\
+	0, & c.c
+	\end{cases}
+	$$
+	
+	$$
+	f_X(x) = \int\limits_0^\infty 	e^{-x}	e^{-y} dy = 	e^{-x}\therefore X \sim Exp(1)
+	$$
+		$$
+	f_Y(y) = \int\limits_0^\infty 	e^{-x}	e^{-y} dx = 	e^{-y}\therefore Y \sim Exp(1)
+	$$
+	
+	X e Y são independentes pois o produto das marginais é igual a conjunta.
+		\section*{Questão 25}	 	
+  $$P(X=x,Y=y)=\begin{cases}
+			0, & x=y\\
+			\frac{1}{6}, & x\ne y
+			\end{cases}, \ \ \ \  x,y=1,2,3$$
+
+		
+		
+		$$P(X=x)= \begin{cases}
+		\frac{1}{3}, & x=1,2,3\\
+		0, & c.c
+		\end{cases} $$
+		
+			
+		$$P(Y=y)= \begin{cases}
+		\frac{1}{3}, & y=1,2,3\\
+		0, & c.c
+		\end{cases} $$
+		
+		É fácil ver que o produto as marginais não vai ser igual a distribuição conjunta.
+		\newpage 
+		\section*{Questão 26}
+		Seja $\bm X=(X_1,\ldots,X_n )$ um vetor aleatório com f.d.a $F_{\bm X}(x_1,\ldots,x_n)$\\
+		Então:
+		$$\lim\limits_{x_k\rightarrow \infty}F_{\bm X}(x_1,\ldots,x_{k-1},x_k,x_{k+1},\ldots,x_n)$$
+		$$ =
+		\lim\limits_{n\rightarrow \infty} P\bigg(
+		X_1^{-1}\bigg((-\infty,x_1]\bigg),\ldots, \underbrace{X_k^{-1}\bigg((-\infty,\cancelto{\infty}{x_k}]\bigg)}_{\Omega},\ldots, X_n^{-1}\bigg((-\infty,x_n]\bigg)
+		\bigg)$$
+		$$= \underbrace{F_{X_1\ldots,X_{k-1},X_{k+1},\ldots X_n}(x_1,\ldots,x_{k-1},x_{k+1},\ldots,x_n)}_{\text{Distribuição marginal de ordem n-1}} $$ 
+		Em particular,
+		$$\bm X=(X,Y) $$
+		$$ \underbrace{F_{X,Y}(x,y) = P(X\le  x,Y\le y)}_{\text{f.d.a conjunta de X e Y}} $$
+		$$\Rightarrow \lim\limits_{x\rightarrow \infty} F_{X,Y}(x,y)=F_Y(y) $$
+		$$\Rightarrow \lim\limits_{y\rightarrow \infty} F_{X,Y}(x,y)=F_X(x) $$
+		São distribuições marginais de Y e X respectivamente.
+		
+		Tendo em vista que $$f_X(x) = \frac{\partial F_X(x)}{\partial x }  $$ 
+		
+		A proposição está provada, pois:
+		
+			$$ \lim\limits_{x\rightarrow \infty} F_{X,Y}(x,y)=F_Y(y)\Rightarrow \frac{\partial F_Y(y)}{\partial x } = \int\limits_{-\infty}^{+\infty} f_{X,Y}(x,y)dx $$
+						$$ \lim\limits_{y\rightarrow \infty} F_{X,Y}(x,y)=F_X(x)\Rightarrow \frac{\partial F_X(x)}{\partial x }  = \int\limits_{-\infty}^{+\infty} f_{X,Y}(x,y)dy $$
+						
+						\newpage 
+						
+								\section*{Questão 27}
+								
+								$$Xt^2+Yt+Z = 0 $$
+								$$\Delta  = Y^2-4XZ\ge 0 $$
+								$$P(\Delta \ge 0 ) = P(Y^2 - 4XZ\ge 0 ) $$
+								$$P(Y^2 \ge  4XZ) = P(XZ\le \frac{Y^2}{4}) $$
+								Utilizando a lei da probabilidade total
+								$$P(XZ\le \frac{Y^2}{4})=P(X\le K,Z\le \frac{Y^2}{4K}) $$
+								Como X,Y,Z são independentes, temos:
+								$$P(X\le K,Z\le \frac{Y^2}{4K}) = P(X\le K)P(Z\le\frac{Y^2}{4K} ) $$
+								$$= K\int\limits_0^{\frac{y^2}{4K} } dz = \int\limits_0^y K \frac{y^2}{4K} dy= \frac{1}{12}$$
+							\section*{Questão 28}
+							\newpage 
+														\section*{Questão 29}
+														$$P(X=c,X=c)=P(X=c)P(X=c) = P(X=c)= \bigg[
+														P(X=c)
+														\bigg]^2 $$
+														Logo, $P(X=c) =\begin{cases}
+														1, & x=c\\
+														0, & x\ne c
+														\end{cases}$
+														
+														Logo, X é independente de si mesmo se, e somente se, for uma função indicadora.
+														
+	\section*{Questão 30}
+		\begin{enumerate}[label=\alph*)]
+				\item $$P(T<t)=P(T\le t ,T=T_1) +P(T\le t ,T=T_2)  $$
+				$$P(T=t_1)P(T\le t|T=t_1) + P(T=t_2)P(T\le t|T=t_2)$$
+				$$= \frac{1}{2}P(T_1\le t) +\frac{1}{2}P(T_2\le t)   $$
+				$$ = \frac{1}{2}\bigg(1-e^{t\lambda_1} +1-e^{t\lambda_2}\bigg)
+				 = 1 - \frac{1}{2}\bigg(e^{t\lambda_1} +e^{t\lambda_2}\bigg)
+				$$
+				
+				\item 
+				
+				$$P(T=t_1|T\ge 100) = \frac{P(T=t_1,T\ge 100)}{P(T\ge 100)}
+				= \frac{P(T=t_1)P(T\ge 100|T=t_1)}{P(T\ge 100)} 
+				 $$
+				 $$
+				 = \frac{e^{-\lambda_1 \cdot 100}}{e^{-\lambda_1 \cdot 100}+e^{-\lambda_2 \cdot 100}}
+				 $$
+				 \item $$T\sim exp(\lambda)$$
+					\end{enumerate}
+				
+					\section*{Questão 31}
+					
+					$$P(T_1>2T_2) = \int\limits_0^\infty P(T_1>2t|T_2=t)dt $$
+					$$= \int\limits_{0}^{\infty}\int\limits_{2t_2}^{\infty}f(t_1,t_2)dt_1 dt_2 = 
+					\int\limits_{0}^{\infty}\int\limits_{2t_2}^{\infty}f(t_1)f(t_2)dt_1 dt_2
+					 $$
+					 $$
+					 \int\limits_{0}^{\infty}\lambda e^{-\lambda t_2} \int\limits_{2t_2}^{\infty}\lambda e^{-\lambda t_1} dt_1 dt_2
+					 = \int\lim\limits_{0}^\infty \lambda e^{t_2\lambda}e^{-2t_2}dt_2 = \frac{1}{3}
+					 $$
+														\newpage 
+														
+	\section*{Questão 32}
+		\begin{enumerate}[label=\alph*)]
+				\item 
+						
+Nota-se que estamos tratando uma região (A) formada pela conjunto de duas distribuições  de amplitude 2, sendo assim, a densidade é dada por:
+																		
+				$$	f_{X,Y}(x,y) = \begin{cases}
+					\frac{1}{2}, &  (x,y)\in A\\
+				0, & (x,y)\not\in A
+	\end{cases}
+				$$
+				\item 
+					$$f(x) =\begin{cases}
+				\int\limits_{-1-x}^{x+1} \frac{1}{2} dy, & =1\le x < 0\\
+					\int\limits_{x-1}^{1-x} \frac{1}{2} dy, & 0\le x \le 1
+			\end{cases}$$
+																		
+			$$
+				f(x) = \begin{cases}
+			1+x, &-1\le x < 0\\
+			1-x, & 0\le x < 1
+			\end{cases}
+			$$
+																		Da mesma forma,
+																		
+																	$$
+																	f(y) = \begin{cases}
+																	1+y, &-1\le y < 0\\
+																	1-y, & 0\le y < 1
+																	
+																	\end{cases}
+																	$$	
+																	\item É fácil ver que o produto das marginais não resulta na distribuição conjunta.
+		\end{enumerate}
+																						
+				\section*{Questão 33}
+									\begin{enumerate}[label=\alph*)]
+										\item															
+				$$ 
+			P(X=x)=\begin{cases}
+					\frac{1}{5}, & x=1 \\
+					\frac{3}{5}, & x=2 \\
+					\frac{1}{5}, & x=3\\
+																																												
+\end{cases}
+						$$
+						
+										$$ 
+						P(Y=y)=\begin{cases}
+						\frac{1}{5}, & y=1 \\
+						\frac{3}{5}, & y=2 \\
+						\frac{1}{5}, & y=3\\
+						\end{cases}
+						$$
+						\item
+						Não não independentes, pois:
+						
+						$$P(X=2,Y=2)=\frac{1}{5} \ne P(X=2)P(Y=2)= \frac{9}{25} $$
+						
+						
+							\end{enumerate}
+						
+						\newpage 
+						
+							\section*{Questão 34}
+							
+							$$Z=X-Y $$
+							
+							$X=I_{[\theta - 0.5,\theta+0.5]}$ e $-Y= I_{[-\theta - 0.5,-\theta+0.5]}$
+							
+							 $$P(X-Y\le z) = \begin{cases}
+							 \int\limits_{\theta - 0.5}^{\theta+0.5+z} \int\limits_{x-z}^{\theta+0.5}1dydx, & -1 < z < 0\\
+							 1 - \int\limits_{z}^{\theta+0.5}\int\limits_{\theta-0.5}^{x-z}1dydx, & 0\le z< 1
+							 \end{cases} 
+							 $$
+							 $$
+							 =
+							 \begin{cases}
+							 [\theta + 0.5+z-(\theta-0.5)][\theta+0.5-(\theta-0.5-z)] & -1 < z < 0\\
+							 	 1 -[\theta+0.5-z-(\theta-0.5)][\theta+0.5-(\theta-0.5+z)], & 0\le z< 1
+							 \end{cases}
+							 $$
+							 	 $$
+							 =
+							 \begin{cases}
+							 \frac{(1+z)^2}{2} & -1 < z < 0\\
+						1-\frac{(1-z)^2}{2}, & 0\le z< 1
+							 \end{cases}
+							 $$
+Logo
+$$ 
+f_Z(z)=\begin{cases}
+						1+z,& -1 < z < 0\\
+1-z, & 0\le z< 1
+\end{cases}
+$$
+					\section*{Questão 35}
+					 \begin{enumerate}[label=\alph*)]
+					 	\item 
+					 	
+					 	$$P(X_i^2\le y) = 
+					 	P(X_i \le \sqrt y)
+					 =
+					 \int\limits_0^{\sqrt y} \frac{t}{\theta^2} e^{-\frac{t^2}{2\theta^2}} dt 
+					 	 $$
+					 	 $$=  
+					 	 \int\limits_0^{ y} \frac{1}{2\theta^2} e^{-\frac{\mu}{2\theta^2}} du = F_Y(y):Y\sim Exp\bigg(\frac{1}{2\theta^2}\bigg)
+					 	 $$
+					 	 $$f_{\bm Y }(\bm y) =\bigg(\frac{1}{2\theta^2}\bigg)^n e^{-\frac{\sum\limits_{i=1}^{n}y_i}{2\theta^2}}, \forall y_i>0,i=1,\ldots n  $$
+					 	 \item 
+					 	 $$P(U\le u) = P(Min(\bm X)\le u)) = 1- P(\bm X > u) $$
+					 	 
+					 	 $$= 1-\prod\limits_{i=1}^{n}P(X_i > u) = 1-[P(X_i > u)]^n $$
+					 	 
+					 	 $$= 1-\bigg[\int\limits_u^\infty \frac{x}{\theta^2} exp\bigg(-\frac{x^2}{2\theta^2}\bigg)dx \bigg]^n
+					 	 = 1-\bigg[\int\limits_{u^2}^\infty \frac{1}{2\theta^2} exp\bigg(-\frac{t}{2\theta^2}\bigg)dt \bigg]^n
+					 	  $$
+					 	  $$
+					 	  = 1 - \bigg(exp\bigg\{-\frac{\mu^2}{2\theta^2}\bigg\}\bigg)^n = 1 - exp\bigg\{-\frac{n\mu^2}{2\theta^2}\bigg\}
+					 	  \Rightarrow f_U(u) = \begin{cases}
+					 	  \frac{nu}{1\theta^2} e^{-\frac{nu}{2\theta^2}}, &u \ge 0\\
+					 	  0, &c.c
+					 	  \end{cases}
+					 	  $$
+					 	  \item $$P(Z\le z) = P(X\le zX_2) = \int\limits_0^\infty \int\limits_\frac{t}{z}^\infty f_{X,Y}(s,t)dsdt $$
+					 	  $$ \int\limits_0^\infty \int\limits_\frac{t}{z}^\infty \frac{st}{\theta^4} exp\bigg\{
+					 	  -\frac{s^2+t^2}{2\theta^2}
+					 	  \bigg\} dsdt  
+					 	  = \frac{z^2}{1+z^2}, z\ge 0
+					 	  $$
+					 \end{enumerate}
+
+\end{document}
