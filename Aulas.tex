@@ -2574,4 +2574,213 @@ $$\overbracket{=}^{P3}S_n + E(X_{n+1}) $$
 Se $E(X_{n+1})=0$
 $$E(S_{n+1}|\mathscr A_n) = S_n $$
 $\Leftrightarrow \{ S_n,\mathscr A\} $ é uma Martingale.
+
+\newpage 
+
+\section{29/05 Algumas Desigualdades Importantes}
+
+\begin{enumerate}
+	\item Desigualdade de Jensen
+	
+	Seja X uma variável aleatória com $E(X)<\infty$ e $g:\mathbb R \longrightarrow \mathbb R$ uma função convexa, então:
+	
+	$$E\bigg(g(x)\bigg)\ge g\bigg(E(X)\bigg) $$
+	
+	\underline{Prova:}
+	
+	Temos que 
+	
+	$$g(x)\ge L(x), \forall x $$
+	$$\Leftrightarrow g(x) \ge g(x_0)+m(x-x_0) \ \ \ \  (1)$$
+	
+	Como $E(X)<\infty$, tome $x_0 =E(X)$. Então, de (1), segue que:
+	
+	$$g(X)\ge g\bigg(E(X)\bigg)+m\bigg(X-E(X)\bigg) \ \ \ \ (2) $$
+	
+	Aplicando esperança, em (2), obtem-se:
+	
+	$$E\bigg(
+	g(X)
+	\bigg)\ge g\bigg(
+	E(X)
+	\bigg)+m\cancel{\bigg(E(X)-E(X)\bigg)} $$
+	
+	\underline{Exemplo}:
+	
+	$$g(x) = |x|^p, \ \ p\ge 1  \ \ \  \text{É convexa}.$$
+	
+	$$\Rightarrow E\bigg(
+	|X|^p
+	\bigg)\ge \bigg|
+	E(X)
+	\bigg|^p $$
+	
+	$\Rightarrow \bigg|
+	E(X)
+	\bigg|\le 
+	\bigg[
+	E(|X|^b)
+	\bigg]^{\frac{1}{p}}
+	$, $p\ge 1$ : D-Holder
+	
+	p=1:
+	
+	$$\bigg|
+	E(X)
+	\bigg| \le E\bigg(|X|\bigg) \Leftrightarrow -E|X| \le E(X)\le E|X|$$
+	\newpage 
+	\item Desigualdade de Chebyschev
+	
+	\begin{itemize}
+		\item \underline{Básica}
+		
+		Seja X ima variável aleatória com $E(X)<\infty$ e X>0 , então:
+		
+		$$P(X>\varepsilon) \le \frac{E(X)}{\varepsilon}, \forall \varepsilon>0$$
+		
+		\underline{Prova:}
+		
+		$$E(X) = \int\limits_{\mathbb R} xdF(X) = \int\limits_{\{x:x>\varepsilon\}}xdF(x)+\int\limits_{\{x:x<\varepsilon\}}xdF(x) $$
+		
+		$$\Rightarrow E(X) \ge\int\limits_{\{x:x>\varepsilon\}}xdF(x) > \int\limits_{\{x:x>\varepsilon\}}\varepsilon dF(x)  $$
+		
+		$$ \Rightarrow  E(X)  \ge \varepsilon \int\limits_{\mathbb R} \mathbf I_{\{ x:x>\varepsilon\}} dF(X)= \varepsilon P(X>\varepsilon)$$
+\item \underline{Clássica}	
+
+Seja X uma variável aleatória com $Var(X)<\infty$, então:
+
+$$P\bigg(|X-E(X)|>\varepsilon\bigg)  \frac{Var(X)}{\varepsilon^2}, \forall \varepsilon>0$$
+
+\underline{Prova}:
+
+Segue da Desigualdade Básica. Basta definir 
+$$Y=|X-E(X)|, $$
+
+$$P\bigg(|X-E(X)|\ge \varepsilon\bigg) = P\bigg(
+|X-E(X)|^2 > \varepsilon^2
+\bigg)\le \frac{E\bigg(|X-E(X)|^2\bigg)}{\varepsilon^2} $$
+\underline{Exemplo}:
+\underline{Desigualdade de Markov}
+$$P\bigg(
+|X|>\varepsilon
+\bigg)
+\le \frac{E\bigg(|X|^t\bigg)}{\varepsilon^t}, \ \text{Para algum} \ t\in \mathbb R^+,\forall \varepsilon>0
+ $$
+\newpage 
+\underline{Exemplo}:
+
+Se X é variável aleatória com $Var(X)=0$, então $P(X=c)=1$ e c é uma constante.
+
+\underline{Prova:}
+
+Nota que se $P(X=c)=1$, então $E(X)=c$. Isto é, 
+
+Provar que $P(X=c)=1 \Leftrightarrow $ Provar que $P\bigg(X\ne E(X)\bigg)=0$ 
+
+De fato:
+
+$$P(X\ne E(X)) = P\bigg(
+|X-E(X)| > \varepsilon
+\bigg)
+\le 
+\frac{var(X)}{\varepsilon^2}=0
+ $$
+Para algum $\varepsilon>0$.
+
+\newpage
+
+\subsection{Função Característica}
+
+Seja X uma varável aleatória definida em $(\Omega,\mathscr{A},P)$. A função
+
+$$\varphi_X(t) = E\bigg(
+e^{itx}
+\bigg), i \in \mathbb C : i^2=-1$$
+é a função característica (f.c) de X.
+
+Tem-se que:
+
+$$\varphi_X(t) = E\bigg(
+e^{itx}\bigg)= \int\limits_{\mathbb R} e^{itx}dF_X(x), \ \ t\in \mathbb R$$
+Além disso,
+
+$$
+\varphi_X(t)=\begin{cases}
+\sum\limits_k e^{itk} P(X=k), & X \ Discreta\\
+\int e^{itx}f_X(x)dx, & X Continua
+\end{cases}
+$$
+
+\underline{Observação}
+
+$$z=e^{itx} = cos(tx) + i\cdot sen(tx) $$
+$$\bar z = e^{-itx} = cos(tx)- i\cdot sen(tx) $$
+$$z\cdot \bar z = |z| = cos^2(tx)+sen^2(tx) = 1 $$
+$$\Rightarrow e^{itx}\cdot e^{-itx} = \bigg|
+e^{itx}
+\bigg|=1 $$
+
+\underline{Propriedades}
+\begin{enumerate}
+	\item $$\varphi_X(0) = E\bigg(e^{i(0)x}\bigg)=1;$$
+	\item $$|\varphi_X(t)| = \bigg|
+	E(e^{itx})
+	\bigg| \overbrace{\le}^{D-J}E\bigg|
+	e^{itx}
+	\bigg|=1$$
+	
+	$$|\varphi_X(t)|\le 1$$
+	\item $$\varphi_{aX+bY}(t) = E\bigg(
+	e^{it(aX+bY)}
+	\bigg) = 
+	 E\bigg(
+	e^{itax}\cdot e^{itby}
+	\bigg) 
+$$
+	Se X e Y são independentes, Então:
+	
+	$$ 
+	E\bigg(
+	e^{itax}\cdot e^{itby}
+	\bigg) =
+	E\bigg(
+	e^{iatx}
+	\bigg)\cdot E\bigg(
+	e^{ibty}	\bigg)	
+	$$
+	$$=\varphi_X(at) \cdot \varphi_Y(bt) $$
+	\item Sejam $X_1,\ldots, X_n$ variáveis aleatórias independentes.
+	$$\Rightarrow \varphi_{X_1+\cdots+X_n}(t) =\varphi_{X_1}(t)\cdots  \varphi_{X_n}(t) $$
+	Se $X_1,\ldots,X_n$ são i.d.,
+	
+	$$\varphi_{X_1+\cdots+X_n}(t) = \bigg[
+	\varphi_{X_1}(t)
+	\bigg]^n $$
+	
+	\item Linearidade
+	$$\varphi_{aF_1+xF_2}(t) = \int\limits_{\mathbb R} e^{itx}d\bigg(aF_1(x) + bF_2(x)\bigg) $$
+	$$= a\int\limits_{\mathbb R} e^{itx}dF_1(x) + b \int\limits_{\mathbb R} e^{itx}dF_2(x)
+	= a\varphi_{F_1}(t) + b\varphi_{F_2}(t)$$
+	$$
+	= \lim\limits_{u\rightarrow \infty}  \frac{1}{2\pi} \int\limits_{-u}^{u} \frac{e^{-itx}- e^{-ity}}{it}\varphi_X(t)dt
+	 $$
+	\item Fórmula de Inversão:
+	
+	Seja X uma variável aleatória, $X\sim F$. Então, $\forall x\le y$, 
+	
+	$$\frac{F(y)+F(y^-)}{2} + \frac{F(x)+F(x^-)}{2} $$
+	$$ $$
+	Se X for absolutamente contínua:
+	$$F(y) + F(x)= \lim\limits_{u\rightarrow \infty}  \frac{1}{2\pi} \int\limits_{-u}^{u} \frac{e^{-itx}- e^{-ity}}{it}\varphi_X(t)dt $$
+	Para x=0,
+	
+	$$F(y) + F(0)= \lim\limits_{u\rightarrow \infty}  \frac{1}{2\pi} \int\limits_{-u}^{u} \frac{1- e^{-ity}}{it}\varphi_X(t)dt $$
+	Derivando,
+	$$f_X(y) = \int\limits_{-\infty}^{\infty} \frac{1}{2\pi} e^{-it}\varphi_X(t)dt $$
+\end{enumerate}
+
+\end{itemize}
+
+
+\end{enumerate}
 \end{document}
