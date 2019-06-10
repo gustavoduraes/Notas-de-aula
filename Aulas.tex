@@ -2783,4 +2783,208 @@ $$
 
 
 \end{enumerate}
+
+\newpage 
+
+\section{05/06 }
+\subsection{Tipos de Convergência}
+Sejam $\{X_n\}_{ n \ge 1}$ e X variáveis aleatórias definidas em $(\Omega,\mathscr{A},P)$.
+
+\underline{Motivação}
+$$X_n \overset{q.c.}{\longrightarrow}  X$$
+$$X_n \overset{Em \ Média}{\longrightarrow}  X$$
+$$X_n \overset{p}{\longrightarrow}  X$$
+$$X_n \overset{\mathscr D}{\longrightarrow}  X$$
+
+\underline{Definição 1} (Convergência quase certa (q.c.))\\
+\\
+Uma sequência $\{X_n\}_{ n \ge 0}$ converge quase certamente para X; $X_n \overset{q.c.}{\longrightarrow}  X$, se:
+
+$$P\bigg(
+\{\omega: \lim\limits_{n\rightarrow \infty} X_n(\omega) = X(\omega) \}
+\bigg)=1 $$
+\begin{center} ou \end{center}
+$$P\bigg(
+\{\omega: \lim\limits_{n\rightarrow \infty} X_n(\omega) \ne X(\omega) \}
+\bigg)=0 $$
+
+\underline{Exemplo 1}:
+
+$\{X_n\}_{ n \ge 1}$ é uma sequência definida no espaço uniforme $\bigg([0,1],\mathscr B([0,1]),P\bigg)$
+$$X_n(\omega)=\begin{cases}
+\frac{1}{n}, & 0<\omega<1\\
+0, & c.c
+\end{cases} 
+\bigg(
+\lim\limits_{n\rightarrow \infty} X_n(\omega) \ne 0 \ Unif\bigg)
+$$
+
+Temos que (Intuitivamente):
+
+$$X_n(\omega) \overset{n\rightarrow \infty}{\longrightarrow}\begin{cases}
+0, & 0<\omega<1\\
+1, & \omega = 0,1
+\end{cases}  $$
+Como
+$$ P\bigg(
+\{
+\omega : \lim\limits_{n\rightarrow \infty} X_n(\omega)=0
+\}
+\bigg) $$
+$$ 
+=P\bigg((0,1)\bigg)
+$$
+$$
+=1
+$$
+Então: $X_n\overset{q.c.}{\longrightarrow}0,n\rightarrow \infty$
+
+\newpage 
+
+\underline{Exemplo 2}:
+$\{X_n\}_{ n \ge 0}$ é uma sequência definida em $\bigg([0,1],\mathscr B([0,1]),P\bigg)$ Uniforme:
+
+$$X_n(\omega) = \begin{cases}
+1, & 0\le \omega \le \frac{1}{n}\\
+0,& \frac{1}{n}<\omega <1 
+\end{cases} \text{\ \ \ \ \ Se n é par }$$ 
+$$X_n(\omega) = \begin{cases}
+1, & 1-\frac{1}{n}\le \omega \le 1\\
+0,& c.c
+\end{cases} \text{\ \ \ \ \ Se n é ímpar }$$ 
+
+Determine a convergência quase certa da sequência.
+
+$$X_n(\omega)\overset{n\rightarrow \infty}{\longrightarrow}  \begin{cases}
+1, & 0\le \omega \le 0\\
+0,&0<\omega \le 1 
+\end{cases} \text{\ \ \ \ \ Se n é par }$$ 
+
+$$X_n(\omega) \overset{n\rightarrow \infty}{\longrightarrow}  \begin{cases}
+1, & 1\le \omega \le 1\\
+0,& 0 \le \omega < 1
+\end{cases} \text{\ \ \ \ \ Se n é ímpar }$$ 
+
+$$ P\bigg(
+\{
+\omega : \lim\limits_{n\rightarrow \infty} X_n(\omega)=0
+\}
+\bigg)=\begin{cases}
+P\bigg(
+(0,1)
+\bigg)= 1, & n \ par\\
+P\bigg(
+[0,1)
+\bigg)=1, & n \ impar
+\end{cases} $$
+$$
+=1
+$$
+
+\newpage 
+
+\subsection{Convergência em probabilidade }
+
+Uma sequência $\{X_n\}_{ n \ge 1}$ converge em probabilidade para X, $X_n\overset{p}{\longrightarrow}X, n\rightarrow \infty$,
+ se $\forall \varepsilon >0$,
+ 
+
+$$\lim\limits_{n\rightarrow \infty} P\bigg(
+\{\omega: \bigg|
+X_n(\omega) - X(\omega)
+\bigg| \le \varepsilon\}
+\bigg) = 1$$
+\begin{center} ou \end{center}
+$$\lim\limits_{n\rightarrow \infty} P\bigg(
+\{\omega: \bigg|
+X_n(\omega) - X(\omega)
+\bigg| > \varepsilon\}
+\bigg) = 0$$
+\underline{Exemplo}:
+Seja $\{X_n\}_{ n \ge 1}$ uma sequência definida em $\bigg([0,1],\mathscr B([0,1]),P\bigg)$ Uniforme tal que:
+
+$$X_n(\omega)=
+\begin{cases}
+1, & \frac{k}{n-k}\le \omega \le \frac{k+1}{n-k}\\
+0, & c.c.
+\end{cases}, k\in \mathbb Z^+, k<n
+ $$
+ 
+ $$X_n(\omega)\overset{n\rightarrow \infty}{\longrightarrow}  \begin{cases}
+ 1, & \omega =0\\
+ 0, & 0<\omega \le 1
+ \end{cases}$$ 
+Porém, $\forall \varepsilon>0$
+$$\lim\limits_{n\rightarrow \infty} P\bigg(
+\{\omega : \bigg|X_n(\omega)-0\bigg| > \varepsilon\}
+\bigg)  $$
+
+$$= \lim\limits_{n\rightarrow \infty} P\bigg(
+\{\omega : \bigg|X_n(\omega)\bigg| \ne 0 \}
+\bigg)  $$
+$$= \lim\limits_{n\rightarrow \infty} P\bigg(\bigg[
+\frac{k}{n-k}, \frac{k+1}{n-k}
+\bigg] \bigg) = \lim\limits_{n\rightarrow \infty}  \frac{1}{n-k}=0 $$
+Então $X_n\overset{p}{\longrightarrow} 0$.
+
+\underline{Observação} Mostra-se que:
+
+$$ X_n\overset{q.c.}{\longrightarrow} X  \Rightarrow X_n\overset{p}{\longrightarrow}X $$
+\newpage 
+\subsection{Convergência em Distribuição}
+
+Uma sequência $\{X_n\}_{ n \ge 1}$ converge em distribuição para X, $X_n\overset{D}{\longrightarrow} X$,se 
+$$\lim\limits_{n\rightarrow \infty} F_{X_n}(x) = F_X(x), \ \ \ \forall x \in \mathscr C (F_x) $$
+$\mathscr C (F_x)=$ conjuntos de pontos da continuidade de F.
+
+\underline{Exemplo}:
+
+Seja $\{X_n\}_{ n \ge 1}$ uma sequência definida  em $\bigg([0,1],\mathscr B([0,1]),P\bigg)$ uniforme tal que:
+
+$$X_n(\omega)\overset{n\rightarrow \infty}{\longrightarrow}  \begin{cases}
+1, & \frac{1}{2}\le \omega \le 1\\
+0,&0\le \omega < \frac{1}{2}
+\end{cases} \text{\ \ \ \ \ Se n é par }$$ 
+
+$$X_n(\omega) \overset{n\rightarrow \infty}{\longrightarrow}  \begin{cases}
+1, & 0\le \omega \le \frac{1}{2}\\
+0,& \frac{1}{2} < \omega < 1
+\end{cases} \text{\ \ \ \ \ Se n é ímpar }$$ 
+
+Temos que:
+
+$$F_{X_n}(x) = P(X_n\le x)=\begin{cases}
+P(\emptyset)=0, & x<0\\
+ P(X_n=0)=P([0,0.5]), & 0\le x <1\\
+ P(X_n=1)+P(X_n=1)=1, & x>1
+\end{cases} $$
+
+$$
+F_{X_n}(x) =\begin{cases}
+0, & x<0\\
+P\bigg((\frac{1}{2},1)=
+\bigg)\frac{1}{2}, & 0\le x <1\\
+1, & x>1
+\end{cases}
+$$
+Isto é,
+
+$$
+F_  {X_n}(x) = \begin{cases}
+0, & x<0\\
+\frac{1}{2} & 0\le x<1\\
+1, & x>1
+\end{cases}
+\longrightarrow F_X(x)
+$$
+
+$$
+F_ X(x) = \begin{cases}
+0, & x<0\\
+\frac{1}{2} & 0\le x<1\\
+1, & x>1
+\end{cases}
+\Rightarrow X \sim Bernoulli\bigg(\frac{1}{2}\bigg)
+$$
+
 \end{document}

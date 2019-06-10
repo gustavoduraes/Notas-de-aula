@@ -1,0 +1,201 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{automata,positioning}
+\usepackage{pgfplots}
+\usepackage{filecontents}
+\usepackage{cancel}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows.meta}
+\usepackage{bm}
+\usepackage{mathrsfs}
+\usepackage{blkarray}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\graphicspath{/Users/gustavo/Desktop/Estatística\ Matemática}
+\usepackage{amssymb}
+\usepackage{tkz-euclide}
+\usepackage[margin=0.1in]{geometry}
+\usepackage{enumitem} 
+\usepackage{diagbox}
+\usepackage{makecell}
+\usepackage{accents}
+
+
+\author{}
+\geometry{textwidth=6in, textheight=9in, marginparsep=7pt, marginparwidth=.6in, top=30mm, bottom=25mm}
+
+\title{Exercícios Estatística Matemática\\
+Capítulo 4
+}
+\date{}
+\begin{document}
+	\maketitle
+	\tableofcontents	
+	\newpage
+\section{Questão 1}
+\begin{enumerate}[label=\alph*)]
+	\item Podemos encontrar a distribuição de W = X+Y através do método Jacobiano utilizando a distribuição conjuntar de X e Y.
+	$\begin{cases}
+	W = X-Y\\
+	Z = Y
+	\end{cases} $
+	$$f_{W,Z}(w,z) = (1-p)^{w+2z}p^2 $$
+	$$f_W(w) = \begin{cases}
+	\sum\limits_{z=-w}^\infty  (1-p)^{w+2z}p^2, & w < 0\\
+		\sum\limits_{z=0}^\infty  (1-p)^{w+2z}p^2, & w \ge 0\\
+	\end{cases} $$
+	
+		$$f_W(w) = \begin{cases}
+	\frac{p (1-p)^{-w}}{2-p} & w < 0\\
+\frac{p (1-p)^w}{2-p}, & w \ge 0\\
+	\end{cases} $$
+	
+	$$P(W=0) =  \frac{p}{2-p}$$
+	$$P(W<0) = 1-P(W \ge 0 )= 1 - \sum\limits_{w=0}^{\infty} \frac{p (1-p)^w}{2-p} = \frac{1-p}{2-p} $$
+	
+	\item Primeiro podemos encontrar a Distribuição de T = X+Y da mesma forma em que encontramos a distribuição de W.\\
+		$\begin{cases}
+	T = X+Y\\
+	Z = Y
+	\end{cases} $
+		$$f_{T,Z}(t,z) = p^2 (t-1) (1-p)^t, \  \ \ \ t>z>0 $$
+		$$f_T(t) = \sum\limits_{z=0}^t f_{T,Z}(t,z)  $$
+		$$f_T(t) =(1 - p)^t p^2 (1 + t), \ \ \ \  t>0 $$
+	$$P(X=x|X+Y=w)  = \frac{P(X=x,Y=y)}{P(T=t)}
+	= \frac{(1-p)^{(x+y)} p^2}{(1-p)^{(t)} p^2 (t+1)}
+	$$
+	$$
+  \frac{(1-p)^{(x+y)} p^2}{(1-p)^{(x+y)} p^2 (t+1)} = \frac{1}{t+1}
+	$$
+\end{enumerate}
+\newpage 
+\section{Questão 7}
+\begin{enumerate}[label=\alph*)]
+	\item 
+
+$$	P(\bm X = x_1,\ldots,x_n) =\frac{n!}{x_1!x_2!\cdots  x_n!}p_1^{x_1} p_2^{x_2}\cdots p_n^{x_n} $$
+$$P(X_1=x_1)= \frac{n!}{x_1!}p_1^{x_1} \sum\limits_{x_2,\ldots,x_n}^{n-x_1}\frac{1}{x_2!\cdots  x_n!}p_2^{x_2}\cdots p_n^{x_n}   $$
+Sabemos que $\sum\limits_i^n x_i = n$ e $\sum\limits_i^n p_i=1$, então:
+$$= \frac{n!}{x_1!(n-x_1)!}p_1^{x_1} \sum\limits_{x_2,\ldots,x_n}^{n-x_1}\frac{(n-x_1)!}{x_2!\cdots  x_n!}p_2^{x_2}\cdots p_n^{x_n}  $$
+Pelo teorema multinomial, temos que:
+$$ \sum\limits_{x_2,\ldots,x_n}^{n-x_1}\frac{(n-x_1)!}{x_2!\cdots  x_n!}p_2^{x_2}\cdots p_n^{x_n}  = (p_2+\cdots+p_n)^{n-x_1}
+= ( 1 - p_1)^{n-x_1}$$
+$$\therefore P(X_i=x_i) =   \frac{n!}{x_i!(n-x_i)!}p_i^{x_i}( 1 - p_i)^{n-x_i}\forall i \in \{1,\ldots,n\} $$
+\end{enumerate}
+\newpage 
+
+\section{Questão 10}
+$X\sim Bin(n,p) $ $Y\sim Bin(m,p)$
+
+$$P(X|X+Y)  =\frac{P(X=x) P(Y=z-x)}{P(X+Y=s)} = \frac{P(X=x)P(Y=z-x)}{P(X+Y=s)}$$
+$$P(X+Y=t) = \sum\limits_x \binom{n}{x} \binom{m}{z-x} p^{x}(1-p)^{n-x} p^{z-x}(1-p)^{m-z+x}$$
+$$=\sum\limits_x \binom{n}{x}\binom{m}{z-x} p^z (1-p)^{(n+m)-z}  =\binom{n+m}{z} p^z (1-p)^{(n+m)-z} $$
+$$\therefore P(X|X+Y) = \frac{\binom{n}{x} \binom{m}{z-x} \cancel{p^{x}(1-p)^{n-x} p^{z-x}(1-p)^{m-z+x}}}{\binom{n+m}{z}\cancel{ p^z (1-p)^{(n+m)-z}}}  = \frac{\binom{n}{x}\binom{m}{z-x}}{\binom{n+m}{z}}\sim HiperGeo(m+n,m)$$
+\section{Questão 15}
+$X\sim U[0,1]$ e $U[-x,x]$
+$$f(x,y) = f(y)\cdot f(x|y) =$$
+$$f(y) = \int\limits_{-|y|}^1 \frac{1}{2x}dx = \frac{1}{2}log(x) \bigg|^{1}_{|y|} = -\frac{1}{2} log(|y|)$$
+$$f(x|y)= \frac{f_{X,Y}(x,y)}{f_Y(y)} = \frac{\frac{1}{2x}}{-\frac{1}{2} log(|y|)} =- \frac{1}{xlog(|y|)} $$
+
+\newpage 
+\section{Questão 27}
+$$Cov(X,E(Y|X)) = E(X\cdot E(Y|X))) - E(X)\cdot E(E(Y|X)) $$
+\begin{equation}
+E(E(Y|X)) = E(Y)
+\end{equation}
+\begin{equation}
+E(X\cdot E(Y|X))) = E(E(X\cdot E(Y|X)))|X) \overbrace{=}^{P5} E(XY)
+\end{equation}
+
+Então, por (1) e (2)
+
+$$Cov(X,Y) = Cov(X,E(Y|X)) $$
+
+\section{Questão 28}
+$$f(x,y)=\begin{cases}
+\frac{1}{\pi} & x^2+y^2\le 1\\
+0, & c.c
+\end{cases} $$
+
+\begin{enumerate}[label=\alph*)]
+	\item $$f(y|x) = \frac{f(x,y)}{f(x)} $$
+	$$f(x) = \int\limits_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \frac{1}{\pi} dx =\frac{2 \sqrt{1-x^2}}{\pi }$$
+	$$\therefore  f(y|x) = \frac{\frac{1}{\pi}}{\frac{2 \sqrt{1-x^2}}{\pi }}= \frac{1}{2 \sqrt{1-x^2}}$$
+	$$E(X|Y) = \frac{1}{\pi}\int\limits \frac{x}{2 \sqrt{1-x^2}}dx = 0$$
+	\item 
+	$$f(y) = \frac{2\sqrt{1-y^2}}{\pi} $$
+	
+	$$f(x)\cdot f(y) =\frac{2\sqrt{1-x^2}}{\pi} \cdot \frac{2\sqrt{1-y^2}}{\pi} \ne f(x,y)  $$
+	\item 
+	$$Cov(X,Y) = Cov(X,E(Y|X)) = Cov(X,0)= 0 $$
+\end{enumerate}
+\newpage 
+
+\section{Questão 34}
+A desigualdade de Cauchy-Schwarz nos diz que:
+
+$$[E(XY)]^2\le E(X^2)E(Y^2)  $$
+Podemos definir:
+
+
+$$\mathbf I_1=\begin{cases}
+1, & X\le x\\
+0, & c.c
+\end{cases} $$
+$$\mathbf I_2=\begin{cases}
+1, &Y\le y\\
+0, & c.c
+\end{cases} $$
+
+Aplicando a desigualdade de Cauchy-Schwarz, temos:
+$$[E(\mathbf I_1\cdot \mathbf I_2)]^2 \le E(\mathbf I_1^2)E(\mathbf I_2^2) $$
+Note que a função indicadora é idempotente, então:
+$$[E(I_{\{X\le x,Y\le y\}})]^2 \le E(\mathbf I_1)E(\mathbf I_2) $$
+Também é conhecido que a $E(\mathbf I_A) = P(A)$, logo:
+$$[P(X\le x, Y\le y)]^2 \le P(X\le x)P(Y\le y) $$
+$$\therefore P(X\le x, Y\le y) \le \sqrt{ P(X\le x)P(Y\le y) } $$
+\newpage 
+
+\section{Questão 35}
+$X\sim Exp(\frac{1}{2}) $ e $Y|X \sim U[0,x^2]$
+\begin{enumerate}[label=\alph*)]
+	\item $V=Y|X^2 $\\
+Podemos considerar a região $A: A\in (t-\varepsilon,t+\varepsilon) $, Então:\\
+$P(X^2\in A) = P(t-\varepsilon<X^2<t+\varepsilon)=P(\sqrt{t-\varepsilon} < X < \sqrt{t+\varepsilon}) = P(X \in \sqrt A )$\\
+
+Podemos calcular 
+$$\lim\limits_{\varepsilon\rightarrow 0}  P(Y|X \in \sqrt A ) =P(Y|X^2 = t)$$
+$$\therefore Y|X^2\sim U[0,t]$$
+\item $E(X)=\frac{1}{\frac{1}{2}} = 2$\\
+$E(Y)=E(E(Y|X)) = E\bigg(\frac{x^2}{2}\bigg) = \frac{Var(X) +E(X)^2}{2} = \frac{4+4}{2}=2$\\
+$cov(X,Y) = Cov(X,E(Y|X)) = E(X\cdot E(Y|X))- E(X)E(E(Y|X))$\\
+$=\frac{1}{2}6\cdot 8 -2\cdot 4 = 16$ 
+\end{enumerate}
+\section{Questão 40}
+$f(x,y) = \frac{1}{2x}$ , $-\frac{1}{2}log(|y|)$ , $X\sim U[0,1]$, $Y\sim U[-x,x]$\\
+$f(x|y)= \frac{-1}{xlog(|y|)}$\\
+$E(x|y) = \int\limits_{|y|}^1 xf(x|y)dx= x \frac{-1}{xlog(|y|)}\bigg|_{|y|}^1 = \frac{|y|-1}{log(y)}$\\
+$f(y|x)= \frac{f(x,y)}{f(x)} = \frac{f(x|y)f(y)}{f(x)} $\\
+$f(x) = \int\limits_{-x}^x \frac{1}{2x}dy=1$\\
+$\therefore f(y|x) = \frac{f(x|y)f(y)}{1}= \frac{-1}{xlog(|y|)}- \frac{1}{2} log(|y|)=\frac{1}{2x}$\\
+$E[y|x] = \int\limits_{-x}^x y\frac{1}{2x}dy=0$\\
+$Cov(X,Y) = Cov(X,E(Y|X))= E(X,E(Y|X))-E(X)E(Y|X) $\\
+$=E(X\cdot 0) - E(X)\cdot 0= 0 $
+\section{Questão 41}
+\begin{enumerate}[label = \alph*)]
+	\item Variável aleatória discreta.
+	\item $E(Y) = E(E(Y|X)) = E(nX) = nE(X) = n\frac{1}{2} $\\
+	$Var(Y)= E(Y^2)-E(Y)^2$\\
+	$E(Y^2)=E(E(Y^2|X)) = E(n(n-1)x^2+xn) = n(n-1)E(x^2)+E(X)n = n(n-1)\frac{1}{3}+n\frac{1}{2}$
+	$$\therefore Var(Y) = \frac{n^2}{3}-\frac{n}{3} + \frac{n}{2}  - \frac{n^2}{4} = \frac{n(n+2)}{12}$$
+	
+\end{enumerate}
+
+\end{document}
