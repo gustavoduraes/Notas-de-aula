@@ -2986,5 +2986,131 @@ F_ X(x) = \begin{cases}
 \end{cases}
 \Rightarrow X \sim Bernoulli\bigg(\frac{1}{2}\bigg)
 $$
+\newpage 
 
+\section{10/06}
+\subsection{Convergência em momentos}
+
+Uma sequência $\{X_n \}_{n\ge 1}$ converge no r-ésimo momento para X, $X_n\overset{(r)}{\longrightarrow}X,n \rightarrow \infty $,
+se:
+
+$$\lim\limits_{n\rightarrow \infty} E|X_n-X|^r=0 $$
+\underline{Exemplo}:
+$X_n(\omega) = \begin{cases}
+n,& 0<\omega < \frac{1}{n}\\
+0, & c.c.
+\end{cases} $
+
+Determine o limite de $\{X_n  \}$, em momentos
+
+\underline{Sol:}
+
+$X_n \overset{(r)}{\longrightarrow}  0 ?$
+
+$$E|X_n-0|^r=E|X_n|^r$$
+$$n^rP(X_n=n)+0^rP(X_n=0) $$
+$$n^rP\bigg(
+(0,\frac{1}{n})
+\bigg)= \frac{n^r}{n}= n^{r-1} $$
+
+$$
+\Rightarrow \lim\limits_{n\rightarrow \infty}  E|X_n-0|^r = 0 \Leftrightarrow r-1<0
+$$
+
+$$\therefore X_n \overset{(r)}{\longrightarrow}0, r<1  $$
+
+\underline{Exercício}: Discuta os outros três tipos de convergência para essa sequência.
+
+\subsection{Caracterização de convergências}
+
+\begin{enumerate}[label =\arabic*)]
+	\item \underline{Em Distribuição}
+	
+	\underline{Teorema 1 (Helly - Bray) }
+	
+	Seja $\{F_n\}_{n\ge 1}$ uma sequência de distribuições tais que $\lim\limits_{n\rightarrow \infty}  F_n(x)=F(x)$ e seja g uma função contínua e limitada, então:
+	
+	$$\lim\limits_{n\rightarrow \infty} \int\limits_{\mathbb R} g(x)dF_n(x)  = \int\limits_{\mathbb R} g(x) dF(x)$$
+	
+	\underline{Aplicação}
+	
+	Seja $X_n\sim F_n$, $X\sim F$ e $g(x)=e{itx}$ é contínua e $|g(x)|\le 1$
+	$$\Rightarrow \lim\limits_{n\rightarrow \infty}  \int\limits_{\mathbb R} e^{itx}dF_n(x) = \int\limits_{\mathbb R} e^{itx}dF $$
+	$$\lim\limits_{n\rightarrow \infty} \varphi_{F_n}(t) = \varphi_F(t) $$
+	\newpage 
+	
+	\underline{Teorema 2 (Continuidade de Lévy)}
+	
+		Sejam $\{F_n\}_{n\ge 1}$ sequências de distribuições e  $\{\varphi_n(t)\}_{n\ge 1}$ suas respectivas funções características. Se:
+		$$\varphi_n (t) \longrightarrow \varphi (t), n \rightarrow \infty$$
+		e $\varphi$ é contínua em 0. Então: 
+		\begin{enumerate}[label = \alph*)]
+			\item $\exists F: \lim\limits_{n\rightarrow \infty} F_n(x) = F(x), \forall x\in \mathscr C(F)$
+			\item $\varphi$ é função característica de $F$
+		\end{enumerate}
+	
+	\underline{Aplicação}
+	
+	$\{X_n\}_{n\ge 1} $, $X_n \sim F_n$
+	$$\lim\limits_{n\rightarrow \infty}  \varphi_{F_n} = \varphi(t) \Leftrightarrow \lim\limits_{n\rightarrow \infty} F_n(t) = F(t)
+	\Leftrightarrow X_n \overset{D}{\longrightarrow}  X, n\rightarrow \infty
+	 $$
+		$$t.q. \ \  \varphi_{X_n} = \varphi_{F_n} \ e \ \varphi = \varphi_F$$
+		
+		\underline{Exemplo}:
+		
+		Suponha que as funções caraterísticas de $\{X)n\}_{n\ge 1}$ são $\varphi_{X_n}(t) =e^{-\frac{nt^2}{2(n+5)}}, t\in \mathbb R$
+		
+		Determine a distribuição limite de $X_n$
+		
+		\underline{Sol:}
+		$$X_n \overset{D}{\longrightarrow} X? $$
+		$$\lim\limits_{n\rightarrow \infty} \varphi_{X_n}(t) = \lim\limits_{n\rightarrow \infty}  e^{-\frac{nt^2}{2(n+5)}} = e^{\frac{t^2}{2}}
+		=\varphi_Z(t), \ \ Z\sim N(0,1)
+		$$
+		$$\Rightarrow X_n \overset{D}{\longrightarrow} Z \ \ \bigg(\underset{n\rightarrow \infty}{X_n} \sim N(0,1) \bigg) $$
+		
+		\underline{Observação}:
+		
+		$$X_n \overset{D}{\longrightarrow}  X, n\rightarrow \infty  \Leftrightarrow $$
+		\begin{itemize}
+			\item $\{X_n\}$ Discretas
+			$P(X_n=k)\rightarrow P(X=k),\forall k $ (função de probabilidade)
+	\item $\{X_n\}$ absolutamente contínua
+	$$\underset{n\rightarrow \infty}{f_{X_n}(x)} \rightarrow f_X(x), \forall x \in \mathscr C(f_X) $$
+	\newpage 
+	
+	\underline{Exemplo}:
+	
+	$X_n \sim Binomial(n,p)$, p é pequeno.
+	
+	Mostre que $X_n \overset{D}{\longrightarrow}  X, n\rightarrow \infty $
+	
+	$$X\sim Poisson(\lambda), \lambda = np$$
+	
+	\underline{Prova}
+	
+	$\lim\limits_{n\rightarrow \infty}  P(X_n=k) = \lim\limits_{n\rightarrow \infty} \binom{n}{k}p^k(1-p)^{n-k}$\\
+	$=
+	\lim\limits_{n\rightarrow \infty}  \frac{n!}{(n-k)!k!}\bigg(\frac{\lambda}{n} \bigg)^k\bigg(
+	1-\frac{\lambda }{n}
+	\bigg)^n\cdot \bigg(1-\frac{\lambda}{n} \bigg)^{-k} = \frac{e^{-\lambda} \lambda^k}{k!} = P(X=k)
+	$\\
+	\\
+	\underline{Exercício}: 
+	\begin{enumerate}
+		\item 
+
+	Mostre que $X_n\sim\chi_{(n)}^2, n\ge 1$
+	$$X_n\overset{D}{\longrightarrow} X, n\rightarrow \infty $$
+	
+	
+	$$X\sim N(\mu ,\sigma^2) $$
+\item Mosrte que $X_n \sim t_{(n)},n\ge 1$
+$$X_n\overset{D}{\longrightarrow} X, n\rightarrow \infty $$
+$$X\sim N(0,\sigma^2) $$
+	
+		\end{enumerate}
+			\end{itemize}
+\end{enumerate}
 \end{document}
