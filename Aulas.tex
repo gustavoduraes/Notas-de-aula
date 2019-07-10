@@ -34,13 +34,6 @@
 	\tableofcontents	
 	
 	\newpage
-	
-	\section*{Biliografia Importante}
-	
-	kai Lai Chung: Introduction to Probability\\
-	Barry R. James: Probabilidade : um Curso Em Nível Intermediário 
-	
-	\newpage
 	\section{ Aula 13/03}
 	\subsection{Espaço de Probabilidade $(\Omega,\mathscr{A},\mathscr{P})$ }
 \underline{Experimento Aleatório($\varepsilon$) }\\
@@ -3112,5 +3105,223 @@ $$X\sim N(0,\sigma^2) $$
 	
 		\end{enumerate}
 			\end{itemize}
+		\section{12/06}
+		\item \underline{Quase certa}
+$X_n \overset{q.c.}{\longrightarrow}X, n\rightarrow \infty $ se $P\bigg(
+\{ \omega = \lim\limits_{n\rightarrow \infty}  X_n(\omega)= X(\omega)\}
+\bigg)$
+Prova-se que:
+
+$X_n \overset{q.c.}{\longrightarrow} X \Leftrightarrow P\bigg(
+\liminf\limits_{n\rightarrow \infty} [|X_n-X|<\varepsilon]
+\bigg) =1, \forall \varepsilon >0 $
+\\
+ou\\
+$P\bigg(
+\limsup\limits_{n\rightarrow \infty}[|X_n-X|>\varepsilon]
+\bigg)=0, \forall \varepsilon>0 $
+
+\underline{Prova:}
+
+Por hipótese temos que: $P\bigg(
+\{\omega : \lim\limits_{n\rightarrow \infty}|X_n(\omega)-X(\omega)| \}
+\bigg)=1$\\
+que equivale a ter que $\forall \varepsilon>0, \exists n_0: P\bigg(\{
+\omega: |X_n(\omega)-X(\omega|<\varepsilon\}
+\bigg)=1, \forall n\ge n_0$\\
+
+Seja $B_{n_0} = \bigcap\limits_{k\ge n_0}[|X_k - X|<\varepsilon]$, então:
+
+$$P(B_{n_0})=1, \ \forall \varepsilon>0\ \ \ \ \ \ \ (1) $$
+
+Por outro lado,
+
+$$B_n =\bigcap\limits_{k\ge n}[|X_k - X|<\varepsilon], n\ge 1 $$
+é uma sequência crescente, 
+$$B_1 \subset B_2\subset \cdots \subset \bigcup\limits_{n=1}^\infty B_n,$$
+$$\bigcup\limits_{n=1}^\infty = \bigcup\limits_{n=1}^\infty \bigcap\limits_{k\ge n} \bigg[
+|X_k-X|<\varepsilon
+\bigg]$$
+
+$$\Rightarrow \bigcup\limits_{n=1}^\infty = \liminf\limits_{n\rightarrow \infty} [|X_n-X|<\varepsilon] \ \ \ \ \ \  (2) $$
+
+De (1) e (2), tem-se:
+
+$$ 1 \overset{(1)}{=} P(B_0) \le P\bigg(
+\bigcup\limits_{n=1}^{\infty}B_n
+\bigg) 
+\overset{(2)}{=}  P\bigg(
+\liminf\limits_{n\rightarrow \infty} [|X_n-X|<\varepsilon]
+\bigg)\le 1
+$$
+
+Então $P\bigg(\liminf\limits_{n\rightarrow \infty} \bigg[|X_n-X|<\varepsilon\bigg]
+\bigg)=1$
+
+\newpage 
+
+\subsection{Teorema de Borel Cantelli}
+
+Sejam $B_1,B_2,\ldots$ eventos ep $(\Omega,\mathscr{A},P)$
+\begin{enumerate}[label=\alph*)]
+	\item $\sum\limits_{n=1}^{\infty} P(B_n) <\infty \Rightarrow P\bigg(
+	\limsup\limits_{n\rightarrow \infty} B_n
+	\bigg)=0$
+	
+	\item $Se B_1,B_2,\ldots$ são independentes\\
+	\\
+	$\sum\limits_{n=1}^{\infty} P(B_n) -\infty \Rightarrow P\bigg(
+	\limsup\limits_{n\rightarrow \infty} B_n
+	\bigg)=1$
+\end{enumerate}
+
+\underline{Aplicação}
+
+Seja $B_n = \bigg[ |X_n-X|>\varepsilon
+\bigg], n \ge 1$
+
+De (a),
+
+$$\sum\limits_{n=1}^{\infty}P\bigg( \bigg[ |X_n-X|>\varepsilon
+\bigg]\bigg) <\infty  \overset{B-C}{\Rightarrow} P\bigg(	\limsup\limits_{n\rightarrow \infty} \bigg[ |X_n-X|>\varepsilon
+\bigg]\bigg)=0
+$$ 
+$$\Leftrightarrow X_n \overset{q.c.}{\longrightarrow}  X $$
+
+De (b)
+
+$$ \sum\limits_{n=1}^{\infty}P\bigg( \bigg[ |X_n-X|>\varepsilon
+\bigg]\bigg) =\infty
+ \overset{B-C}{\Rightarrow} P\bigg(	\limsup\limits_{n\rightarrow \infty} \bigg[ |X_n-X|>\varepsilon
+\bigg]\bigg)=1
+$$
+$$\Leftrightarrow X_n \overset{q.c.}{\not\longrightarrow}  X $$
+\end{enumerate}
+
+\underline{Exemplo}: 
+
+Sejam $X_i \sim Exp(1), i=1,2,\ldots$ e independentes.
+
+$$Y_n = \frac{X_n}{log(n)}, n\ge 2 $$
+
+Morte que $Y_n \overset{q.c.}{\not\longrightarrow} 0$
+
+\underline{Prova:}
+$\forall \varepsilon>0$
+
+$$\sum\limits_{n=2}^{\infty} P\bigg(
+|Y_n-0|>\varepsilon
+\bigg) = \sum\limits_{n=2}^{\infty} P\bigg(
+|X_n| > \varepsilon log(n)
+\bigg)  = \sum\limits_{n=2}^{\infty} \frac{1}{n^\varepsilon}= \infty, \varepsilon \le 1 $$
+
+\underline{Obs:}
+$\forall \varepsilon >0 $,
+
+$$P(|Y_n0|>\varepsilon) $$
+$$= P\bigg(
+\bigg|
+\frac{X_n}{log(n)}
+\bigg|>\varepsilon
+\bigg) = P(X_n > \varepsilon log(n)) = \frac{1}{n^\varepsilon} \underset{n\rightarrow \infty}{\longrightarrow}0
+\therefore Y_n \overset{p}{\longrightarrow} 0 
+ $$
+
+\newpage 
+
+
+\subsection{Relação entre os tipos de convergência}
+
+\underline{Prova}
+\begin{enumerate}[label=\roman*)]
+	\item Por hipótese, tem-se que:
+	$$ 1
+	\overset{(2)}{=}  P\bigg(
+	\liminf\limits_{n\rightarrow \infty} [|X_n-X|<\varepsilon]
+	\bigg)=P\bigg(
+	 \bigcup\limits_{n=1}^\infty \bigcap\limits_{k\ge n} \bigg[
+	|X_k-X|<\varepsilon
+	\bigg]
+	\bigg)
+	=
+	P\bigg(
+	\lim\limits_{n\rightarrow \infty} \underbrace{\bigcap_{k\ge n}\bigg[
+	|X_k-X|<\varepsilon
+	\bigg]}_{seq \ crescente}
+	\bigg)
+	$$
+	Continuidade 
+	
+	$$= \lim\limits_{n\rightarrow \infty} P\bigg(
+	\bigcap\limits_{k\ge n}^\infty [X_k-X]<\varepsilon
+	\bigg)= \lim\limits_{n\rightarrow \infty}  P\bigg(
+	|X_n-X|<\varepsilon
+	\bigg) \le 1$$
+	
+	\item Por  hipótese temos que $ \lim\limits_{n\rightarrow \infty} E|X_n-X|^r = 0$
+	
+	Por outro lado, pela desigualdade de Markov,
+	
+	$\forall \varepsilon > 0$
+	
+	$$P\bigg(
+	|X_n-X|>\varepsilon
+	\bigg)\le \frac{E|X_n-X|^r}{\varepsilon^r}  \underset{n\rightarrow\infty}{\longrightarrow} 0$$
+	
+	\item Da hipótese, tem-se que:
+	
+	$$\forall \varepsilon>0, \ \ \ P\bigg(
+	|X_n-X| >\varepsilon
+	\bigg) \underset{n\rightarrow\infty}{\longrightarrow} 0 $$
+\end{enumerate}
+
+\newpage 
+
+\section{19/06 }
+\subsection{T.L.C.}
+
+$X_1,\ldots, X_n$ i.i.d X com $E(X_i)$ e $Var(X_i)$ finitas 
+
+$$\Rightarrow S_n  =  \sum\limits_{i=1}^{\infty}X_i \sim N\bigg(nE(X_i), n\cdot var(X_i)\bigg) $$
+\underline{Exemplo}:
+
+\begin{enumerate}[label =\arabic*)]
+	\item $X_1,\ldots, X_n$ i.i.d Bernoulli (p) Como $E(X_i)=p$ e $Var(X_i)=p(1-p)$
+	T.L.C 
+	
+	$\Rightarrow \sum\limits_{i=1}^{n} X_i \sim N\bigg(np,np(1-p)\bigg)$, $n\rightarrow \infty $ 
+	
+	Sendo $X\sim B(n,p)$
+	
+	$\therefore n\rightarrow \infty B(n, p)\approx N\bigg(np,np(1-p)\bigg)$
+	
+	\item $X_1,\ldots, X_n$ i.i.d $Exp(\beta )$
+	
+	Usar f.c.
+	
+	$$\Rightarrow X = \sum\limits_{i=1}^{n} X_i \sim Gamma(n,\beta) $$
+	
+	Com $E(X_i) = \frac{1}{\beta}$ e $Var(X_i) = \frac{1}{\beta^2}$, então, pelo TLC, tem-se:
+	
+	$$X\sim N\bigg(  n\frac{1}{\beta},n\frac{1}{\beta^2}\bigg), n\rightarrow \infty $$
+	
+	$$\Rightarrow P(X\le x) = P\bigg(Z\le \frac{x-\frac{n}{\beta}}{\sqrt{\frac{n}{\beta^2}}}\bigg) $$
+	
+	\item $X_1 \sim N(2,4)$, $X_2\sim N(0,2)$, $X_3\sim N(5,1)$ independentes
+	
+	$$\Rightarrow S_3 = X_1 +X_2 + X_3 \sim N(7,7) $$
+	$$X_1+X_2-X_3 \sim N(-3,7) $$
+	
+	\underline{Obs:}
+	
+	$X_i \sim N(\mu_i,\sigma_i^2), i=1,\ldots,n$ independentes 
+	
+	$$\Rightarrow S_n = \sum\limits_{i=1}^{n} a_iX_i \sim N\bigg(
+	\sum\limits_{i=1}^{n} a_i\mu_i, \sum\limits_{i=1}^{n}a_i^2 \sigma_i^2
+	\bigg) $$ 
+	
+	$$S_n = \sum\limits_{i=1}^{n} X_i \sim N(n\mu, n\sigma^2)  $$
+	
+	$$\bar X = \frac{\sum\limits_{i=1}^{n} X_i}{n} \frac{1}{n} X_i+\cdots \frac{1}{n}X_n $$
 \end{enumerate}
 \end{document}
